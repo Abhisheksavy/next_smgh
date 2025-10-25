@@ -1,0 +1,11 @@
+{
+    "logo": "/logo.png",
+    "emergency": {
+        "label": "Emergency",
+        "phone": "+1721 543 1111"
+    },
+    "location": {
+        "label": "Location",
+        "address": "Clay Hill, St-Maarten"
+    }
+}

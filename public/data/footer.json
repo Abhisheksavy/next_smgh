@@ -1,0 +1,136 @@
+{
+    "logo": {
+        "src": "/footerlogo.png",
+        "tagline": "Leading the Way in Medical Execellence, Trusted Care."
+    },
+    "columns": [
+        {
+            "id": "quick-links",
+            "title": "Quick Links",
+            "links": [
+                {
+                    "id": "appointment",
+                    "label": "Book an Appointment",
+                    "href": "/appointment"
+                },
+                {
+                    "id": "careers",
+                    "label": "Careers",
+                    "href": "/careers"
+                },
+                {
+                    "id": "submit-complaint",
+                    "label": "Submit Compliment / Complaint",
+                    "href": "/feedback"
+                }
+            ]
+        },
+        {
+            "id": "resources",
+            "title": "Resources",
+            "links": [
+                {
+                    "id": "health-blog",
+                    "label": "Health Blog",
+                    "href": "/blog"
+                },
+                {
+                    "id": "patient-brochures",
+                    "label": "Patient Brochures",
+                    "href": "/resources/brochures"
+                },
+                {
+                    "id": "help-center",
+                    "label": "Help Center (AI FAQ)",
+                    "href": "/help"
+                },
+                {
+                    "id": "vendor-login",
+                    "label": "Vendor Login",
+                    "href": "/vendor/login"
+                },
+                {
+                    "id": "emergency-contact",
+                    "label": "Emergency Contact Information",
+                    "href": "/emergency"
+                }
+            ]
+        },
+        {
+            "id": "contact-us",
+            "title": "Contact Us",
+            "links": [
+                {
+                    "id": "phone",
+                    "label": "Call: +1721 543 1111",
+                    "href": "tel:+17215431111",
+                    "icon": "phone"
+                },
+                {
+                    "id": "email",
+                    "label": "Email: info@smgh.com",
+                    "href": "mailto:info@smgh.com",
+                    "icon": "email"
+                },
+                {
+                    "id": "address",
+                    "label": "Address: Welgelegen Road 30, Cay Hill, St-Maarten",
+                    "href": "#",
+                    "icon": "location"
+                }
+            ]
+        }
+    ],
+    "socialMedia": [
+        {
+            "id": "facebook",
+            "name": "Facebook",
+            "href": "https://facebook.com",
+            "icon": "facebook"
+        },
+        {
+            "id": "twitter",
+            "name": "Twitter",
+            "href": "https://twitter.com",
+            "icon": "twitter"
+        },
+        {
+            "id": "linkedin",
+            "name": "LinkedIn",
+            "href": "https://linkedin.com",
+            "icon": "linkedin"
+        },
+        {
+            "id": "instagram",
+            "name": "Instagram",
+            "href": "https://instagram.com",
+            "icon": "instagram"
+        }
+    ],
+    "chatBot": {
+        "enabled": true,
+        "icon": "message-circle"
+    },
+    "bottomLinks": [
+        {
+            "id": "privacy-policy",
+            "label": "Privacy Policy",
+            "href": "/privacy-policy"
+        },
+        {
+            "id": "cookie-settings",
+            "label": "Cookie Settings",
+            "href": "/cookie-settings"
+        },
+        {
+            "id": "terms-of-use",
+            "label": "Terms of Use",
+            "href": "/terms"
+        }
+    ],
+    "copyright": "© 2025 St-Maarten General Hospital. All Rights Reserved",
+    "accessibility": {
+        "label": "WCAG Accessibility",
+        "href": "/accessibility"
+    }
+}
