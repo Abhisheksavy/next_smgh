@@ -33,5 +33,15 @@
                 "icon": "arrow-right"
             }
         ]
+    },
+    "about": {
+        "tagline": "ABOUT SMGH",
+        "title": "We Provide Quality Care for Your Health",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque placerat scelerisque tortor ornare ornare. Convallis felis vitae tortor augue. Velit nascetur proin massa in. Consequat faucibus porttitor enim et.",
+        "image": "/images/doctor-office.jpg",
+        "cta": {
+            "label": "Learn More About SMGH",
+            "href": "/about"
+        }
     }
 }

@@ -1,17 +1,15 @@
 'use client'
 
 
-import { useGetHomepageData } from "@/app/queries/useHomepage";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Banner() {
-    const { data, isLoading, isError, error }: any = useGetHomepageData();
+export default function Banner({ data, isLoading, isError, error }: any) {
 
     if (isLoading) {
         return (
-            <div className="min-h-screen">
+            <div>
                 {/* Banner Skeleton */}
                 <div className="relative h-[600px] bg-gray-200 animate-pulse" />
 
@@ -29,7 +27,7 @@ export default function Banner() {
 
     if (isError || !data) {
         return (
-            <div className="min-h-screen flex items-center justify-center">
+            <div className="min-h-[400px] flex items-center justify-center">
                 <p className="text-red-500 text-center">
                     Failed to load homepage: {error?.message || "Unknown error"}
                 </p>
@@ -38,12 +36,12 @@ export default function Banner() {
     }
 
     return (
-        <div className="min-h-screen">
+        <div>
             {/* Hero Banner */}
             <section className="relative h-[500px] md:h-[600px] bg-gradient-to-r from-teal-50 to-teal-100 overflow-hidden">
                 <div className="absolute inset-0">
                     <Image
-                        src={data.banner.backgroundImage}
+                        src={data.backgroundImage}
                         alt="Banner Background"
                         fill
                         className="object-cover opacity-90"
@@ -57,16 +55,16 @@ export default function Banner() {
                 <div className="relative max-w-7xl mx-auto px-4 md:px-6 h-full flex items-center">
                     <div className="max-w-2xl">
                         <p className="text-teal-600 font-semibold text-sm md:text-base mb-4 uppercase tracking-wide">
-                            {data.banner.tagline}
+                            {data.tagline}
                         </p>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-teal-800 mb-6 leading-tight">
-                            {data.banner.title}
+                            {data.title}
                         </h1>
                         <Link
-                            href={data.banner.cta.href}
+                            href={data.cta.href}
                             className="inline-block bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 md:px-10 md:py-4 rounded-full text-base md:text-lg font-semibold transition-all transform hover:scale-105 shadow-lg"
                         >
-                            {data.banner.cta.label}
+                            {data.cta.label}
                         </Link>
                     </div>
                 </div>
@@ -76,7 +74,7 @@ export default function Banner() {
             <section className="relative -mt-16 z-10">
                 <div className="max-w-7xl mx-auto px-4 md:px-6">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-                        {data.banner.quickLinks.map((link: any) => (
+                        {data.quickLinks.map((link: any) => (
                             <Link
                                 key={link.id}
                                 href={link.href}
@@ -89,8 +87,6 @@ export default function Banner() {
                     </div>
                 </div>
             </section>
-
-
         </div>
     );
 }
