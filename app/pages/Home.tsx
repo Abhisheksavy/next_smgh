@@ -4,6 +4,7 @@
 import { useGetHomepageData } from "@/app/queries/useHomepage";
 import Banner from "../components/home/Banner";
 import About from "../components/home/About";
+import FeaturedServices from "../components/home/Features";
 
 export default function HomePage() {
     const { data, isLoading, isError, error }: any = useGetHomepageData();
@@ -21,6 +22,14 @@ export default function HomePage() {
             />
             <About
                 data={data.about}
+                isLoading={isLoading}
+                isError={isError}
+                error={error}
+            />
+
+
+            <FeaturedServices
+                data={data.features}
                 isLoading={isLoading}
                 isError={isError}
                 error={error}

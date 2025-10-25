@@ -67,7 +67,6 @@ export default function About({ data, isLoading, isError, error }: any) {
                             src={data.image}
                             alt={data.title}
                             fill
-                            className="object-cover"
                         />
                     </div>
                 </div>

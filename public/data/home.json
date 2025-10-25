@@ -38,10 +38,53 @@
         "tagline": "ABOUT SMGH",
         "title": "We Provide Quality Care for Your Health",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque placerat scelerisque tortor ornare ornare. Convallis felis vitae tortor augue. Velit nascetur proin massa in. Consequat faucibus porttitor enim et.",
-        "image": "/images/doctor-office.jpg",
+        "image": "/images/aboutimage.png",
         "cta": {
             "label": "Learn More About SMGH",
             "href": "/about"
+        }
+    },
+    "features": {
+        "tagline": "CARE YOU CAN BELIEVE IN",
+        "title": "Featured Services",
+        "heading": "A passion for putting patients first.",
+        "description": [
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque placerat scelerisque tortor ornare ornare. Convallis felis vitae tortor augue. Velit nascetur proin massa in. Consequat faucibus porttitor enim et.",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque placerat scelerisque tortor ornare ornare. Convallis felis vitae tortor augue."
+        ],
+        "services": [
+            {
+                "id": "dialysis",
+                "icon": "dialysis",
+                "title": "Dialysis"
+            },
+            {
+                "id": "international-medical",
+                "icon": "international",
+                "title": "International Medical"
+            },
+            {
+                "id": "ophthalmology",
+                "icon": "ophthalmology",
+                "title": "Ophthalmology"
+            },
+            {
+                "id": "urology",
+                "icon": "urology",
+                "title": "Urology"
+            }
+        ],
+        "images": {
+            "top": "/images/services/medical-consultation.jpg",
+            "bottom": "/images/services/hospital-corridor.jpg",
+            "avatars": [
+                "/images/avatars/avatar1.jpg",
+                "/images/avatars/avatar2.jpg"
+            ]
+        },
+        "cta": {
+            "label": "Explore Our Services",
+            "href": "/services"
         }
     }
 }

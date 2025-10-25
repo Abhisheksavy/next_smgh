@@ -34,7 +34,7 @@ export default function RootLayout({
         <Providers>
           <TopBar />
           <Header />
-          <main className="flex-1 p-6">{children}</main>
+          <main className="flex-1">{children}</main>
           <Footer />
         </Providers>
       </body>
