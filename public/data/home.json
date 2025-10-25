@@ -75,12 +75,8 @@
             }
         ],
         "images": {
-            "top": "/images/services/medical-consultation.jpg",
-            "bottom": "/images/services/hospital-corridor.jpg",
-            "avatars": [
-                "/images/avatars/avatar1.jpg",
-                "/images/avatars/avatar2.jpg"
-            ]
+            "top": "/images/about1.png",
+            "bottom": "/images/about2.png"
         },
         "cta": {
             "label": "Explore Our Services",

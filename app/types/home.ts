@@ -79,3 +79,5 @@ export interface HomepageData {
     testimonials: HomepageTestimonials;
     contact: HomepageContact;
 }
+
+

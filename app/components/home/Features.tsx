@@ -115,24 +115,7 @@ export default function FeaturedServices({
                                 {data.cta.label}
                             </Link>
 
-                            {/* Overlapping Avatars */}
-                            {data.images.avatars && data.images.avatars.length > 0 && (
-                                <div className="flex -space-x-3">
-                                    {data.images.avatars.map((avatar: any, index: any) => (
-                                        <div
-                                            key={index}
-                                            className="relative w-12 h-12 rounded-full border-4 border-white overflow-hidden shadow-md"
-                                        >
-                                            <Image
-                                                src={avatar}
-                                                alt={`Team member ${index + 1}`}
-                                                fill
-                                                className="object-cover"
-                                            />
-                                        </div>
-                                    ))}
-                                </div>
-                            )}
+
                         </div>
                     </div>
 
