@@ -1,0 +1,37 @@
+{
+    "banner": {
+        "backgroundImage": "/images/banner.png",
+        "tagline": "CARING FOR LIFE",
+        "title": "Leading the Way in Medical Excellence",
+        "cta": {
+            "label": "Request an Appointment",
+            "href": "/appointment"
+        },
+        "quickLinks": [
+            {
+                "id": "patients-visitors",
+                "title": "Patients & Visitors",
+                "href": "/patients-visitors",
+                "icon": "arrow-right"
+            },
+            {
+                "id": "latest-news",
+                "title": "Latest News",
+                "href": "/news",
+                "icon": "arrow-right"
+            },
+            {
+                "id": "services",
+                "title": "Services",
+                "href": "/services",
+                "icon": "arrow-right"
+            },
+            {
+                "id": "careers",
+                "title": "Careers",
+                "href": "/careers",
+                "icon": "arrow-right"
+            }
+        ]
+    }
+}
