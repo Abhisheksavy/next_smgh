@@ -1,5 +1,19 @@
-// types/header.ts
+// types/layout.ts
 
+// TopBar Types
+export interface TopBarData {
+    logo: string;
+    emergency: {
+        label: string;
+        phone: string;
+    };
+    location: {
+        label: string;
+        address: string;
+    };
+}
+
+// Header Types
 export interface HeaderNavigationChild {
     id: string;
     label: string;
@@ -20,51 +34,19 @@ export interface HeaderLanguageOption {
     short: string;
 }
 
-export interface HeaderLanguage {
-    current: string;
-    options: HeaderLanguageOption[];
-}
-
-export interface HeaderCTA {
-    label: string;
-    href: string;
-}
-
 export interface HeaderData {
     navigation: HeaderNavigationItem[];
-    language: HeaderLanguage;
-    cta: HeaderCTA;
+    language: {
+        current: string;
+        options: HeaderLanguageOption[];
+    };
+    cta: {
+        label: string;
+        href: string;
+    };
 }
 
-
-// types/topbar.ts
-
-export interface TopBarLogo {
-    src: string;
-    alt: string;
-    width: number;
-    height: number;
-}
-
-export interface TopBarEmergency {
-    label: string;
-    phone: string;
-}
-
-export interface TopBarLocation {
-    label: string;
-    address: string;
-}
-
-export interface TopBarData {
-    logo: TopBarLogo;
-    emergency: TopBarEmergency;
-    location: TopBarLocation;
-}
-
-
-// types/footer.ts
-
+// Footer Types
 export interface FooterLink {
     id: string;
     label: string;
@@ -78,11 +60,6 @@ export interface FooterColumn {
     links: FooterLink[];
 }
 
-export interface FooterLogo {
-    text: string;
-    tagline: string;
-}
-
 export interface FooterSocialMedia {
     id: string;
     name: string;
@@ -90,28 +67,32 @@ export interface FooterSocialMedia {
     icon: string;
 }
 
-export interface FooterChatBot {
-    enabled: boolean;
-    icon: string;
-}
-
-export interface FooterBottomLink {
-    id: string;
-    label: string;
-    href: string;
-}
-
-export interface FooterAccessibility {
-    label: string;
-    href: string;
-}
-
 export interface FooterData {
-    logo: FooterLogo;
+    logo: {
+        src: string;
+        tagline: string;
+    };
     columns: FooterColumn[];
     socialMedia: FooterSocialMedia[];
-    chatBot: FooterChatBot;
-    bottomLinks: FooterBottomLink[];
+    chatBot: {
+        enabled: boolean;
+        icon: string;
+    };
+    bottomLinks: {
+        id: string;
+        label: string;
+        href: string;
+    }[];
     copyright: string;
-    accessibility: FooterAccessibility;
+    accessibility: {
+        label: string;
+        href: string;
+    };
+}
+
+// Combined Layout Type
+export interface LayoutData {
+    topbar: TopBarData;
+    header: HeaderData;
+    footer: FooterData;
 }

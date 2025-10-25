@@ -1,33 +1,21 @@
-// services/headerServices.ts
+// services/layoutServices.ts
 
-import axios from "axios";
+import { LayoutData } from "../types/layout";
 import handleApiError from "../utils/handleApiError";
-import { FooterData, HeaderData, TopBarData } from "../types/layout";
+
+
 
 const layoutServices = {
+    getLayoutData: async (): Promise<LayoutData> => {
+        try {
+            const res = await fetch("/data/layout.json");
 
-    getTopBarData: async (): Promise<TopBarData> => {
-        try {
-            // Using Axios to fetch data
-            const response = await axios.get<TopBarData>("/data/topBar.json");
-            return response.data;
-        } catch (err) {
-            throw handleApiError(err);
-        }
-    },
-    getHeaderData: async (): Promise<HeaderData> => {
-        try {
-            const response = await axios.get<HeaderData>("/data/header.json");
-            return response.data;
-        } catch (err) {
-            throw handleApiError(err);
-        }
-    },
+            if (!res.ok) {
+                throw new Error("Failed to fetch layout data");
+            }
 
-    getFooterData: async (): Promise<FooterData> => {
-        try {
-            const response = await axios.get<FooterData>("/data/footer.json");
-            return response.data;
+            const data = await res.json();
+            return data;
         } catch (err) {
             throw handleApiError(err);
         }

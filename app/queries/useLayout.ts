@@ -1,37 +1,49 @@
-// queries/useTopBar.ts
+// queries/useLayout.ts
 
 
 import { useQuery } from "@tanstack/react-query";
 import layoutServices from "../services/layoutService";
 
-export const useGetTopBarData = () => {
+export const useGetLayoutData = () => {
     return useQuery({
-        queryKey: ["topbar-data"],
-        queryFn: () => layoutServices.getTopBarData(),
-        staleTime: 1000 * 60 * 60, // 1 hour - data rarely changes
+        queryKey: ["layout-data"],
+        queryFn: () => layoutServices.getLayoutData(),
+        staleTime: 1000 * 60 * 60, // 1 hour
         refetchOnWindowFocus: false,
         retry: 2,
     });
 };
 
+// Individual hooks for each section
+export const useGetTopBarData = () => {
+    const { data, isLoading, isError, error } = useGetLayoutData();
 
+    return {
+        data: data?.topbar,
+        isLoading,
+        isError,
+        error,
+    };
+};
 
 export const useGetHeaderData = () => {
-    return useQuery({
-        queryKey: ["header-data"],
-        queryFn: () => layoutServices.getHeaderData(),
-        staleTime: 1000 * 60 * 60, // 1 hour
-        refetchOnWindowFocus: false,
-        retry: 2,
-    });
+    const { data, isLoading, isError, error } = useGetLayoutData();
+
+    return {
+        data: data?.header,
+        isLoading,
+        isError,
+        error,
+    };
 };
 
 export const useGetFooterData = () => {
-    return useQuery({
-        queryKey: ["footer-data"],
-        queryFn: () => layoutServices.getFooterData(),
-        staleTime: 1000 * 60 * 60, // 1 hour
-        refetchOnWindowFocus: false,
-        retry: 2,
-    });
+    const { data, isLoading, isError, error } = useGetLayoutData();
+
+    return {
+        data: data?.footer,
+        isLoading,
+        isError,
+        error,
+    };
 };
