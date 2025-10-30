@@ -1,86 +1,232 @@
 {
-    "banner": {
-        "backgroundImage": "/images/banner.png",
-        "tagline": "CARING FOR LIFE",
-        "title": "Leading the Way in Medical Excellence",
-        "cta": {
-            "label": "Request an Appointment",
-            "href": "/appointment"
-        },
-        "quickLinks": [
-            {
-                "id": "patients-visitors",
-                "title": "Patients & Visitors",
-                "href": "/patients-visitors",
-                "icon": "arrow-right"
-            },
-            {
-                "id": "latest-news",
-                "title": "Latest News",
-                "href": "/news",
-                "icon": "arrow-right"
-            },
-            {
-                "id": "services",
-                "title": "Services",
-                "href": "/services",
-                "icon": "arrow-right"
-            },
-            {
-                "id": "careers",
-                "title": "Careers",
-                "href": "/careers",
-                "icon": "arrow-right"
-            }
-        ]
+  "banner": {
+    "backgroundImage": "/images/banner.png",
+    "tagline": "CARING FOR LIFE",
+    "title": "Leading the Way in Medical Excellence",
+    "cta": {
+      "label": "Request an Appointment",
+      "href": "/appointment"
     },
-    "about": {
-        "tagline": "ABOUT SMGH",
-        "title": "We Provide Quality Care for Your Health",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque placerat scelerisque tortor ornare ornare. Convallis felis vitae tortor augue. Velit nascetur proin massa in. Consequat faucibus porttitor enim et.",
-        "image": "/images/aboutimage.png",
-        "cta": {
-            "label": "Learn More About SMGH",
-            "href": "/about"
-        }
-    },
-    "features": {
-        "tagline": "CARE YOU CAN BELIEVE IN",
-        "title": "Featured Services",
-        "heading": "A passion for putting patients first.",
-        "description": [
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque placerat scelerisque tortor ornare ornare. Convallis felis vitae tortor augue. Velit nascetur proin massa in. Consequat faucibus porttitor enim et.",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque placerat scelerisque tortor ornare ornare. Convallis felis vitae tortor augue."
-        ],
-        "services": [
-            {
-                "id": "dialysis",
-                "icon": "dialysis",
-                "title": "Dialysis"
-            },
-            {
-                "id": "international-medical",
-                "icon": "international",
-                "title": "International Medical"
-            },
-            {
-                "id": "ophthalmology",
-                "icon": "ophthalmology",
-                "title": "Ophthalmology"
-            },
-            {
-                "id": "urology",
-                "icon": "urology",
-                "title": "Urology"
-            }
-        ],
-        "images": {
-            "top": "/images/about1.png",
-            "bottom": "/images/about2.png"
-        },
-        "cta": {
-            "label": "Explore Our Services",
-            "href": "/services"
-        }
+    "quickLinks": [
+      {
+        "id": "patients-visitors",
+        "title": "Patients & Visitors",
+        "href": "/patients-visitors",
+        "icon": "arrow-right"
+      },
+      {
+        "id": "latest-news",
+        "title": "Latest News",
+        "href": "/news",
+        "icon": "arrow-right"
+      },
+      {
+        "id": "services",
+        "title": "Services",
+        "href": "/services",
+        "icon": "arrow-right"
+      },
+      {
+        "id": "careers",
+        "title": "Careers",
+        "href": "/careers",
+        "icon": "arrow-right"
+      }
+    ]
+  },
+  "about": {
+    "tagline": "ABOUT SMGH",
+    "title": "We Provide Quality Care for Your Health",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque placerat scelerisque tortor ornare ornare. Convallis felis vitae tortor augue. Velit nascetur proin massa in. Consequat faucibus porttitor enim et.",
+    "image": "/images/aboutimage.png",
+    "cta": {
+      "label": "Learn More About SMGH",
+      "href": "/about"
     }
+  },
+  "features": {
+    "tagline": "CARE YOU CAN BELIEVE IN",
+    "title": "Featured Services",
+    "heading": "A passion for putting patients first.",
+    "description": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque placerat scelerisque tortor ornare ornare. Convallis felis vitae tortor augue. Velit nascetur proin massa in. Consequat faucibus porttitor enim et.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque placerat scelerisque tortor ornare ornare. Convallis felis vitae tortor augue."
+    ],
+    "services": [
+      {
+        "id": "dialysis",
+        "icon": "dialysis",
+        "title": "Dialysis"
+      },
+      {
+        "id": "international-medical",
+        "icon": "international",
+        "title": "International Medical"
+      },
+      {
+        "id": "ophthalmology",
+        "icon": "ophthalmology",
+        "title": "Ophthalmology"
+      },
+      {
+        "id": "urology",
+        "icon": "urology",
+        "title": "Urology"
+      }
+    ],
+    "images": {
+      "top": "/images/about1.png",
+      "bottom": "/images/about2.png"
+    },
+    "cta": {
+      "label": "Explore Our Services",
+      "href": "/services"
+    }
+  },
+  "patients": {
+    "tagline": "Always Caring",
+    "title": "Patients & Visitors",
+    "description": "At St. Maarten General Hospital, our purpose is to provide you and your loved ones with the best possible care. We will do everything we can to prepare you for your visit and make your stay as comfortable as possible. This page provides you with guidelines which will help you to know what to expect when you, or your loved one, is admitted toSt. Maarten General Hospital. Thank you for entrusting us with your care!",
+    "visitorsInfo": [
+      "Family & Visitors",
+      "Admission and Discharge",
+      "Payments and Billing",
+      "Patient Rights and Responsibilities",
+      "Compliments & Complaints",
+      "Patient Information",
+      "Visitors Information",
+      "Special Visiting Privileges",
+      "Patient Information",
+      "Location",
+      "Amenities",
+      "Visitors Information"
+    ]
+  },
+  "virtualTour": {
+    "title": "Virtual Tour — Coming Soon",
+    "description": "Get a behind-the-scenes look at the making of SMGH. While we prepare to open our doors, watch our latest update videos and see the progress firsthand.",
+    "cta": {
+      "label": "Watch on Youtube",
+      "href": "#"
+    }
+  },
+  "carrer": {
+    "tagline": "Careers",
+    "title": "Join Our Team",
+    "carrerOptions": [
+      {
+        "careerName": "General Practitioner",
+        "careerDescription": "Lorem Ipsum is simply dummy text.",
+        "duration": "Full-time"
+      },
+      {
+        "careerName": "Physiotherapist",
+        "careerDescription": "Lorem Ipsum is simply dummy text.",
+        "duration": "Full-time"
+      },
+      {
+        "careerName": "diabetologist MBBS doctor",
+        "careerDescription": "Lorem Ipsum is simply dummy text.",
+        "duration": "Full-time"
+      },
+      {
+        "careerName": "General Practitioner",
+        "careerDescription": "Lorem Ipsum is simply dummy text.",
+        "duration": "Full-time"
+      }
+    ],
+    "jobsCta": {
+      "label": "View All Jobs",
+      "href": "/services"
+    },
+    "exploreCta": {
+      "label": "Explore SMGH Academy",
+      "href": "/services"
+    },
+    "jobApplyFormHeading": "Open Job Application",
+    "jobApplyForm": {
+      "name": {
+        "fieldName": "fullName",
+        "required": true,
+        "placeholder": "Full Name"
+      },
+      "email": {
+        "fieldName": "email",
+        "required": true,
+        "placeholder": "Email"
+      },
+      "phone": {
+        "fieldName": "phone",
+        "required": true,
+        "placeholder": "Phone Number"
+      },
+      "location": {
+        "fieldName": "location",
+        "required": true,
+        "placeholder": "Current Location / City"
+      },
+      "positionApplied": {
+        "fieldName": "positionApplied",
+        "required": true,
+        "placeholder": "Position Applying For",
+        "options": [{ "label": "test", "value": "test" }]
+      },
+      "resume": {
+        "fieldName": "resume",
+        "required": true,
+        "placeholder": "Upload Resume / CV"
+      }
+    }
+  },
+  "latestNews": {
+    "tagline": "Better information, Better health",
+    "title": "Latest News",
+    "newsData": [
+      {
+        "img": "abc",
+        "published": "Monday 05, September 2021 | By Author",
+        "newsTitle": "COLORS Donates to SMMC’s OBGYN Ward",
+        "link": "#"
+      },
+      {
+        "img": "abc",
+        "published": "Monday 05, September 2021 | By Author",
+        "newsTitle": "COLORS Donates to SMMC’s OBGYN Ward",
+        "link": "#"
+      },
+      {
+        "img": "abc",
+        "published": "Monday 05, September 2021 | By Author",
+        "newsTitle": "COLORS Donates to SMMC’s OBGYN Ward",
+        "link": "#"
+      },
+      {
+        "img": "abc",
+        "published": "Monday 05, September 2021 | By Author",
+        "newsTitle": "COLORS Donates to SMMC’s OBGYN Ward",
+        "link": "#"
+      }
+    ]
+  },
+  "contact": {
+    "tagline": "CARE YOU CAN BELIEVE IN",
+    "title": "Featured Services",
+    "communicationWays": [
+      {
+        "communicationName": "Emergency",
+        "wayToCommunicate": "+1721 543 1111",
+        "href": "#"
+      },
+      {
+        "communicationName": "Location",
+        "wayToCommunicate": "+1721 543 1111",
+        "href": "#"
+      },
+      {
+        "communicationName": "Email",
+        "wayToCommunicate": "info@smmc.sx",
+        "href": "#"
+      }
+    ]
+  }
 }

@@ -1,230 +1,230 @@
 {
-    "topbar": {
-        "logo": "/logo.png",
-        "emergency": {
-            "label": "Emergency",
-            "phone": "+1721 543 1111"
-        },
-        "location": {
-            "label": "Location",
-            "address": "Clay Hill, St-Maarten"
-        }
+  "topbar": {
+    "logo": "/logo.png",
+    "emergency": {
+      "label": "Emergency",
+      "phone": "+1721 543 1111"
     },
-    "header": {
-        "navigation": [
-            {
-                "id": "home",
-                "label": "Home",
-                "href": "/",
-                "type": "link"
-            },
-            {
-                "id": "services",
-                "label": "Services",
-                "href": "/services",
-                "type": "link"
-            },
-            {
-                "id": "patient-care",
-                "label": "Patient Care",
-                "href": "/patient-care",
-                "type": "dropdown",
-                "children": [
-                    {
-                        "id": "appointments",
-                        "label": "Appointments",
-                        "href": "/patient-care/appointments"
-                    },
-                    {
-                        "id": "medical-records",
-                        "label": "Medical Records",
-                        "href": "/patient-care/medical-records"
-                    },
-                    {
-                        "id": "billing",
-                        "label": "Billing",
-                        "href": "/patient-care/billing"
-                    }
-                ]
-            },
-            {
-                "id": "careers",
-                "label": "Careers",
-                "href": "/careers",
-                "type": "link"
-            },
-            {
-                "id": "news",
-                "label": "News",
-                "href": "/news",
-                "type": "link"
-            },
-            {
-                "id": "about-us",
-                "label": "About Us",
-                "href": "/about-us",
-                "type": "link"
-            }
-        ],
-        "language": {
-            "current": "Eng",
-            "options": [
-                {
-                    "code": "en",
-                    "label": "English",
-                    "short": "Eng"
-                },
-                {
-                    "code": "es",
-                    "label": "Spanish",
-                    "short": "Esp"
-                },
-                {
-                    "code": "fr",
-                    "label": "French",
-                    "short": "Fr"
-                }
-            ]
-        },
-        "cta": {
-            "label": "Request an Appointment",
-            "href": "/appointment"
-        }
-    },
-    "footer": {
-        "logo": {
-            "src": "/footerlogo.png",
-            "tagline": "Leading the Way in Medical Excellence, Trusted Care."
-        },
-        "columns": [
-            {
-                "id": "quick-links",
-                "title": "Quick Links",
-                "links": [
-                    {
-                        "id": "appointment",
-                        "label": "Book an Appointment",
-                        "href": "/appointment"
-                    },
-                    {
-                        "id": "careers",
-                        "label": "Careers",
-                        "href": "/careers"
-                    },
-                    {
-                        "id": "submit-complaint",
-                        "label": "Submit Compliment / Complaint",
-                        "href": "/feedback"
-                    }
-                ]
-            },
-            {
-                "id": "resources",
-                "title": "Resources",
-                "links": [
-                    {
-                        "id": "health-blog",
-                        "label": "Health Blog",
-                        "href": "/blog"
-                    },
-                    {
-                        "id": "patient-brochures",
-                        "label": "Patient Brochures",
-                        "href": "/resources/brochures"
-                    },
-                    {
-                        "id": "help-center",
-                        "label": "Help Center (AI FAQ)",
-                        "href": "/help"
-                    },
-                    {
-                        "id": "vendor-login",
-                        "label": "Vendor Login",
-                        "href": "/vendor/login"
-                    },
-                    {
-                        "id": "emergency-contact",
-                        "label": "Emergency Contact Information",
-                        "href": "/emergency"
-                    }
-                ]
-            },
-            {
-                "id": "contact-us",
-                "title": "Contact Us",
-                "links": [
-                    {
-                        "id": "phone",
-                        "label": "Call: +1721 543 1111",
-                        "href": "tel:+17215431111",
-                        "icon": "phone"
-                    },
-                    {
-                        "id": "email",
-                        "label": "Email: info@smgh.com",
-                        "href": "mailto:info@smgh.com",
-                        "icon": "email"
-                    },
-                    {
-                        "id": "address",
-                        "label": "Address: Welgelegen Road 30, Cay Hill, St-Maarten",
-                        "href": "#",
-                        "icon": "location"
-                    }
-                ]
-            }
-        ],
-        "socialMedia": [
-            {
-                "id": "facebook",
-                "name": "Facebook",
-                "href": "https://facebook.com",
-                "icon": "facebook"
-            },
-            {
-                "id": "twitter",
-                "name": "Twitter",
-                "href": "https://twitter.com",
-                "icon": "twitter"
-            },
-            {
-                "id": "linkedin",
-                "name": "LinkedIn",
-                "href": "https://linkedin.com",
-                "icon": "linkedin"
-            },
-            {
-                "id": "instagram",
-                "name": "Instagram",
-                "href": "https://instagram.com",
-                "icon": "instagram"
-            }
-        ],
-        "chatBot": {
-            "enabled": true,
-            "icon": "message-circle"
-        },
-        "bottomLinks": [
-            {
-                "id": "privacy-policy",
-                "label": "Privacy Policy",
-                "href": "/privacy-policy"
-            },
-            {
-                "id": "cookie-settings",
-                "label": "Cookie Settings",
-                "href": "/cookie-settings"
-            },
-            {
-                "id": "terms-of-use",
-                "label": "Terms of Use",
-                "href": "/terms"
-            }
-        ],
-        "copyright": "© 2025 St-Maarten General Hospital. All Rights Reserved",
-        "accessibility": {
-            "label": "Accessibility",
-            "href": "/accessibility"
-        }
+    "location": {
+      "label": "Location",
+      "address": "Clay Hill, St-Maarten"
     }
+  },
+  "header": {
+    "navigation": [
+      {
+        "id": "home",
+        "label": "Home",
+        "href": "/",
+        "type": "link"
+      },
+      {
+        "id": "services",
+        "label": "Services",
+        "href": "/services",
+        "type": "link"
+      },
+      {
+        "id": "patient-care",
+        "label": "Patient Care",
+        "href": "/patient-care",
+        "type": "dropdown",
+        "children": [
+          {
+            "id": "appointments",
+            "label": "Appointments",
+            "href": "/patient-care/appointments"
+          },
+          {
+            "id": "medical-records",
+            "label": "Medical Records",
+            "href": "/patient-care/medical-records"
+          },
+          {
+            "id": "billing",
+            "label": "Billing",
+            "href": "/patient-care/billing"
+          }
+        ]
+      },
+      {
+        "id": "careers",
+        "label": "Careers",
+        "href": "/careers",
+        "type": "link"
+      },
+      {
+        "id": "news",
+        "label": "News",
+        "href": "/news",
+        "type": "link"
+      },
+      {
+        "id": "about-us",
+        "label": "About Us",
+        "href": "/about-us",
+        "type": "link"
+      }
+    ],
+    "language": {
+      "current": "Eng",
+      "options": [
+        {
+          "code": "en",
+          "label": "English",
+          "short": "Eng"
+        },
+        {
+          "code": "es",
+          "label": "Spanish",
+          "short": "Esp"
+        },
+        {
+          "code": "fr",
+          "label": "French",
+          "short": "Fr"
+        }
+      ]
+    },
+    "cta": {
+      "label": "Request an Appointment",
+      "href": "/appointment"
+    }
+  },
+  "footer": {
+    "logo": {
+      "src": "/footerlogo.png",
+      "tagline": "Leading the Way in Medical Excellence, Trusted Care."
+    },
+    "columns": [
+      {
+        "id": "quick-links",
+        "title": "Quick Links",
+        "links": [
+          {
+            "id": "appointment",
+            "label": "Book an Appointment",
+            "href": "/appointment"
+          },
+          {
+            "id": "careers",
+            "label": "Careers",
+            "href": "/careers"
+          },
+          {
+            "id": "submit-complaint",
+            "label": "Submit Compliment / Complaint",
+            "href": "/feedback"
+          }
+        ]
+      },
+      {
+        "id": "resources",
+        "title": "Resources",
+        "links": [
+          {
+            "id": "health-blog",
+            "label": "Health Blog",
+            "href": "/blog"
+          },
+          {
+            "id": "patient-brochures",
+            "label": "Patient Brochures",
+            "href": "/resources/brochures"
+          },
+          {
+            "id": "help-center",
+            "label": "Help Center (AI FAQ)",
+            "href": "/help"
+          },
+          {
+            "id": "vendor-login",
+            "label": "Vendor Login",
+            "href": "/vendor/login"
+          },
+          {
+            "id": "emergency-contact",
+            "label": "Emergency Contact Information",
+            "href": "/emergency"
+          }
+        ]
+      },
+      {
+        "id": "contact-us",
+        "title": "Contact Us",
+        "links": [
+          {
+            "id": "phone",
+            "label": "Call: +1721 543 1111",
+            "href": "tel:+17215431111",
+            "icon": "phone"
+          },
+          {
+            "id": "email",
+            "label": "Email: info@smgh.com",
+            "href": "mailto:info@smgh.com",
+            "icon": "email"
+          },
+          {
+            "id": "address",
+            "label": "Address: Welgelegen Road 30, Cay Hill, St-Maarten",
+            "href": "#",
+            "icon": "location"
+          }
+        ]
+      }
+    ],
+    "socialMedia": [
+      {
+        "id": "facebook",
+        "name": "Facebook",
+        "href": "https://facebook.com",
+        "icon": "facebook"
+      },
+      {
+        "id": "twitter",
+        "name": "Twitter",
+        "href": "https://twitter.com",
+        "icon": "twitter"
+      },
+      {
+        "id": "linkedin",
+        "name": "LinkedIn",
+        "href": "https://linkedin.com",
+        "icon": "linkedin"
+      },
+      {
+        "id": "instagram",
+        "name": "Instagram",
+        "href": "https://instagram.com",
+        "icon": "instagram"
+      }
+    ],
+    "chatBot": {
+      "enabled": true,
+      "icon": "message-circle"
+    },
+    "bottomLinks": [
+      {
+        "id": "privacy-policy",
+        "label": "Privacy Policy",
+        "href": "/privacy-policy"
+      },
+      {
+        "id": "cookie-settings",
+        "label": "Cookie Settings",
+        "href": "/cookie-settings"
+      },
+      {
+        "id": "terms-of-use",
+        "label": "Terms of Use",
+        "href": "/terms"
+      }
+    ],
+    "copyright": "© 2025 St-Maarten General Hospital. All Rights Reserved",
+    "accessibility": {
+      "label": "Accessibility",
+      "href": "/accessibility"
+    }
+  }
 }
