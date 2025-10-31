@@ -1,0 +1,167 @@
+{
+  "banner": {
+    "backgroundImage": "/images/banner.png",
+    "title": "Job Application Form"
+  },
+  "formDetails": {
+    "redirectionCta": {
+      "label": "",
+      "href": "test@yopmail.com",
+      "target": ""
+    },
+    "step1": {
+      "heading": "Position & Date",
+      "postionApplying": {
+        "label": "Position applied for",
+        "placeholder": "Position",
+        "required": true
+      },
+      "applyingDate": {
+        "label": "Position applied for",
+        "placeholder": "Position",
+        "required": true
+      }
+    },
+    "step2": {
+      "heading": "Referral Source",
+      "referralSource": {
+        "label": "Referral Source *",
+        "placeholder": "Select Source",
+        "required": true
+      },
+      "sourceName": {
+        "label": "Name of Source",
+        "placeholder": "Source Name",
+        "required": false
+      }
+    },
+    "step3": {
+      "heading": "Personal Information",
+      "name": {
+        "label": "Name *",
+        "placeholder": "Name",
+        "required": true
+      },
+      "email": {
+        "label": "Email *",
+        "placeholder": "Email",
+        "required": true
+      },
+      "address": {
+        "label": "Address *",
+        "placeholder": "Address",
+        "required": true
+      },
+      "birthPlace": {
+        "label": "Place of Birth",
+        "placeholder": "Address",
+        "required": false
+      },
+      "birthDate": {
+        "label": "Date of Birth *",
+        "placeholder": "Date of birth",
+        "required": true
+      },
+      "nationality": {
+        "label": "Nationality",
+        "placeholder": "Nationality",
+        "required": false
+      }
+    },
+    "step4": {
+      "heading": "Contact Information",
+      "telephone": {
+        "label": "Telephone",
+        "placeholder": "Telephone",
+        "required": false
+      },
+      "cellular": {
+        "label": "Cellular / Other",
+        "placeholder": "Cellular / Other",
+        "required": false
+      },
+      "timeToCall": {
+        "label": "If necessary the best time to call you at home is",
+        "placeholder": "If necessary the best time to call you at home is",
+        "required": false
+      },
+      "contactAtWork": {
+        "label": "May we contact you at work?",
+        "placeholder": "If necessary the best time to call you at home is",
+        "required": false
+      },
+      "workNumber": {
+        "label": "If yes, work number and best time to call",
+        "placeholder": "If yes, work number and best time to call",
+        "required": false
+      }
+    },
+    "step5": {
+      "heading": "Additional Information",
+      "legalEligible": {
+        "label": "Are you legally eligible for employment in this country?",
+        "placeholder": "Please select",
+        "options": [{ "label": "", "value": "" }],
+        "required": false
+      },
+      "Date available for work": {
+        "label": "Date available for work",
+        "placeholder": "Date available for work",
+        "required": false
+      },
+      "employmentType": {
+        "label": "Type of employment",
+        "placeholder": "Please select",
+        "options": [{ "label": "", "value": "" }],
+        "required": false
+      },
+      "license": {
+        "label": "Driver's license number if driving is an essential job function",
+        "placeholder": "Driver's license number",
+        "required": false
+      }
+    },
+    "step6": {
+      "heading": "Uploads",
+      "uploadCsv": {
+        "label": "Upload your CV *",
+        "placeholder": "Click here to upload your file or drag",
+        "required": "true"
+      },
+      "uploadPicture": {
+        "label": "Upload Passport Picture",
+        "placeholder": "Click here to upload your file or drag",
+        "required": "true"
+      }
+    },
+    "step7": {
+      "headinig": "Detail Information",
+      "info": {
+        "label": "Detail Information",
+        "placeholder": "If yes, work number and best time to call",
+        "required": false
+      }
+    }
+  },
+  "contact": {
+    "tagline": "CARE YOU CAN BELIEVE IN",
+    "title": "Featured Services",
+    "communicationWays": [
+      {
+        "communicationName": "Emergency",
+        "wayToCommunicate": "+1721 543 1111",
+        "href": "#"
+      },
+      {
+        "communicationName": "Location",
+        "wayToCommunicate": "+1721 543 1111",
+        "href": "#"
+      },
+      {
+        "communicationName": "Email",
+        "wayToCommunicate": "info@smmc.sx",
+        "href": "#"
+      }
+    ]
+  }
+}
