@@ -1,12 +1,14 @@
+
 import ClockIcon from "@/icons/home-icons/clock-icon";
 import Link from "next/link";
 import React from "react";
 import Input from "../ui/input";
+import ImageInput from "../ui/image";
 
 const Career = ({ data, isLoading, isError, error }: any) => {
   // if (isLoading) {
   //   return (
-  //     <div className="py-16 md:py-24">
+  //     <div className="secton-padding">
   //       <div className="max-w-7xl mx-auto px-4">
   //         <div className="text-center mb-12">
   //           <div className="h-6 w-48 bg-gray-200 animate-pulse rounded mx-auto mb-2" />
@@ -47,13 +49,13 @@ const Career = ({ data, isLoading, isError, error }: any) => {
   console.log(data);
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="secton-padding bg-white">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="text-left mb-12">
-          <p className="text-teal-600 font-semibold text-sm md:text-base uppercase tracking-wide mb-2">
+          <p className="tagline">
             {data.tagLine}
           </p>
-          <h2 className="text-left text-3xl md:text-4xl font-bold text-teal-700">
+          <h2 className="text-left commonTitle font-medium!">
             {data.title}
           </h2>
         </div>
@@ -64,10 +66,10 @@ const Career = ({ data, isLoading, isError, error }: any) => {
               return (
                 <div className="border-t py-8 border-[#EAECF0]" key={index}>
                   <div className="flex flex-col gap-2">
-                    <h4 className="text-[#03AD92] text-lg font-medium">
+                    <h4 className="text-secondary text-lg font-medium mb-2">
                       {carrer.careerName}
                     </h4>
-                    <p className="text-[#212124] text-base font-normal">
+                    <p className="text-[#212124] text-base font-normal ">
                       {carrer.careerDescription}
                     </p>
                   </div>
@@ -123,6 +125,7 @@ const Career = ({ data, isLoading, isError, error }: any) => {
                 className="w-full bg-white/28 pl-4.5"
                 placeholder={data.jobApplyForm.positionApplied.placeholder}
               />
+              <ImageInput  label="Upload Resume / CV" name="resume" previewUrl="" />
             </div>
           </div>
         </div>

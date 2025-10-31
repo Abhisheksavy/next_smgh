@@ -7,7 +7,7 @@ const Patients = ({ data, isLoading, isError, error }: any) => {
   const [selected, setSelected] = useState<string>("");
   if (isLoading) {
     return (
-      <div className="py-16 md:py-24">
+      <div className="secton-padding">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <div className="h-6 w-48 bg-gray-200 animate-pulse rounded mx-auto mb-2" />
@@ -46,11 +46,11 @@ const Patients = ({ data, isLoading, isError, error }: any) => {
   }
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="secton-padding bg-white">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         {/* Section Header */}
         <div className="text-center mb-2">
-          <p className="text-teal-600 font-semibold text-sm md:text-base uppercase tracking-wide mb-2">
+          <p className="tagline mb-2">
             {data.tagline}
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-teal-700">
@@ -67,13 +67,13 @@ const Patients = ({ data, isLoading, isError, error }: any) => {
               return (
                 <div
                   key={index}
-                  className="col-span-3 border border-[#00000030] flex justify-center group hover:bg-[#006980] hover:rounded-sm hover:text-white! items-center py-14 "
+                  className="col-span-3 border border-[#00000030] flex justify-center group hover:bg-[#006980] hover:rounded-sm hover:text-white! items-center py-14  transition-all duration-400 ease-in-out  "
                 >
                   <div className="flex flex-col items-center  gap-2">
                     <HeartBeat
-                      className={cn("text-[#03AD92] group-hover:text-white!")}
+                      className={cn("text-secondary group-hover:text-white! transition-all duration-400 ease-in-out")}
                     />
-                    <span className="text-base text-[#212124] group-hover:text-white font-normal">
+                    <span className="text-base text-[#2112124] group-hover:text-white font-normal transition-all duration-400 ease-in-out">
                       {info}
                     </span>
                   </div>

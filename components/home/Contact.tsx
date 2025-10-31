@@ -1,4 +1,5 @@
 import CallIcon from "@/icons/home-icons/call-icon";
+import EmailIcon from "@/icons/home-icons/email-icon";
 import Location from "@/icons/home-icons/location-icon";
 import { cn } from "@/utils/twMerge";
 import React from "react";
@@ -6,7 +7,7 @@ import React from "react";
 const Contact = ({ data, isLoading, isError, error }: any) => {
   if (isLoading) {
     return (
-      <div className="py-16 md:py-24">
+      <div className="secton-padding">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <div className="h-6 w-48 bg-gray-200 animate-pulse rounded mx-auto mb-2" />
@@ -44,15 +45,15 @@ const Contact = ({ data, isLoading, isError, error }: any) => {
       </div>
     );
   }
-  const icons = [CallIcon, Location];
+  const icons = [CallIcon, Location, EmailIcon];
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="secton-padding bg-white">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
-          <p className="text-teal-600 font-semibold text-sm md:text-base uppercase tracking-wide mb-2">
+          <p className="tagline mb-2 ">
             {data.tagline}
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-teal-700">
+          <h2 className="commonTitle font-bold!  ">
             {data.title}
           </h2>
         </div>
@@ -71,10 +72,10 @@ const Contact = ({ data, isLoading, isError, error }: any) => {
               >
                 <IconComponent className="mb-4  text-white" />
                 <div className="flex flex-col gap-1">
-                  <span className="font-bold text-lg text-white">
+                  <span className="font-bold text-lg text-white uppercase">
                     {items.communicationName}
                   </span>
-                  <span className="text-base text-white font-normal">
+                  <span className="text-base text-white font-normal leading-[1.4]">
                     {items.wayToCommunicate}
                   </span>
                 </div>
