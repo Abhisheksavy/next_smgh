@@ -7,8 +7,8 @@ import BtnArrowIcon from "@/icons/home-icons/btnArrow";
 const LatestNews = ({ data, isLoading, isError, error }: any) => {
      if (isLoading) {
           return (
-               <div className="secton-padding">
-                    <div className="max-w-7xl mx-auto px-4">
+               <div className="section-padding">
+                    <div className="container">
                          <div className="text-center mb-12">
                               <div className="h-6 w-48 bg-gray-200 animate-pulse rounded mx-auto mb-2" />
                               <div className="h-10 w-64 bg-gray-200 animate-pulse rounded mx-auto" />
@@ -46,8 +46,8 @@ const LatestNews = ({ data, isLoading, isError, error }: any) => {
           );
      }
      return (
-          <section className="secton-padding bg-secondary/2">
-               <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <section className="section-padding bg-secondary/2">
+               <div className="container">
                     <div className="text-center mb-12">
                          <p className="tagline mb-2">
                               {data.tagline}
