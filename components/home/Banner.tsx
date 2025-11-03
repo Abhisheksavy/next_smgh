@@ -15,7 +15,7 @@ export default function Banner({ data, isLoading, isError, error }: any) {
                     <div className="relative h-[600px] bg-gray-200 animate-pulse" />
 
                     {/* Quick Links Skeleton */}
-                    <div className="max-w-7xl mx-auto px-4 py-12">
+                    <div className="container py-12">
                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                               {[1, 2, 3, 4].map((i) => (
                                    <div
@@ -57,7 +57,7 @@ export default function Banner({ data, isLoading, isError, error }: any) {
                          <div className="absolute bottom-0 right-0 w-96 h-96 bg-teal-500 rounded-full opacity-20 translate-x-1/3 translate-y-1/3" />
                     </div>
 
-                    <div className="relative max-w-7xl mx-auto px-4 md:px-6 h-full flex items-center">
+                    <div className="relative container h-full flex items-center">
                          <div className="max-w-xl">
                               <p className="tagline">
                                    {data.tagline}
@@ -77,7 +77,7 @@ export default function Banner({ data, isLoading, isError, error }: any) {
 
                {/* Quick Links */}
                <section className="relative -mt-10 z-10">
-                    <div className="max-w-7xl mx-auto px-4 md:px-6">
+                    <div className="container">
                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                               {data.quickLinks.map((link: any, index: number) => (
                                    <Link

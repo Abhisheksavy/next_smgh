@@ -1,0 +1,147 @@
+{
+  "banner": {
+    "backgroundImage": "/images/banner.png",
+    "title": "Leading the Way in Medical Excellence"
+  },
+  "health": {
+    "tagline": "Welcome to SMGH",
+    "title": "Best Care for Your Good Health",
+    "description": "The St. Maarten General Hospital (SMGH) opened its doors on March 17th, 1991, as the successor of St. Rose Hospital. SMMC is a non-profit organization that manages and carries out hospital functions serving the community of Dutch St Maarten in the Northeastern Caribbean. Our patient care services also support the surrounding islands such as Saba, St. Eustatius and Anguilla as well as others in the region. Our facility has 80 inpatient beds, approximately 430 employees and over 30 attending specialists are affiliated with the organization.",
+    "image": "/images/aboutimage.png",
+    "healthBenefits": [
+      "A Passion for Healing",
+      "5-Star Care",
+      "All our best",
+      "Believe in Us"
+    ]
+  },
+  "qualityCare": {
+    "backgroundImage": "/images/aboutQualityCare.webp",
+    "title": "Meet the People Behind Our Mission",
+    "description": "SMMC* is an autonomous non-governmental organization. The foundation consists of two bodies, the Board of Directors and the Supervisory Council. The responsibility for the daily management lies upon the Board of Directors while the responsibility of the Supervisory Council spans supervising the organization strategy and general developments of the hospital."
+  },
+  "mission": {
+    "vision": [
+      {
+        "content": "Our Mission SMGH provides high quality, accessible, affordable and friendly hospital care in the best interest of the patient, close to home. ",
+        "backgroundImage": "/images/banner.png"
+      },
+      {
+        "content": "Our Mission SMGH provides high quality, accessible, affordable and friendly hospital care in the best interest of the patient, close to home. ",
+        "backgroundImage": "/images/banner.png"
+      },
+      { "content": "Our Values", "backgroundImage": "/images/banner.png" },
+      {
+        "info": [
+          {
+            "heading": "Lorem Ipsum is Simply Dummy Text",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+          },
+          {
+            "heading": "Lorem Ipsum is Simply Dummy Text",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+          },
+          {
+            "heading": "Lorem Ipsum is Simply Dummy Text",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+          },
+          {
+            "heading": "Lorem Ipsum is Simply Dummy Text",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+          },
+          {
+            "heading": "Lorem Ipsum is Simply Dummy Text",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+          }
+        ]
+      }
+    ]
+  },
+  "leadership": {
+    "title": "Virtual Tour — Coming Soon",
+    "tagline": "Leadership",
+    "description": "Get a behind-the-scenes look at the making of SMGH. While we prepare to open our doors, watch our latest update videos and see the progress firsthand.",
+    "cta": {
+      "label": "view more",
+      "href": "/",
+      "target": ""
+    }
+  },
+  "annualReport": {
+    "year": "2020 - 2024",
+    "report": "Annual Report",
+    "reports": [
+      {
+        "reportImage": "./images/annualReport.webp",
+        "year": "2020",
+        "file": ""
+      },
+      {
+        "reportImage": "./images/banner.png",
+        "year": "2021",
+        "file": ""
+      },
+      {
+        "reportImage": "./images/annualReport.webp",
+        "year": "2022",
+        "file": ""
+      },
+      {
+        "reportImage": "./images/annualReport.webp",
+        "year": "2023",
+        "file": ""
+      }
+    ]
+  },
+  "latestNews": {
+    "tagline": "Better information, Better health",
+    "title": "Latest News",
+    "newsData": [
+      {
+        "img": "abc",
+        "published": "Monday 05, September 2021 | By Author",
+        "newsTitle": "COLORS Donates to SMMC’s OBGYN Ward",
+        "link": "#"
+      },
+      {
+        "img": "abc",
+        "published": "Monday 05, September 2021 | By Author",
+        "newsTitle": "COLORS Donates to SMMC’s OBGYN Ward",
+        "link": "#"
+      },
+      {
+        "img": "abc",
+        "published": "Monday 05, September 2021 | By Author",
+        "newsTitle": "COLORS Donates to SMMC’s OBGYN Ward",
+        "link": "#"
+      },
+      {
+        "img": "abc",
+        "published": "Monday 05, September 2021 | By Author",
+        "newsTitle": "COLORS Donates to SMMC’s OBGYN Ward",
+        "link": "#"
+      }
+    ]
+  },
+  "contact": {
+    "tagline": "CARE YOU CAN BELIEVE IN",
+    "title": "Featured Services",
+    "communicationWays": [
+      {
+        "communicationName": "Emergency",
+        "wayToCommunicate": "+1721 543 1111",
+        "href": "#"
+      },
+      {
+        "communicationName": "Location",
+        "wayToCommunicate": "+1721 543 1111",
+        "href": "#"
+      },
+      {
+        "communicationName": "Email",
+        "wayToCommunicate": "info@smmc.sx",
+        "href": "#"
+      }
+    ]
+  }
+}

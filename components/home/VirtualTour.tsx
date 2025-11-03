@@ -4,8 +4,8 @@ import React from "react";
 const VirtualTour = ({ data, isLoading, isError, error }: any) => {
      if (isLoading) {
           return (
-               <div className="secton-padding">
-                    <div className="max-w-7xl mx-auto px-4">
+               <div className="section-padding">
+                    <div className="container">
                          <div className="text-center mb-12">
                               <div className="h-6 w-48 bg-gray-200 animate-pulse rounded mx-auto mb-2" />
                               <div className="h-10 w-64 bg-gray-200 animate-pulse rounded mx-auto" />
@@ -43,8 +43,8 @@ const VirtualTour = ({ data, isLoading, isError, error }: any) => {
           );
      }
      return (
-          <section className="secton-padding  bg-center bg-cover bg-no-repeat" style={{backgroundImage:`url(https://placehold.co/1920x768)`}}>
-               <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <section className="section-padding  bg-center bg-cover bg-no-repeat" style={{backgroundImage:`url(https://placehold.co/1920x768)`}}>
+               <div className="container">
                     <div className="rounded-sm bg-[#006980] text-center py-11">
                          <div className="mx-auto max-w-180.5 flex flex-col gap-8">
                               <div className="flex flex-col gap-2">

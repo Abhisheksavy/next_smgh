@@ -13,7 +13,7 @@ export default function TopBar({ topbar }: { topbar?: any }) {
   if (isLoading) {
     return (
       <div className="bg-background border-b border-gray-200 py-3 md:py-6.5 px-4 md:px-6">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="container flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="h-8 md:h-10 w-24 md:w-32 bg-gray-200 animate-pulse rounded" />
           <div className="flex flex-col sm:flex-row gap-3 md:gap-8 w-full sm:w-auto">
             <div className="h-10 w-full sm:w-40 bg-gray-200 animate-pulse rounded" />
@@ -27,7 +27,7 @@ export default function TopBar({ topbar }: { topbar?: any }) {
   if (isError || !data) {
     return (
       <div className="bg-background border-b border-gray-200 py-3 md:py-4 px-4 md:px-6">
-        <div className="max-w-7xl mx-auto">
+        <div className="container mx-auto">
           <p className="text-red-500 text-xs md:text-sm text-center">
             . Failed to load TopBar data: {error?.message || "Unknown error"}
           </p>
@@ -38,7 +38,7 @@ export default function TopBar({ topbar }: { topbar?: any }) {
 
   return (
     <div className="bg-background py-3 px-4 md:px-6 md:py-6.5">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-0">
+      <div className="container flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-0">
         {/* Logo */}
         <div className="flex items-center justify-center lg:justify-start w-full lg:w-auto">
           <Image
