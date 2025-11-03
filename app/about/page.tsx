@@ -2,7 +2,6 @@
 import Health from "@/components/about/Health";
 import InnerBanner from "@/components/common/InnerBanner";
 import { Button } from "@/components/ui/button";
-
 import data from "@/public/data/aboutus.json";
 import { Download } from "lucide-react";
 import { useEffect, useState } from "react";
