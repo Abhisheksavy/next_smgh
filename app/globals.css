@@ -78,6 +78,9 @@ body {
 body {
      /* @apply  bg-amber-900 */
 }
+.container  {
+     @apply container max-w-7xl mx-auto px-4 md:px-6
+}
 
 .mainTitle {
      @apply text-3xl md:text-4xl lg:text-5xl mb-3.5 font-bold text-primary leading-tight
@@ -91,8 +94,12 @@ body {
      @apply text-2xl md:text-3xl lg:text-[2rem] mb-2.5 font-bold text-primary leading-tight
 }
 
-.secton-padding {
+.section-padding {
      @apply py-12 md:py-16
+}
+
+.spacing-x {
+     @apply px-12 md:px-16
 }
 
 .imageBorderBottom {

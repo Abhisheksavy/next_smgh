@@ -39,7 +39,7 @@ export default function Header({ header }: { header?: any }) {
      if (!header) {
           return (
                <header className="bg-[#006980] py-3 md:py-4 px-4 md:px-6">
-                    <nav className="max-w-7xl mx-auto flex items-center justify-between">
+                    <nav className="container flex items-center justify-between">
                          <div className="flex gap-4 md:gap-8">
                               {[1, 2, 3].map((i) => (
                                    <div
@@ -60,7 +60,7 @@ export default function Header({ header }: { header?: any }) {
      if (!header || !header.navigation) {
           return (
                <header className="bg-[#006980] py-3 md:py-4 px-4 md:px-6">
-                    <div className="max-w-7xl mx-auto">
+                    <div className="container">
                          <p className="text-red-300 text-xs md:text-sm text-center">
                               Failed to load header
                               {/* : {error?.message || "Unknown error"} */}
@@ -72,7 +72,7 @@ export default function Header({ header }: { header?: any }) {
 
      return (
           <header className="bg-[#006980] py-3 md:py-4 px-4 md:px-6 relative">
-               <nav className="max-w-7xl mx-auto flex items-center justify-between">
+               <nav className="container flex items-center justify-between">
                     {/* Mobile Menu Button */}
                     <button
                          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

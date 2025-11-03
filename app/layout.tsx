@@ -60,17 +60,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en" className={bwSeidoRound.variable}>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
-      >
-        <Providers>
-          <LayoutContent>
-            <main className="flex-1">{children}</main>
-          </LayoutContent>
-        </Providers>
-      </body>
-    </html>
-  );
+
+     return (
+          <html lang="en" className={bwSeidoRound.variable}>
+               <body
+                    className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
+               >
+                    <Providers>
+                         {/* <LayoutContent > */}
+                              <main className="flex-1">{children}</main>
+                         {/* </LayoutContent> */}
+                    </Providers>
+               </body>
+          </html>
+     );
 }

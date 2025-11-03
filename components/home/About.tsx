@@ -7,8 +7,8 @@ import Link from "next/link";
 export default function About({ data, isLoading, isError, error }: any) {
      if (isLoading) {
           return (
-               <div className="secton-padding">
-                    <div className="max-w-7xl mx-auto px-4">
+               <div className="section-padding">
+                    <div className="container">
                          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                               <div className="space-y-4">
                                    <div className="h-6 w-32 bg-gray-200 animate-pulse rounded" />
@@ -34,8 +34,8 @@ export default function About({ data, isLoading, isError, error }: any) {
      }
 
      return (
-          <section className="secton-padding bg-white">
-               <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <section className="section-padding bg-white">
+               <div className="container">
                     <div className="flex flex-col items-center">
                          {/* Left Content */}
                          <div className="space-y-6 max-w-165 text-center mx-auto">
