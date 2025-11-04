@@ -1,4 +1,4 @@
-"use client";
+
 
 import RightArrowIcon from "@/icons/home-icons/arrowRight";
 import { cn } from "@/utils/twMerge";
@@ -7,6 +7,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Banner({ data, isLoading, isError, error }: any) {
+
+     
      const bgColors = ["bg-secondary", "bg-primary", "bg-tealgreen", "bg-primaryGreen"];
      if (isLoading) {
           return (

@@ -2,7 +2,7 @@
 
 :root {
      --background: #ffffff;
-     --foreground: #171717;
+     --foreground: #212124;
      --primary: #006980;
      --secondary: #03AD92;
      --secondary-green: #26D17D;
@@ -78,7 +78,8 @@ body {
 body {
      /* @apply  bg-amber-900 */
 }
-.container  {
+
+.container {
      @apply container max-w-7xl mx-auto px-4 md:px-6
 }
 
@@ -102,6 +103,23 @@ body {
      @apply px-12 md:px-16
 }
 
-.imageBorderBottom {
-     @apply h-2 absolute left-0 right-0 bottom-0 bg-[linear-gradient(to_right,_#03AD92_0%,_#03AD92_20%,_#006980_20%,_#006980_80%,_#1F9F9E_80%,_#1F9F9E_100%)] z-[1]
+ 
+.innerBanner.imageBorderBottom {
+     border-bottom-width: 8px;
+}
+
+@layer utilities {
+     .imageBorderBottom {
+          border-bottom: 4px solid transparent;
+          border-image: linear-gradient(to right,
+                    #03AD92 0%,
+                    #03AD92 20%,
+                    #006980 20%,
+                    #006980 80%,
+                    #1F9F9E 80%,
+                    #1F9F9E 100%);
+          border-image-slice: 1;
+     }
+
+
 }

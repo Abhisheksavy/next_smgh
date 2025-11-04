@@ -1,13 +1,13 @@
 {
   "banner": {
-    "backgroundImage": "/images/banner.png",
+    "backgroundImage": "/images/aoutbanner.webp",
     "title": "Leading the Way in Medical Excellence"
   },
   "health": {
     "tagline": "Welcome to SMGH",
     "title": "Best Care for Your Good Health",
     "description": "The St. Maarten General Hospital (SMGH) opened its doors on March 17th, 1991, as the successor of St. Rose Hospital. SMMC is a non-profit organization that manages and carries out hospital functions serving the community of Dutch St Maarten in the Northeastern Caribbean. Our patient care services also support the surrounding islands such as Saba, St. Eustatius and Anguilla as well as others in the region. Our facility has 80 inpatient beds, approximately 430 employees and over 30 attending specialists are affiliated with the organization.",
-    "image": "/images/aboutimage.png",
+    "image": "/images/best-care-good-health.webp",
     "healthBenefits": [
       "A Passion for Healing",
       "5-Star Care",
@@ -16,21 +16,21 @@
     ]
   },
   "qualityCare": {
-    "backgroundImage": "/images/banner.png",
-    "title": "Meet the People Behind Our Mission",
+    "backgroundImage": "/images/qualityCareClosToHome.webp",
+    "title": "Quality Care, Close To Home",
     "description": "SMMC* is an autonomous non-governmental organization. The foundation consists of two bodies, the Board of Directors and the Supervisory Council. The responsibility for the daily management lies upon the Board of Directors while the responsibility of the Supervisory Council spans supervising the organization strategy and general developments of the hospital."
   },
   "mission": {
     "vision": [
       {
         "content": "Our Mission SMGH provides high quality, accessible, affordable and friendly hospital care in the best interest of the patient, close to home. ",
-        "backgroundImage": "/images/banner.png"
+        "backgroundImage": "/images/ourMission.svg"
       },
       {
-        "content": "Our Mission SMGH provides high quality, accessible, affordable and friendly hospital care in the best interest of the patient, close to home. ",
-        "backgroundImage": "/images/banner.png"
+        "content": "Our Vision to be the regional leader in providing high quality hospital care, with compassion and friendly service.",
+        "backgroundImage": "/images/ourVision.svg"
       },
-      { "content": "Our Values", "backgroundImage": "/images/banner.png" },
+      { "content": "Our Values", "backgroundImage": "/images/ourValues.svg" },
       {
         "info": [
           {
@@ -65,49 +65,35 @@
       "label": "view more",
       "href": "/",
       "target": ""
-    }
+    },
+    "leaders": [
+     { "name":"Sandy Offringa", "designation":"Chairperson", "image":"/images/SandyOffringa.webp"},
+     { "name":"Jimmy Challenger", "designation":"Vice-Chairperson", "image":"/images/JimmyChallenger.webp"},
+     { "name":"Wayne Johnson", "designation":"Council Member", "image":"/images/WayneJohnson.webp"}
+    ]
   },
   "annualReport": {
     "year": "2020 - 2024",
     "report": "Annual Report",
     "reports": [
       {
-        "reportImage": "./",
+        "reportImage": "/images/annualReport.webp",
         "year": "2014",
-        "file": ""
+        "file": "/images/test.odt"
+      },
+      {
+        "reportImage": "/images/annualReport.webp",
+        "year": "2015",
+        "file": "/images/test.odt"
+      },
+      {
+        "reportImage": "/images/annualReport.webp",
+        "year": "2015",
+        "file": "/images/test.odt"
       }
     ]
   },
-  "latestNews": {
-    "tagline": "Better information, Better health",
-    "title": "Latest News",
-    "newsData": [
-      {
-        "img": "abc",
-        "published": "Monday 05, September 2021 | By Author",
-        "newsTitle": "COLORS Donates to SMMC’s OBGYN Ward",
-        "link": "#"
-      },
-      {
-        "img": "abc",
-        "published": "Monday 05, September 2021 | By Author",
-        "newsTitle": "COLORS Donates to SMMC’s OBGYN Ward",
-        "link": "#"
-      },
-      {
-        "img": "abc",
-        "published": "Monday 05, September 2021 | By Author",
-        "newsTitle": "COLORS Donates to SMMC’s OBGYN Ward",
-        "link": "#"
-      },
-      {
-        "img": "abc",
-        "published": "Monday 05, September 2021 | By Author",
-        "newsTitle": "COLORS Donates to SMMC’s OBGYN Ward",
-        "link": "#"
-      }
-    ]
-  },
+  
   "contact": {
     "tagline": "CARE YOU CAN BELIEVE IN",
     "title": "Featured Services",
@@ -126,6 +112,36 @@
         "communicationName": "Email",
         "wayToCommunicate": "info@smmc.sx",
         "href": "#"
+      }
+    ]
+  },
+  "latestNews": {
+    "tagline": "Better information, Better health",
+    "title": "Latest News",
+    "newsData": [
+      {
+        "img": "/images/latestNews1.webp",
+        "published": "Monday 05, September 2021 | By Author",
+        "newsTitle": "COLORS Donates to SMMC’s OBGYN Ward",
+        "link": "#"
+      },
+      {
+        "img": "/images/latestNews2.webp",
+        "published": "Monday 05, September 2021 | By Author",
+        "newsTitle": "COLORS Donates to SMMC’s OBGYN Ward",
+        "link": "#"
+      },
+      {
+        "img": "/images/latestNews3.webp",
+        "published": "Monday 05, September 2021 | By Author",
+        "newsTitle": "COLORS Donates to SMMC’s OBGYN Ward",
+        "link": "#"
+      },
+      {
+        "img": "/images/latestNews4.webp",
+        "published": "Monday 05, September 2021 | By Author",
+        "newsTitle": "COLORS Donates to SMMC’s OBGYN Ward",
+        "link": "#"
       }
     ]
   }

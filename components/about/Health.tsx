@@ -18,19 +18,19 @@ const Health = ({ data }: { data: any }) => {
 
           <div className="col-span-7 mt-10.5">
             <div className="space-y-1">
-              <p className="text-teal-600 font-semibold text-sm md:text-base uppercase tracking-wide">
+              <p className="tagline">
                 {data.tagline}
               </p>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-teal-800 leading-tight">
+              <h2 className="commonTitle">
                 {data.title}
               </h2>
             </div>
-            <div className="grid grid-cols-12 mt-6 gap-10">
+            <div className="grid grid-cols-12 mt-6 gap-x-10 gap-y-4 mb-8">
               {data?.healthBenefits.map((health: any, index: number) => {
                 return (
-                  <div className="col-span-6 flex flex-row items-center gap-1">
+                  <div key={index} className="col-span-6 flex flex-row items-center gap-1">
                     <div className="rounded-full bg-[#03AD92] h-4 w-4" />
-                    <p className="text-[#000000] font-normal text-base">
+                    <p className="text-[#000000] font-normal text-base leading-normal">
                       {health}
                     </p>
                   </div>

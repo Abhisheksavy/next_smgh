@@ -47,7 +47,7 @@ export default function Footer({ footer }: { footer: any }) {
 
      if (!footer) {
           return (
-               <footer className="bg-[#006980] text-[#FCFEFE] py-16 px-8 md:px-12">
+               <footer className="bg-primary text-[#FCFEFE] py-16 px-8 md:px-12">
                     <div className="max-w-[1400px] mx-auto">
                          <p className="text-red-300 text-sm text-center">
                               Failed to load footer
@@ -60,7 +60,7 @@ export default function Footer({ footer }: { footer: any }) {
 
      return (
           <>
-               <footer className="bg-[#006980] text-[#FCFEFE] py-16 px-8 md:px-12">
+               <footer className="bg-primary text-[#FCFEFE] py-16 px-8 md:px-12">
                     <div className="max-w-[1400px] mx-auto">
                          {/* Main Footer Content */}
                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 mb-16">

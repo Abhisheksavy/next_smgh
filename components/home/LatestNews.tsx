@@ -64,7 +64,7 @@ const LatestNews = ({ data, isLoading, isError, error }: any) => {
 
                                         {/* <Image /> */}
                                         <div className="flex-[0_0_auto] w-40">
-                                             <Image width={160} height={160} className="w-full h-full object-cover block" src={item.image} alt="" />
+                                             <Image width={160} height={160} className="w-full h-full object-cover block" src={item.img} alt="" /> 
                                         </div>
 
                                         <div className="py-5 pl-5 pr-9 flex flex-col gap-6">
@@ -72,7 +72,7 @@ const LatestNews = ({ data, isLoading, isError, error }: any) => {
                                                   <span className="text-[#1F9F9E] text-sm font-normal">
                                                        {item.published || "Monday 05, September 2021 | By Author"}
                                                   </span>
-                                                  <p className="text-[#212124]  text-lg font-normal">
+                                                  <p className="text-foreground  text-lg font-normal">
                                                        {item.newsTitle || "COLORS Donates to SMMC’s OBGYN Ward"}
                                                   </p>
                                              </div>

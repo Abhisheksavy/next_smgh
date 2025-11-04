@@ -51,7 +51,7 @@ const Input: React.ForwardRefRenderFunction<HTMLInputElement, IProps> = (
           className={cn(
             // "bg-white dark:bg-opacity-10 dark:text-dark-secondary-100 outline-none text-sm rounded-lg shadow-input dark:shadow-dark-input p-2.5 w-full",
             // "focus:outline-none",
-            "bg-[#006980]/4 rounded-xl  py-4 outline-none text-sm",
+            "bg-primary/4 rounded-xl  py-4 outline-none text-sm",
             error ? "border border-red-500" : "",
             leftIcon ? "pl-10" : "",
             rightIcon ? "pr-10" : "",

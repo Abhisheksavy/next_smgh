@@ -8,8 +8,16 @@ import Career from "@/components/home/Career";
 import LatestNews from "@/components/home/LatestNews";
 
 export default async function HomePage() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_APP_BASE_URL}/pages/home`);
-  const { data } = await res.json();
+  const res = await fetch(`${process.env.NEXT_PUBLIC_APP_BASE_URL}/pages/home`, {
+  next: {
+    revalidate: 10
+  }
+  });
+// if(!res.ok) throw new Error("Failed to fetch homepage data");
+  
+  const  {data}  = await res.json();
+
+
   if (!data) return null;
   const homePageData = data.content;
   console.log(homePageData);

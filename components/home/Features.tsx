@@ -93,7 +93,7 @@ export default function FeaturedServices({
             {/* Description Paragraphs */}
             <div className="space-y-4">
               {data.description.map((paragraph: any, index: any) => (
-                <p key={index} className="text-[#212124] leading-[1.4]">
+                <p key={index} className="text-foreground leading-[1.4]">
                   {paragraph}
                 </p>
               ))}

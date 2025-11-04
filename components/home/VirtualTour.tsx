@@ -45,7 +45,7 @@ const VirtualTour = ({ data, isLoading, isError, error }: any) => {
      return (
           <section className="section-padding  bg-center bg-cover bg-no-repeat" style={{backgroundImage:`url(https://placehold.co/1920x768)`}}>
                <div className="container">
-                    <div className="rounded-sm bg-[#006980] text-center py-11">
+                    <div className="rounded-sm bg-primary text-center py-11">
                          <div className="mx-auto max-w-180.5 flex flex-col gap-8">
                               <div className="flex flex-col gap-2">
                                    <h2 className="commonTitle font-medium! text-white!">
