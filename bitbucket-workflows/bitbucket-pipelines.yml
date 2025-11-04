@@ -1,0 +1,52 @@
+image: node:20
+
+pipelines:
+  branches:
+    main:
+      - step:
+          name: Build and Deploy to /var/www
+          caches:
+            - node
+          script:
+            - echo "Installing dependencies..."
+            - npm ci
+
+            - echo "Building Next.js app..."
+            - npm run build
+
+            - echo "Packaging build..."
+            - tar -czf next-build.tar.gz .next package.json next.config.js node_modules public
+
+            - echo "Transferring build to server..."
+            - pipe: atlassian/scp-deploy:0.3.4
+              variables:
+                USER: $SERVER_USER
+                SERVER: $SERVER_IP
+                REMOTE_PATH: "/home/$SERVER_USER/deployments"
+                LOCAL_PATH: "next-build.tar.gz"
+
+            - echo "Deploying build to /var/www..."
+            - pipe: atlassian/ssh-run:0.4.1
+              variables:
+                SSH_USER: $SERVER_USER
+                SERVER: $SERVER_IP
+                MODE: "script"
+                COMMAND: |
+                  mkdir -p /home/$SERVER_USER/deployments
+                  cd /home/$SERVER_USER/deployments
+                  tar -xzf next-build.tar.gz
+                  rm next-build.tar.gz
+
+                  echo "Updating /var/www..."
+                  sudo rm -rf /var/www/.next
+                  sudo rm -rf /var/www/node_modules
+                  sudo cp -r .next /var/www/
+                  sudo cp -r node_modules /var/www/
+                  sudo cp -r public /var/www/
+                  sudo cp package.json next.config.js /var/www/
+
+                  echo "Restarting app..."
+                  cd /var/www
+                  pm2 stop next-app || true
+                  pm2 start npm --name "next-app" -- start
+                  pm2 save

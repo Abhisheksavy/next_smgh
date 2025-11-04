@@ -8,15 +8,17 @@ import Career from "@/components/home/Career";
 import LatestNews from "@/components/home/LatestNews";
 
 export default async function HomePage() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_APP_BASE_URL}/pages/home`, {
-  next: {
-    revalidate: 10
-  }
-  });
-// if(!res.ok) throw new Error("Failed to fetch homepage data");
-  
-  const  {data}  = await res.json();
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_APP_BASE_URL}/pages/home`,
+    {
+      next: {
+        revalidate: 10,
+      },
+    }
+  );
+  // if(!res.ok) throw new Error("Failed to fetch homepage data");
 
+  const { data } = await res.json();
 
   if (!data) return null;
   const homePageData = data.content;
@@ -49,31 +51,31 @@ export default async function HomePage() {
         // isError={isError}
         // error={error}
       />
-      <VirtualTour
+      {/* <VirtualTour
         data={homePageData.virtualTour}
         // isLoading={isLoading}
         // isError={isError}
         // error={error}
-      />
-      <Career
+      /> */}
+      {/* <Career
         data={homePageData.career}
         // isLoading={isLoading}
         // isError={isError}
         // error={error}
-      />
-      <LatestNews
+      /> */}
+      {/* <LatestNews
         data={homePageData.latestNews}
         // isLoading={isLoading}
         // isError={isError}
         // error={error}
-      />
+      /> */}
 
-      <Contact
+      {/* <Contact
         data={homePageData.contact}
         // isLoading={isLoading}
         // isError={isError}
         // error={error}
-      />
+      /> */}
     </div>
   );
 }
