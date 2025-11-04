@@ -3,7 +3,7 @@ pipelines:
   branches:
     main:
       - step:
-          name: Build and Deploy to /var/www
+          name: Build and Deploy to /var/www/html
           caches:
             - node
           script:
@@ -31,15 +31,15 @@ pipelines:
                   cd /home/$SERVER_USER/deployments
                   tar -xzf next-build.tar.gz
                   rm next-build.tar.gz
-                  echo "Updating /var/www..."
-                  sudo rm -rf /var/www/.next
-                  sudo rm -rf /var/www/node_modules
-                  sudo cp -r .next /var/www/
-                  sudo cp -r node_modules /var/www/
+                  echo "Updating /var/www/html..."
+                  sudo rm -rf /var/www/html/.next
+                  sudo rm -rf /var/www/html/node_modules
+                  sudo cp -r .next /var/www/html
+                  sudo cp -r node_modules /var/www/html
                   sudo cp -r public /var/www/
-                  sudo cp package.json next.config.js /var/www/
+                  sudo cp package.json next.config.js /var/www/html
                   echo "Restarting app..."
-                  cd /var/www
+                  cd /var/www/html
                   pm2 stop next-app || true
                   pm2 start npm --name "next-app" -- start
                   pm2 save
