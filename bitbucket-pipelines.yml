@@ -9,6 +9,7 @@ pipelines:
           script:
             - echo "Installing dependencies..."
             - npm ci
+            - export NEXT_PUBLIC_APP_BASE_URL="http://134.209.131.20/backend/api/v1"
             - echo "Building Next.js app..."
             - npm run build
             - echo "Packaging build..."
