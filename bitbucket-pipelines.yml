@@ -12,7 +12,7 @@ pipelines:
             - echo "Building Next.js app..."
             - npm run build
             - echo "Packaging build..."
-            - tar -czf next-build.tar.gz .next package.json next.config.js node_modules public
+            - tar -czf next-build.tar.gz .next package.json next.config.js node_modules public ecosystem.config.js
             - echo "Transferring build to server..."
             - pipe: atlassian/scp-deploy:0.3.4
               variables:
@@ -40,10 +40,9 @@ pipelines:
                   sudo cp package.json next.config.js /var/www/html
                   echo "Restarting app..."
                   cd /var/www/html
-                  pm2 stop next-app || true
-                  pm2 start npm --name "next-app" -- start
+                  pm2 stop my-app || true
+                  pm2 start /var/www/html/ecosystem.config.js
                   pm2 save
-
 
 
 
