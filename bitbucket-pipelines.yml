@@ -16,7 +16,7 @@ pipelines:
             - npm run build
             - echo "Preparing artifacts..."
             - mkdir build-artifacts
-            - cp -r .next public next.config.js package.json build-artifacts/
+            - cp -r .next public next.config.ts package.json build-artifacts/
           artifacts:
             - build-artifacts/**
       - step:
