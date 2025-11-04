@@ -38,7 +38,7 @@ export default function About({ data, isLoading, isError, error }: any) {
                <div className="container">
                     <div className="flex flex-col items-center">
                          {/* Left Content */}
-                         <div className="space-y-6 max-w-165 text-center mx-auto">
+                         <div className="space-y-6 max-w-165 text-center mx-auto mb-16">
                               <p className="tagline mb-1.5">
                                    {data.tagline}
                               </p>

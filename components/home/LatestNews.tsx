@@ -5,6 +5,7 @@ import { Button } from "../ui/button";
 import BtnArrowIcon from "@/icons/home-icons/btnArrow";
 
 const LatestNews = ({ data, isLoading, isError, error }: any) => {
+     console.log("data-latnews",data)
      if (isLoading) {
           return (
                <div className="section-padding">
@@ -64,7 +65,7 @@ const LatestNews = ({ data, isLoading, isError, error }: any) => {
 
                                         {/* <Image /> */}
                                         <div className="flex-[0_0_auto] w-40">
-                                             <Image width={160} height={160} className="w-full h-full object-cover block" src={item.img} alt="" /> 
+                                             <Image width={160} height={160} className="w-full h-full object-cover block" src={item.image || ""} alt="" /> 
                                         </div>
 
                                         <div className="py-5 pl-5 pr-9 flex flex-col gap-6">

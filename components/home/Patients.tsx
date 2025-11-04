@@ -5,6 +5,7 @@ import { useState } from "react";
 
 const Patients = ({ data, isLoading, isError, error }: any) => {
   const [selected, setSelected] = useState<string>("");
+  console.log("data-pat", data)
   if (isLoading) {
     return (
       <div className="section-padding">
@@ -63,7 +64,7 @@ const Patients = ({ data, isLoading, isError, error }: any) => {
 
         <div className="pt-16 grid grid-cols-12 ">
           {data &&
-            data.visitorsInfo.map((info: any, index: number) => {
+            data?.visitorsInfo.map((info: any, index: number) => {
               return (
                 <div
                   key={index}
@@ -73,9 +74,9 @@ const Patients = ({ data, isLoading, isError, error }: any) => {
                     <HeartBeat
                       className={cn("text-secondary group-hover:text-white! transition-all duration-400 ease-in-out")}
                     />
-                    <span className="text-base text-[#2112124] group-hover:text-white font-normal transition-all duration-400 ease-in-out">
-                      {info}
-                    </span>
+                    <a href={info?.cta?.href} className="text-base text-[#2112124] group-hover:text-white font-normal transition-all duration-400 ease-in-out">
+                      {info?.cta?.label}
+                    </a>
                   </div>
                 </div>
               );

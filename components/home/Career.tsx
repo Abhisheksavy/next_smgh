@@ -6,6 +6,7 @@ import Input from "../ui/input";
 import ImageInput from "../ui/image";
 
 const Career = ({ data, isLoading, isError, error }: any) => {
+     console.log("data-car", data)
   // if (isLoading) {
   //   return (
   //     <div className="section-padding">
@@ -85,17 +86,17 @@ const Career = ({ data, isLoading, isError, error }: any) => {
             <div className="flex flex-row gap-2.5">
               <Link
                 // href={data.jobsCta.href ?? "/"}
-                href={"/"}
+                href={data?.cta2.href ?? "/"}
                 className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg"
               >
-                {data?.jobsCta?.label}
+                {data?.cta1.label}
               </Link>
               <Link
                 className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg"
                 // href={data.exploreCta.href ?? "/"}
-                href={"/"}
+                href={data?.cta2.href ?? "/"}
               >
-                {data?.exploreCta?.label}
+                {data?.cta2.label}
               </Link>
             </div>
           </div>

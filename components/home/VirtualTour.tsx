@@ -1,7 +1,9 @@
 import { Link } from "lucide-react";
 import React from "react";
+import { Button } from "../ui/button";
 
 const VirtualTour = ({ data, isLoading, isError, error }: any) => {
+     console.log("data-vir", data.cta.href)
      if (isLoading) {
           return (
                <div className="section-padding">
@@ -43,7 +45,7 @@ const VirtualTour = ({ data, isLoading, isError, error }: any) => {
           );
      }
      return (
-          <section className="section-padding  bg-center bg-cover bg-no-repeat" style={{backgroundImage:`url(https://placehold.co/1920x768)`}}>
+          <section className="section-padding  bg-center bg-cover bg-no-repeat" style={{ backgroundImage: `url(https://placehold.co/1920x768)` }}>
                <div className="container">
                     <div className="rounded-sm bg-primary text-center py-11">
                          <div className="mx-auto max-w-180.5 flex flex-col gap-8">
@@ -54,12 +56,7 @@ const VirtualTour = ({ data, isLoading, isError, error }: any) => {
                                    <p className=" leading-relaxed text-[#FCFEFE]/80">{data.description}</p>
                               </div>
                               <div className="flex items-center justify-center gap-4">
-                                   <Link
-                                        href={data?.cta?.href || "/"}
-                                        className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg"
-                                   >
-                                        {data?.cta?.label}
-                                   </Link>
+                                   <Button href={data.cta.href} variant="default">  {data.cta.label}</Button>
                               </div>
                          </div>
                     </div>
