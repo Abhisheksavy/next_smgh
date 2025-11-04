@@ -8,7 +8,7 @@ const JobApplicationForm = async () => {
   return (
     <section className="bg-white py-16 md:py-24">
       <div className="container mx-auto py-10 px-15.5">
-        <h2 className="text-[#006980] font-medium text-3xl">
+        <h2 className="text-primary font-medium text-3xl">
           Job Application Form
         </h2>
         <MultistpeForm data={data} />

@@ -67,7 +67,7 @@ const Contact = ({ data, isLoading, isError, error }: any) => {
                 href={items.href}
                 className={cn(
                   "py-13 col-span-4 pl-6 pr-14 rounded-sm",
-                  index === 1 ? "bg-[#006980]" : "bg-[#1F9F9E]"
+                  index === 1 ? "bg-primary" : "bg-[#1F9F9E]"
                 )}
               >
                 <IconComponent className="mb-4  text-white" />

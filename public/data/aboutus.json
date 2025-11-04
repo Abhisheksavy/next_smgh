@@ -1,13 +1,13 @@
 {
   "banner": {
-    "backgroundImage": "/images/banner.png",
+    "backgroundImage": "/images/aoutbanner.webp",
     "title": "Leading the Way in Medical Excellence"
   },
   "health": {
     "tagline": "Welcome to SMGH",
     "title": "Best Care for Your Good Health",
     "description": "The St. Maarten General Hospital (SMGH) opened its doors on March 17th, 1991, as the successor of St. Rose Hospital. SMMC is a non-profit organization that manages and carries out hospital functions serving the community of Dutch St Maarten in the Northeastern Caribbean. Our patient care services also support the surrounding islands such as Saba, St. Eustatius and Anguilla as well as others in the region. Our facility has 80 inpatient beds, approximately 430 employees and over 30 attending specialists are affiliated with the organization.",
-    "image": "/images/aboutimage.png",
+    "image": "/images/best-care-good-health.webp",
     "healthBenefits": [
       "A Passion for Healing",
       "5-Star Care",
@@ -24,13 +24,13 @@
     "vision": [
       {
         "content": "Our Mission SMGH provides high quality, accessible, affordable and friendly hospital care in the best interest of the patient, close to home. ",
-        "backgroundImage": "/images/banner.png"
+        "backgroundImage": "/images/ourMission.svg"
       },
       {
-        "content": "Our Mission SMGH provides high quality, accessible, affordable and friendly hospital care in the best interest of the patient, close to home. ",
-        "backgroundImage": "/images/banner.png"
+        "content": "Our Vision to be the regional leader in providing high quality hospital care, with compassion and friendly service.",
+        "backgroundImage": "/images/ourVision.svg"
       },
-      { "content": "Our Values", "backgroundImage": "/images/banner.png" },
+      { "content": "Our Values", "backgroundImage": "/images/ourValues.svg" },
       {
         "info": [
           {
@@ -65,7 +65,12 @@
       "label": "view more",
       "href": "/",
       "target": ""
-    }
+    },
+    "leaders": [
+     { "name":"Sandy Offringa", "designation":"Chairperson", "image":"/images/SandyOffringa.webp"},
+     { "name":"Jimmy Challenger", "designation":"Vice-Chairperson", "image":"/images/JimmyChallenger.webp"},
+     { "name":"Wayne Johnson", "designation":"Council Member", "image":"/images/WayneJohnson.webp"}
+    ]
   },
   "annualReport": {
     "year": "2020 - 2024",

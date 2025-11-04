@@ -33,7 +33,7 @@ const ImageInput: React.FC<ImageInputProps> = ({
     const file = e.target.files?.[0] || null;
     if (file) {
       setPreview(URL.createObjectURL(file));
-      onFileChange(file);
+     if(onFileChange) onFileChange(file);
     }
   };
 
@@ -42,7 +42,7 @@ const ImageInput: React.FC<ImageInputProps> = ({
     e.stopPropagation(); // prevent re-triggering file input
     setPreview("");
     if (fileRef.current) fileRef.current.value = ""; // reset the input itself
-    onFileChange(null);
+     if(onFileChange) onFileChange(null);
   };
 
   useEffect(() => {

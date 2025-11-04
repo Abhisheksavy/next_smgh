@@ -38,7 +38,7 @@ export default function Header({ header }: { header?: any }) {
      console.log("data.navigation", header?.navigation);
      if (!header) {
           return (
-               <header className="bg-[#006980] py-3 md:py-4 px-4 md:px-6">
+               <header className="bg-primary py-3 md:py-4 px-4 md:px-6">
                     <nav className="container flex items-center justify-between">
                          <div className="flex gap-4 md:gap-8">
                               {[1, 2, 3].map((i) => (
@@ -59,7 +59,7 @@ export default function Header({ header }: { header?: any }) {
 
      if (!header || !header.navigation) {
           return (
-               <header className="bg-[#006980] py-3 md:py-4 px-4 md:px-6">
+               <header className="bg-primary py-3 md:py-4 px-4 md:px-6">
                     <div className="container">
                          <p className="text-red-300 text-xs md:text-sm text-center">
                               Failed to load header
@@ -71,7 +71,7 @@ export default function Header({ header }: { header?: any }) {
      }
 
      return (
-          <header className="bg-[#006980] py-3 md:py-4 px-4 md:px-6 relative">
+          <header className="bg-primary py-3 md:py-4 px-4 md:px-6 relative">
                <nav className="container flex items-center justify-between">
                     {/* Mobile Menu Button */}
                     <button
@@ -117,7 +117,7 @@ export default function Header({ header }: { header?: any }) {
                                                             <Link
                                                                  key={child.id}
                                                                  href={child.href}
-                                                                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-[#006980] transition-colors"
+                                                                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-primary transition-colors"
                                                                  onClick={() => setOpenDropdown(null)}
                                                             >
                                                                  {child.label}
@@ -149,7 +149,7 @@ export default function Header({ header }: { header?: any }) {
                                         {header?.language?.options.map((option:any) => (
                                              <button
                                                   key={option.code}
-                                                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-[#006980] transition-colors"
+                                                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-primary transition-colors"
                                                   onClick={() => {
                                                        setLanguageOpen(false);
                                                        // Handle language change here
@@ -183,7 +183,7 @@ export default function Header({ header }: { header?: any }) {
 
                {/* Mobile Menu */}
                <div
-                    className={`fixed top-0 left-0 h-full w-72 bg-[#006980] z-50 transform transition-transform duration-300 ease-in-out lg:hidden ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+                    className={`fixed top-0 left-0 h-full w-72 bg-primary z-50 transform transition-transform duration-300 ease-in-out lg:hidden ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
                          }`}
                >
                     <div className="flex items-center justify-between p-4 border-b border-teal-600">
@@ -229,7 +229,7 @@ export default function Header({ header }: { header?: any }) {
                                                             <Link
                                                                  key={child.id}
                                                                  href={child.href || ""}
-                                                                 className="block px-10 py-2.5 text-white text-sm hover:bg-[#006980] transition-colors"
+                                                                 className="block px-10 py-2.5 text-white text-sm hover:bg-primary transition-colors"
                                                                  onClick={() => {
                                                                       setOpenDropdown(null);
                                                                       setMobileMenuOpen(false);

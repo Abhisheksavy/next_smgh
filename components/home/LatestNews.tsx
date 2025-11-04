@@ -72,7 +72,7 @@ const LatestNews = ({ data, isLoading, isError, error }: any) => {
                                                   <span className="text-[#1F9F9E] text-sm font-normal">
                                                        {item.published || "Monday 05, September 2021 | By Author"}
                                                   </span>
-                                                  <p className="text-[#212124]  text-lg font-normal">
+                                                  <p className="text-foreground  text-lg font-normal">
                                                        {item.newsTitle || "COLORS Donates to SMMC’s OBGYN Ward"}
                                                   </p>
                                              </div>

@@ -69,13 +69,13 @@ const Career = ({ data, isLoading, isError, error }: any) => {
                     <h4 className="text-secondary text-lg font-medium mb-2">
                       {carrer.careerName}
                     </h4>
-                    <p className="text-[#212124] text-base font-normal ">
+                    <p className="text-foreground text-base font-normal ">
                       {carrer.careerDescription}
                     </p>
                   </div>
                   <div className="flex flex-row mt-6 gap-2 items-center">
                     <ClockIcon />
-                    <span className="text-[#212124] text-base font-normal">
+                    <span className="text-foreground text-base font-normal">
                       {carrer.duration}
                     </span>
                   </div>
