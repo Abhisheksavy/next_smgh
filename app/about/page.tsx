@@ -7,6 +7,8 @@ import InnerBanner from "@/components/common/InnerBanner";
 import { Button } from "@/components/ui/button";
 import data from "@/public/data/aboutus.json";
 import LeaderShip from "@/components/about/LeaderShip";
+import LatestNews from "@/components/home/LatestNews";
+import Contact from "@/components/home/Contact";
 
 
 
@@ -47,19 +49,29 @@ const About = async () => {
                {/* Cookie code */}
                <InnerBanner data={data?.banner} />
                <Health data={data?.health} />
-               {data.qualityCare && (
-                    <QualityCare qualityCare={data?.qualityCare} />)}
-               {data.mission && (
+               {data.qualityCare &&
+                    <QualityCare qualityCare={data?.qualityCare} />}
+               {data.mission &&
                     <MissionVision mission={data?.mission} />
-               )}
+               }
 
-               {data?.leadership && (
-                    <LeaderShip leadership={data?.leadership} /> 
-               )}
-               {data?.annualReport && (
+               {data?.leadership &&
+                    <LeaderShip leadership={data?.leadership} />
+               }
+               {data?.annualReport &&
                     <AnnualReport annualReport={data?.annualReport} />
 
-               )}
+               }
+               {data?.latestNews &&
+                    <LatestNews data={data?.latestNews} />
+               }
+               {data?.contact &&
+                    <Contact
+                         data={data?.contact}
+                    // isLoading={isLoading}
+                    // isError={isError}
+                    // error={error}
+                    />}
           </div>
      );
 };

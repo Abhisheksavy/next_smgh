@@ -3,7 +3,7 @@ import React from "react";
 const QualityCare = ({ qualityCare }: any) => { 
      return (
           <section
-               className="section-padding relative before:bg-primary/60 before:inset-0 before:absolute before:z-1"
+               className="section-padding relative before:bg-primary/60 before:inset-0 before:absolute before:z-1 bg-cover bg-no-repeat bg-center"
                style={{
                     backgroundImage: `url(${qualityCare?.backgroundImage})`,
                }}>

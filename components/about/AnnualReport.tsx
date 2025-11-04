@@ -17,12 +17,12 @@ const AnnualReport = ({ annualReport }: any) => {
           } else {
                setActiveTab(annualReport?.reports[0]);
           }
-     }, [annualReport]); 
+     }, [annualReport]);
 
      return (
           <section className="section-padding ">
                <div className="container">
-                    <div className="">
+                    <div className="mb-7">
                          <p className="tagline mb-1.5">{annualReport?.year}</p>
                          <h2 className="commonTitle ">Annual Report </h2>
                     </div>
@@ -39,27 +39,21 @@ const AnnualReport = ({ annualReport }: any) => {
                                                   <div className="flex flex-col gap-2">
                                                        {" "}
                                                        {/* this button will toggle like accordian */}
-                                                       <h3 className="text-secondary text-lg font-medium mb-2">
+                                                       <h3 className="text-secondary text-lg font-medium">
                                                             {activeIndex === index ? "−" : "+"} Annual Report
                                                             2024 {content?.year}
                                                        </h3>
-                                                       <div  className={`overflow-hidden transition-all duration-300 ${activeIndex === index
-                                                                 ? "max-h-40 mt-3 opacity-100"
-                                                                 : "max-h-0 opacity-0"
-                                                                 }`}
-                                                       >
-                                                            <a
-                                                                 href={content.url}
-                                                                 download
-                                                                 className="text-foreground flex gap-2 "
-                                                            >
+                                                       {content.file && <div className={`overflow-hidden transition-all duration-300 mt-2 ${activeIndex === index
+                                                            ? "max-h-40 mt-3 opacity-100"
+                                                            : "max-h-0 opacity-0" }`}>
+                                                           <a href={content.file} download className="text-foreground flex gap-2">
                                                                  <Download className="text-secondary" />
                                                                  <span className="text-foreground text-base font-normal">
                                                                       Download Annual Report {content?.year}{" "}
                                                                       {/* {carrer.duration} */}
                                                                  </span>
-                                                            </a>
-                                                       </div>
+                                                            </a> 
+                                                       </div> }
                                                   </div>
                                              </div>
                                         );
