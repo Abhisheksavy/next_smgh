@@ -9,7 +9,7 @@ import Image from "next/image";
 
 export default function TopBar({ topbar }: { topbar?: any }) {
   const { data, isLoading, isError, error } = useGetTopBarData();
-  console.log(topbar);
+//   console.log(topbar);
   if (isLoading) {
     return (
       <div className="bg-background border-b border-gray-200 py-3 md:py-6.5 px-4 md:px-6">

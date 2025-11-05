@@ -10,23 +10,26 @@ import LatestNews from "@/components/home/LatestNews";
 import Contact from "@/components/home/Contact";
 
 const About = async () => {
-  // const res = await fetch(`${process.env.NEXT_PUBLIC_APP_BASE_URL}/pages/home`);
-  console.log(data);
+     const res = await fetch(`${process.env.NEXT_PUBLIC_APP_BASE_URL}/pages/about`, {
+          next: {
+               revalidate: 10
+          }
+     });
+   
+     const data1 = await res.json();
+     if (!data1) return null;
+     const aboutPageData = data1?.data?.content; 
 
-  // const res = await fetch(`/data/aboutus.json`);
-  // if (!res.ok) {
-  //   throw new Error("Failed to fetch layout data");
-  // }
-  // const { data } = await res.json();
-  // if (!data) return null;
-  // const homePageData = data.content;
 
-  console.log("about page", data);
 
-  return (
-    <div>
-      {/* Cookie code */}
-      {/* <div className="flex flex-col gap-2.5">
+     // console.log(data);
+ 
+     console.log("about page", aboutPageData);
+
+     return (
+          <div>
+               {/* Cookie code */}
+               {/* <div className="flex flex-col gap-2.5">
                <div className="text-center text-2xl font-medium leading-[100%] "> 
                     Cookie Preferences
                </div>
@@ -42,24 +45,24 @@ const About = async () => {
                     <Button variant="outline">Recect All</Button>
                </div>
                </div> */}
-      {/* Cookie code */}
-      <InnerBanner data={data?.banner} />
-      <Health data={data?.health} />
-      {data.qualityCare && <QualityCare qualityCare={data?.qualityCare} />}
-      {data.mission && <MissionVision mission={data?.mission} />}
+               {/* Cookie code */}
+               <InnerBanner data={aboutPageData?.banner} />
+               <Health data={aboutPageData?.health} />
+               {aboutPageData?.qualityCare && <QualityCare qualityCare={aboutPageData?.qualityCare} />}
+            <MissionVision mission={aboutPageData?.mission} />
 
-      {data?.leadership && <LeaderShip leadership={data?.leadership} />}
-      {data?.annualReport && <AnnualReport annualReport={data?.annualReport} />}
-      {data?.latestNews && <LatestNews data={data?.latestNews} />}
-      {data?.contact && (
-        <Contact
-          data={data?.contact}
-          // isLoading={isLoading}
-          // isError={isError}
-          // error={error}
-        />
-      )}
-    </div>
-  );
+               {data?.leadership && <LeaderShip leadership={data?.leadership} />}
+               {aboutPageData?.annualReport && <AnnualReport annualReport={data?.annualReport} />}
+               {aboutPageData?.latestNews && <LatestNews data={data?.latestNews} />}
+               {aboutPageData?.contact && (
+                    <Contact
+                         data={data?.contact}
+                    // isLoading={isLoading}
+                    // isError={isError}
+                    // error={error}
+                    />
+               )}
+          </div>
+     );
 };
 export default About;

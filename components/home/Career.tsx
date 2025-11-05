@@ -5,8 +5,7 @@ import React from "react";
 import Input from "../ui/input";
 import ImageInput from "../ui/image";
 
-const Career = ({ data, isLoading, isError, error }: any) => {
-     console.log("data-car", data)
+const Career = ({ data, isLoading, isError, error }: any) => { 
   // if (isLoading) {
   //   return (
   //     <div className="section-padding">
@@ -46,8 +45,7 @@ const Career = ({ data, isLoading, isError, error }: any) => {
   //       </p>
   //     </div>
   //   );
-  // }
-  console.log(data);
+  // } 
 
   return (
     <section className="section-padding bg-white">

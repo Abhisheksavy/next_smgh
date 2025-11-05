@@ -79,9 +79,18 @@ body {
      /* @apply  bg-amber-900 */
 }
 
-.container {
-     @apply container max-w-7xl mx-auto px-4 md:px-6
+/* 
+989 -- 1366
+*/
+
+/* .container {
+     @apply container mx-auto px-4 md:px-6 lg:max-w-[740px] xl:max-w-[989px] 2xl:max-w-7xl
+} */
+
+.container { 
+     @apply container mx-auto px-4 md:px-6 mx-auto px-4 md:px-6 min-[992px]:max-[1366px]:max-w-[989px] min-[1368px]:max-[1599px]:max-w-[1170px] min-[1600px]:max-w-7xl; 
 }
+
 
 .mainTitle {
      @apply text-3xl md:text-4xl lg:text-5xl mb-3.5 font-bold text-primary leading-tight
@@ -103,7 +112,12 @@ body {
      @apply px-12 md:px-16
 }
 
- 
+
+.imageBorderBottomAbs {
+     @apply h-2 absolute left-0 right-0 bottom-0 bg-[linear-gradient(to_right,#03AD92_0%,#03AD92_20%,#006980_20%,#006980_80%,#1F9F9E_80%,#1F9F9E_100%)] z-1;
+    
+}
+
 .innerBanner.imageBorderBottom {
      border-bottom-width: 8px;
 }

@@ -2,8 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import { Button } from '../ui/button'
 
-const LeaderShip = ({ leadership }: { leadership: any }) => {
-     console.log("leadership", leadership.leaders)
+const LeaderShip = ({ leadership }: { leadership: any }) => { 
      return (
           <section className="section-padding ">
                <div className="container">

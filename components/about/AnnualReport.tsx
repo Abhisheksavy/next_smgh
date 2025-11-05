@@ -2,6 +2,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Download } from "lucide-react";
+import { cn } from "@/utils/twMerge";
 const AnnualReport = ({ annualReport }: any) => {
      const [activeIndex, setActiveIndex] = useState<number>(0);
      const [activeTab, setActiveTab] = useState<any | null>(null);
@@ -32,7 +33,7 @@ const AnnualReport = ({ annualReport }: any) => {
                                    (content: any, index: number) => {
                                         return (
                                              <div
-                                                  className="border-t py-8 border-[#EAECF0]"
+                                                  className={cn("border-t py-8 border-[#EAECF0] ", activeIndex === index ? "" : "cursor-pointer")}
                                                   key={index}
                                                   onClick={() => handleToggle(content, index)}
                                              >

@@ -23,7 +23,6 @@ const socialIcons: { [key: string]: any } = {
 export default function Footer({ footer }: { footer: any }) {
      // const { data, isLoading, isError, error } = useGetFooterData();
      const [chatOpen, setChatOpen] = useState(false);
-     console.log("footer", footer)
      if (!footer) {
           return (
                <footer className="bg-primary text-[#FCFEFE] py-16 px-8 md:px-12">

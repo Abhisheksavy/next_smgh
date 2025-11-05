@@ -1,0 +1,142 @@
+{
+  "banner": {
+    "backgroundImage": "/images/newsbanner.webp",
+    "title": "Latest News",
+    "description": "Press releases and Feature stories | St. Maarten Medical Center"
+  },
+  "news": {
+    "data": [
+      {
+        "img": "/images/newsPage1.webp",
+        "published": "Monday 05, September 2021 | By Author",
+        "title": "COLORS Donates to SMGH OBGYN Ward",
+        "description": "Local Department Store COLORS recently made a generous and heartfelt donation to patients of the OBGYN Ward of St. Maarten Medical Center (SMMC). The store has provided gift vouchers that will be distributed to mothers upon discharge, offering them and their newborns an opportunity to receive gifts for their newborn babies.",
+        "link": "#",
+        "author": "By Author"
+      },
+      {
+        "img": "/images/newsPage2.webp",
+        "published": "Monday 05, September 2021 | By Author",
+        "title": "COLORS Donates to SMGH OBGYN Ward",
+        "description": "Local Department Store COLORS recently made a generous and heartfelt donation to patients of the OBGYN Ward of St. Maarten Medical Center (SMMC). The store has provided gift vouchers that will be distributed to mothers upon discharge, offering them and their newborns an opportunity to receive gifts for their newborn babies.",
+        "link": "#",
+        "author": "By Author"
+      },
+      {
+        "img": "/images/newsPage3.webp",
+        "published": "Monday 05, September 2021 | By Author",
+        "title": "COLORS Donates to SMGH OBGYN Ward",
+        "description": "Local Department Store COLORS recently made a generous and heartfelt donation to patients of the OBGYN Ward of St. Maarten Medical Center (SMMC). The store has provided gift vouchers that will be distributed to mothers upon discharge, offering them and their newborns an opportunity to receive gifts for their newborn babies.",
+        "link": "#",
+        "author": "By Author"
+      },
+      {
+        "img": "/images/newsPage4.webp",
+        "published": "Monday 05, September 2021 | By Author",
+        "title": "COLORS Donates to SMGH OBGYN Ward",
+        "description": "Local Department Store COLORS recently made a generous and heartfelt donation to patients of the OBGYN Ward of St. Maarten Medical Center (SMMC). The store has provided gift vouchers that will be distributed to mothers upon discharge, offering them and their newborns an opportunity to receive gifts for their newborn babies.",
+        "link": "#",
+        "author": "By Author"
+      }
+    ],
+    "total": 4,
+    "limit": 4,
+    "page": 1
+  },
+  "recentPosts": [
+    {
+      "img": "/images/newsPage4.webp",
+      "title": "Monday 05, September 2021",
+      "description": "This Article's Title goes Here, but not too long.",
+      "link": "#"
+    },
+    {
+      "img": "/images/newsPage4.webp",
+      "title": "Monday 05, September 2021",
+      "description": "This Article's Title goes Here, but not too long.",
+      "link": "#"
+    },
+    {
+      "img": "/images/newsPage4.webp",
+      "title": "Monday 05, September 2021",
+      "description": "This Article's Title goes Here, but not too long.",
+      "link": "#"
+    },
+    {
+      "img": "/images/newsPage4.webp",
+      "title": "Monday 05, September 2021",
+      "description": "This Article's Title goes Here, but not too long.",
+      "link": "#"
+    }
+  ],
+  "tags": [
+    {
+      "title": "Education",
+      "link": "#"
+    },
+    {
+      "title": "Fitness",
+      "link": "#"
+    },
+    {
+      "title": "Hydration",
+      "link": "#"
+    },
+    {
+      "title": "Patient donation",
+      "link": "#"
+    },
+    {
+      "title": "Job",
+      "link": "#"
+    },
+    {
+      "title": "SMGH",
+      "link": "#"
+    },
+    {
+      "title": "Emergency Room",
+      "link": "#"
+    },
+    {
+      "title": "st.maarten",
+      "link": "#"
+    },
+    {
+      "title": "Obesity",
+      "link": "#"
+    },
+    {
+      "title": "Blood Pressure",
+      "link": "#"
+    }
+  ],
+  "categories": [
+    { "name": "Uncategorized", "count": "0" },
+    { "name": "Press Releases", "count": "293" },
+    { "name": "Featured topics", "count": "47" },
+    { "name": "Events", "count": "26" },
+    { "name": "News / Updates", "count": "21" }
+  ],
+    "contact": {
+    "tagline": "CARE YOU CAN BELIEVE IN",
+    "title": "Featured Services",
+    "communicationWays": [
+      {
+        "communicationName": "Emergency",
+        "wayToCommunicate": "+1721 543 1111",
+        "href": "#"
+      },
+      {
+        "communicationName": "Location",
+        "wayToCommunicate": "+1721 543 1111",
+        "href": "#"
+      },
+      {
+        "communicationName": "Email",
+        "wayToCommunicate": "info@smmc.sx",
+        "href": "#"
+      }
+    ]
+  }
+}

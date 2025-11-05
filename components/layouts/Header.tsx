@@ -13,7 +13,6 @@ export default function Header({ header }: { header?: any }) {
      const [openDropdown, setOpenDropdown] = useState<string | null>(null);
      const [languageOpen, setLanguageOpen] = useState(false);
      const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-     console.log("header---", header)
 
      // Close mobile menu on resize to desktop
      useEffect(() => {

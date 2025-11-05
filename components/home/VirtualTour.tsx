@@ -3,7 +3,6 @@ import React from "react";
 import { Button } from "../ui/button";
 
 const VirtualTour = ({ data, isLoading, isError, error }: any) => {
-     console.log("data-vir", data.cta.href)
      if (isLoading) {
           return (
                <div className="section-padding">

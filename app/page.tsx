@@ -19,8 +19,7 @@ export default async function HomePage() {
 
 
   if (!data) return null;
-  const homePageData = data.content;
-  console.log(homePageData);
+  const homePageData = data.content; 
 
   return (
     <div>

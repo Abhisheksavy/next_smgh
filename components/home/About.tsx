@@ -61,6 +61,7 @@ export default function About({ data, isLoading, isError, error }: any) {
                          <div className="relative overflow-hidden shadow-xl  ">
                               <Image src={data.image} alt={data.title} width={1200}
                                    height={600} className="w-full  h-auto" />
+                                   <div className="imageBorderBottom"></div>
                          </div>
                     </div>
                </div>

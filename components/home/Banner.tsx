@@ -39,27 +39,26 @@ export default function Banner({ data, isLoading, isError, error }: any) {
                     </p>
                </div>
           );
-     }
-     console.log(data);
+     } 
 
      return (
           <div>
                {/* Hero Banner */}
-               <section className="relative h-[500px] md:h-[600px] bg-gradient-to-r from-teal-50 to-teal-100 overflow-hidden">
+               <section className="relative  bg-gradient-to-r from-teal-50 to-teal-100 overflow-hidden">
                     <div className="absolute inset-0">
                          <Image
                               src={data?.backgroundImage}
                               alt="Banner Background"
                               fill
-                              className="object-cover opacity-90"
+                              className="object-cover object-top opacity-90"
                               priority
                          />
                          {/* Decorative Circles */}
-                         <div className="absolute top-0 left-0 w-64 h-64 bg-teal-400 rounded-full opacity-20 -translate-x-1/2 -translate-y-1/2" />
-                         <div className="absolute bottom-0 right-0 w-96 h-96 bg-teal-500 rounded-full opacity-20 translate-x-1/3 translate-y-1/3" />
+                         {/* <div className="absolute top-0 left-0 w-64 h-64 bg-teal-400 rounded-full opacity-20 -translate-x-1/2 -translate-y-1/2" /> */}
+                         {/* <div className="absolute bottom-0 right-0 w-96 h-96 bg-teal-500 rounded-full opacity-20 translate-x-1/3 translate-y-1/3" /> */}
                     </div>
 
-                    <div className="relative container h-full flex items-center">
+                    <div className="relative container h-full flex items-center py-42">
                          <div className="max-w-xl">
                               <p className="tagline">
                                    {data.tagline}

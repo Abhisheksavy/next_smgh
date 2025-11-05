@@ -24,13 +24,13 @@ type ButtonProps = CommonProps &
 export const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
   ({ className, variant = "default", size = "default", href, ...props }, ref) => {
     const baseClasses =
-      "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full cursor-pointer text-base font-medium transition-all duration-300 ease-out focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0"
+      "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full cursor-pointer text-base font-medium transition-all duration-300 ease-out focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 user-select-none"
 
     const variants: Record<string, string> = {
-      default: "bg-secondary text-white hover:bg-primary",
+      default: "bg-tealgreen text-white hover:bg-secondary",
       destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
       outline:
-        "border-2 border-secondary text-secondary bg-background hover:bg-secondary hover:text-white",
+        "border-2 border-tealgreen text-tealgreen bg-transparent hover:bg-secondary hover:text-white",
       secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
       ghost: "hover:bg-primary/10 hover:text-primary",
       link: "text-foreground",

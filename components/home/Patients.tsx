@@ -5,7 +5,6 @@ import { useState } from "react";
 
 const Patients = ({ data, isLoading, isError, error }: any) => {
   const [selected, setSelected] = useState<string>("");
-  console.log("data-pat", data)
   if (isLoading) {
     return (
       <div className="section-padding">
