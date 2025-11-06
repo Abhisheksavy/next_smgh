@@ -4,7 +4,9 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import BtnArrowIcon from "@/icons/home-icons/btnArrow";
 
-const LatestNews = ({ data, isLoading, isError, error }: any) => {
+const LatestNews = (
+     { data, isLoading, isError, error }: any) => {
+     
      if (isLoading) {
           return (
                <div className="section-padding">

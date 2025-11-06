@@ -2,7 +2,36 @@ import Image from 'next/image'
 import React from 'react'
 import { Button } from '../ui/button'
 
-const LeaderShip = ({ leadership }: { leadership: any }) => { 
+export default async function LeaderShip({ leadership }: { leadership: any }) {
+     try {
+
+          const res2 = await fetch(`${process.env.NEXT_PUBLIC_APP_BASE_URL}/users/all?page=1&per_page=3`, {
+               next: {
+                    revalidate: 10
+               },
+               headers: {
+                    "Content-Type": "application/json",
+               }
+          });
+
+          if (!res2.ok) throw new Error("Failed to fetch leaders data");
+          const result = await res2.json()
+
+          console.log(result, "ran");
+
+     } catch (error) {
+          console.log("error", error);
+     }
+
+
+
+
+
+     // const Leaders = await res2.json();
+     // if (!Leaders) return null; 
+     // console.log("LeadersData", Leaders)
+
+
      return (
           <section className="section-padding ">
                <div className="container">
@@ -44,4 +73,4 @@ const LeaderShip = ({ leadership }: { leadership: any }) => {
      )
 }
 
-export default LeaderShip
+

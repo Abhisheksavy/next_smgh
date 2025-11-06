@@ -15,15 +15,20 @@ const About = async () => {
                revalidate: 10
           }
      });
+ 
+
    
+
+
+     // console.log(data);
+ 
+       
      const data1 = await res.json();
      if (!data1) return null;
      const aboutPageData = data1?.data?.content; 
 
 
 
-     // console.log(data);
- 
      console.log("about page", aboutPageData);
 
      return (
@@ -49,14 +54,14 @@ const About = async () => {
                <InnerBanner data={aboutPageData?.banner} />
                <Health data={aboutPageData?.health} />
                {aboutPageData?.qualityCare && <QualityCare qualityCare={aboutPageData?.qualityCare} />}
-            <MissionVision mission={aboutPageData?.mission} />
+                    <MissionVision mission={aboutPageData?.mission} />
 
                {data?.leadership && <LeaderShip leadership={data?.leadership} />}
-               {aboutPageData?.annualReport && <AnnualReport annualReport={data?.annualReport} />}
+               {aboutPageData?.annualReport && <AnnualReport annualReport={aboutPageData?.annualReport} />}
                {aboutPageData?.latestNews && <LatestNews data={data?.latestNews} />}
-               {aboutPageData?.contact && (
+               {aboutPageData?.contact === "true" && (
                     <Contact
-                         data={data?.contact}
+                         
                     // isLoading={isLoading}
                     // isError={isError}
                     // error={error}

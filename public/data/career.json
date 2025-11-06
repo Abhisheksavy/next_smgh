@@ -1,0 +1,102 @@
+{
+  "banner": {
+    "backgroundImage": "/images/careersbanner.webp",
+    "title": "Careers",
+    "description": ""
+  },
+ 
+  "recentVacancies": [
+    {
+      "img": "/images/newsPage4.webp",
+      "total": "11",
+      "title": "Medical Staff",
+      "link": "#"
+    },
+      {
+      "img": "/images/newsPage4.webp",
+      "total": "11",
+      "title": "Medical Staff",
+      "link": "#"
+    },
+      {
+      "img": "/images/newsPage4.webp",
+      "total": "11",
+      "title": "Medical Staff",
+      "link": "#"
+    },
+      {
+      "img": "/images/newsPage4.webp",
+      "total": "11",
+      "title": "Medical Staff",
+      "link": "#"
+    }
+     
+  ],
+  
+  "categories": [
+    { "name": "Categories", "count": "1" },
+    { "name": "August 2025", "count": "2" },
+    { "name": "July 2025", "count": "18" }
+  ],
+   
+  "vacancyList": {
+    "title": "Vacancies List",
+    "description": "Our employees are the key to providing the services that meets the demands of our community. We provide a well balanced and pleasant work environment as well as learning opportunities for our staff. If you are interested in becoming a part of our team, please check our vacancies listing below.",
+
+    "list": [
+      {
+        "image": "/images/vacancie1.webp",
+        "title": "Food Service Assistant (Call-Up)",
+        "description": "We are seeking a pleasant, friendly and motivated individual to join our team as a FOOD SERVICE ASSISTANT to help us serve meals and drinks to our patients!",
+        "posted": "Monday 16, September 2025",
+        "tags": ["Medical Staff"],
+        "link": "#"
+      },
+      {
+        "image": "/images/vacancie2.webp",
+        "title": "Food Service Assistant (Call-Up)",
+        "description": "We are seeking a pleasant, friendly and motivated individual to join our team as a FOOD SERVICE ASSISTANT to help us serve meals and drinks to our patients!",
+        "posted": "Monday 16, September 2025",
+        "tags": ["Medical Staff", "Medical Specialist"],
+        "link": "#"
+      },
+      {
+        "image": "/images/vacancie3.webp",
+        "title": "Food Service Assistant (Call-Up)",
+        "description": "We are seeking a pleasant, friendly and motivated individual to join our team as a FOOD SERVICE ASSISTANT to help us serve meals and drinks to our patients!",
+        "posted": "Monday 16, September 2025",
+        "tags": ["Medical Staff"],
+        "link": "#"
+      },
+      {
+        "image": "/images/vacancie4.webp",
+        "title": "Food Service Assistant (Call-Up)",
+        "description": "We are seeking a pleasant, friendly and motivated individual to join our team as a FOOD SERVICE ASSISTANT to help us serve meals and drinks to our patients!",
+        "posted": "Monday 16, September 2025",
+        "tags": ["Medical Staff"],
+        "link": "#"
+      }
+    ]
+  },
+   "contact": {
+    "tagline": "CARE YOU CAN BELIEVE IN",
+    "title": "Featured Services",
+    "communicationWays": [
+      {
+        "communicationName": "Emergency",
+        "wayToCommunicate": "+1721 543 1111",
+        "href": "#"
+      },
+      {
+        "communicationName": "Location",
+        "wayToCommunicate": "+1721 543 1111",
+        "href": "#"
+      },
+      {
+        "communicationName": "Email",
+        "wayToCommunicate": "info@smmc.sx",
+        "href": "#"
+      }
+    ]
+  }
+}

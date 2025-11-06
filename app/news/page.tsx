@@ -8,16 +8,11 @@ import Image from 'next/image';
 import Contact from '@/components/home/Contact';
 import { Search } from 'lucide-react';
 import Input from '@/components/ui/input';
+import SubscriptionForm from '@/components/common/subscription';
+import CounterLink from '@/components/common/counterLink';
 
-const News = () => { 
-     function formatCount(num: number) {
-          if (isNaN(num) || num < 0) return "0";
-          if (num < 1000) return num.toString();
-          if (num < 1_000_000) return (num / 1000).toFixed(1).replace(/\.0$/, "") + "k";
-          if (num < 1_000_000_000) return (num / 1_000_000).toFixed(1).replace(/\.0$/, "") + "M";
-          return (num / 1_000_000_000).toFixed(1).replace(/\.0$/, "") + "B";
-     }
-
+const News = () => {
+  
 
      return (
           <>
@@ -34,7 +29,7 @@ const News = () => {
                               </div>
                               <div className="col-span-4 flex flex-col gap-6">
                                    <div className='relative'>
-                                        <Input placeholder='News Search' className='w-100 h-12.5 px-5 py-3.5 rounded-md border-0 bg-primary text-white' />
+                                        <Input type='text' placeholder='News Search' className='w-full h-12.5 px-5 py-3.5 rounded-md border-0 bg-primary text-white' />
                                         <button className='absolute right-0 top-0 bottom-0 pr-5'><Search className='text-secondary w-4 h-4' /></button>
                                    </div>
                                    <div className='p-5 border rounded-md border-primary/20'>
@@ -47,7 +42,6 @@ const News = () => {
                                              })}
                                         </div>
                                    </div>
-
 
                                    <div className='p-5 border rounded-md border-primary/20'>
                                         <h2 className='text-primary font-medium text-2xl leading-none mb-4.5'>Recent Posts</h2>
@@ -73,11 +67,8 @@ const News = () => {
                                         <h2 className='text-primary font-medium text-2xl leading-none mb-4.5'>News Categories</h2>
                                         <div className="flex flex-col gap-2">
                                              {data.categories.map((item: any, index: number) => {
-                                                  return (
-                                                       <a href={item?.link} key={index} className='cursor-pointer  py-3 text-dark/60 font-normal text-base leading-none hover:text-primary transition-all ease-in-out duration-300 flex justify-between items-center'>
-                                                            <span>{item.name}</span>
-                                                            <span className='bg-tealgreen rounded-full aspect-square h-auto min-w-7 p-0.5 text-white text-xs  flex items-center justify-center'>{formatCount(Number(item.count))}</span>
-                                                       </a>
+                                                  return ( 
+                                                       <CounterLink key={index} data={item} />
                                                   )
                                              })}
                                         </div>
@@ -85,6 +76,8 @@ const News = () => {
 
                                    <div className='p-5 border rounded-md border-primary/20'>
                                         <h2 className='text-primary font-medium text-2xl leading-none mb-4.5'>Subscription</h2>
+                                        <SubscriptionForm />
+
 
                                    </div>
 
@@ -92,8 +85,7 @@ const News = () => {
                          </div>
                     </div>
                </section>
-               <Contact
-                    data={data.contact}
+               <Contact 
                // isLoading={isLoading}
                // isError={isError}
                // error={error}
