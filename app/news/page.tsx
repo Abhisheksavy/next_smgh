@@ -85,8 +85,7 @@ const News = () => {
                          </div>
                     </div>
                </section>
-               <Contact
-                    data={data.contact}
+               <Contact 
                // isLoading={isLoading}
                // isError={isError}
                // error={error}

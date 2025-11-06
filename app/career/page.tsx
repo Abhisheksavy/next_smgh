@@ -18,7 +18,7 @@ const Career = () => {
                <section className='section-padding'>
                     <div className="container">
                          <div className="grid grid-cols-12 gap-10">
-                              <div className="col-span-8 flex flex-col gap-15 ">
+                              <div className="col-span-8 flex flex-col gap-11 ">
                                    <div className="bg-primary/3 p-10">
                                         <div className="mb-7">
                                              <h2 className='text-primary  font-medium text-[2rem] mb-1'>{data?.vacancyList.title}</h2>
@@ -48,6 +48,9 @@ const Career = () => {
                                              })}
                                         </div>
                                    </div>
+                                   <div className=" text-center">
+                                        <Button className='' variant='default' > Explore SMGH Academy</Button>
+                                   </div>
                               </div>
                               <div className="col-span-4 flex flex-col gap-6">
 
@@ -56,13 +59,13 @@ const Career = () => {
                                         <div className="flex flex-col gap-2">
                                              {data.recentVacancies.map((item: any, index: number) => {
                                                   return (
-                                                       <a href={item?.link} key={index} className='flex gap-2.5'>
+                                                       <a href={item?.link} key={index} className='flex items-center gap-2.5'>
                                                             <div className='w-15 h-15 flex-[0_0_auto] rounded overflow-hidden'>
                                                                  <Image src={item?.img} alt="image" height={500} width={400} className="block w-full h-full object-cover" />
                                                             </div>
                                                             <div className='flex-1'>
-                                                                 <h3 className='text-secondary text-xs'> {item?.title}</h3>
-                                                                 <p className='text-sm'> {item?.total || 0} Vacancies</p>
+                                                                 <h3 className=' text-sm'> {item?.title}</h3>
+                                                                 <p className='text-sm text-secondary'> {item?.total || 0} Vacancies</p>
                                                             </div>
                                                        </a>
                                                   )
@@ -91,7 +94,7 @@ const Career = () => {
                     </div>
                </section>
                <Contact
-                    data={data.contact}
+                 
                // isLoading={isLoading}
                // isError={isError}
                // error={error}

@@ -59,9 +59,9 @@ const About = async () => {
                {data?.leadership && <LeaderShip leadership={data?.leadership} />}
                {aboutPageData?.annualReport && <AnnualReport annualReport={aboutPageData?.annualReport} />}
                {aboutPageData?.latestNews && <LatestNews data={data?.latestNews} />}
-               {aboutPageData?.contact && (
+               {aboutPageData?.contact === "true" && (
                     <Contact
-                         data={data?.contact}
+                         
                     // isLoading={isLoading}
                     // isError={isError}
                     // error={error}
