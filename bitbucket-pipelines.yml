@@ -4,56 +4,33 @@ pipelines:
   branches:
     main:
       - step:
-          name: Build & Deploy Next.js App
+          name: Build Next.js App
           caches:
             - node
           script:
-            # 1. Inject environment variables
-            - echo "Setting environment variables..."
-            - echo "NEXT_PUBLIC_APP_BASE_URL=http://134.209.131.20/backend/api/v1" >> .env
-
-            # 2. Install dependencies and build
+            - echo "Installing dependencies..."
             - npm ci
+            - echo "Building Next.js app..."
             - npm run build
-            - rm -rf .next/cache
-
-            # 3. Prepare deployment package
-            - mkdir -p deployment
-            - cp -r .next package.json package-lock.json next.config.js public .env deployment/ || true
-
-            # 4. Create deploy script for EC2
-            - |
-              cat << 'EOF' > deployment/deploy.sh
-              #!/bin/bash
-              export NVM_DIR="$HOME/.nvm"
-              [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-              if ! command -v npm &> /dev/null; then
-                  echo "npm not found. Ensure NVM is installed."
-                  exit 1
-              fi
-              if ! command -v pm2 &> /dev/null; then
-                  npm install -g pm2
-              fi
-              npm ci --production
-              pm2 restart ecosystem.config.js || pm2 start ecosystem.config.js
-              echo "✅ Deployment completed successfully!"
-              EOF
-              chmod +x deployment/deploy.sh
-
-            # 5. Transfer files to EC2
-            - pipe: atlassian/scp-deploy:0.3.4
-              variables:
-                USER: $SERVER_USER
-                SERVER: $SERVER_IP
-                LOCAL_PATH: "deployment/"
-                REMOTE_PATH: "/var/www/html/"
-
-            # 6. SSH into EC2 and run deploy script
-            - pipe: atlassian/ssh-run:0.4.1
-              variables:
-                SSH_USER: $SERVER_USER
-                SERVER: $SERVER_IP
-                MODE: "script"
-                COMMAND: |
-                  cd /var/www/html/
-                  bash ./deploy.sh
+            - echo "Preparing artifacts..."
+            - mkdir build-artifacts
+            - cp -r .next public next.config.ts package.json build-artifacts/
+          artifacts:
+            - build-artifacts/**
+      - step:
+          name: Deploy to Production
+          deployment: production
+          script:
+            - apt-get update && apt-get install -y openssh-client
+            - mkdir -p ~/.ssh
+            - echo "Uploading build to server..."
+            - scp -o StrictHostKeyChecking=no -r build-artifacts/* $SERVER_USER@$SERVER_IP:/home/$SERVER_USER/
+            - echo "Deploying build on server..."
+            - ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "
+                sudo cp -r /home/$SERVER_USER/.next /var/www/html/ &&
+                sudo cp -r /home/$SERVER_USER/public /var/www/html/ &&
+                sudo cp /home/$SERVER_USER/next.config.ts /home/$SERVER_USER/package.json /var/www/html/ &&
+                cd /var/www/html &&
+                pm2 reload ecosystem.config.js || pm2 start ecosystem.config.js &&
+                pm2 save
+              "
