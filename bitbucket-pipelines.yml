@@ -10,27 +10,30 @@ pipelines:
           script:
             - echo "Installing dependencies..."
             - npm ci
+            - echo "Setting environment variables..."
+            - export NEXT_PUBLIC_APP_BASE_URL="http://134.209.131.20/backend/api/v1"
             - echo "Building Next.js app..."
             - npm run build
+            - rm -rf .next/cache
             - echo "Preparing artifacts..."
             - mkdir build-artifacts
-            - cp -r .next public next.config.ts package.json build-artifacts/
+            - cp -r .next public next.config.* package.json build-artifacts/
           artifacts:
             - build-artifacts/**
       - step:
           name: Deploy to Production
           deployment: production
           script:
-            - apt-get update && apt-get install -y openssh-client
-            - mkdir -p ~/.ssh
             - echo "Uploading build to server..."
-            - scp -o StrictHostKeyChecking=no -r build-artifacts/* $SERVER_USER@$SERVER_IP:/home/$SERVER_USER/
+            - scp -o StrictHostKeyChecking=no -r build-artifacts/* $SERVER_USER@$SERVER_IP:/var/www/html/
             - echo "Deploying build on server..."
             - ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "
-                sudo cp -r /home/$SERVER_USER/.next /var/www/html/ &&
-                sudo cp -r /home/$SERVER_USER/public /var/www/html/ &&
-                sudo cp /home/$SERVER_USER/next.config.ts /home/$SERVER_USER/package.json /var/www/html/ &&
-                cd /var/www/html &&
-                pm2 reload ecosystem.config.js || pm2 start ecosystem.config.js &&
+                set -e
+                cd /var/www/html
+                echo '→ Installing production dependencies'
+                npm ci --omit=dev
+                echo '→ Restarting with PM2'
+                pm2 reload ecosystem.config.js || pm2 start ecosystem.config.js
                 pm2 save
+                echo '✅ Deployment completed successfully!'
               "
