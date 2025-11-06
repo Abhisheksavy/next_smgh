@@ -19,6 +19,7 @@ const AnnualReport = ({ annualReport }: any) => {
                setActiveTab(annualReport?.reports[0]);
           }
      }, [annualReport]);
+     console.log("annualReport", annualReport)
 
      return (
           <section className="section-padding ">

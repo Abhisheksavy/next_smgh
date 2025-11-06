@@ -139,7 +139,7 @@ export default function FeaturedServices({
                 fill
                 className="object-cover"
               />
-              <div className="imageBorderBottom"></div>
+              <div className="imageBorderBottomAbs "></div>
             </div>
 
             {/* Bottom Image */}
@@ -150,7 +150,7 @@ export default function FeaturedServices({
                 fill
                 className="object-cover"
               />
-               <div className="imageBorderBottom"></div>
+               <div className="imageBorderBottomAbs "></div>
             </div>
           </div>
         </div>

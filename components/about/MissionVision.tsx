@@ -6,7 +6,7 @@ const MissionVision = ({ mission }:{mission:any}) => {
     
 
      return (
-          <section className="section-padding ">
+          <section className="section-padding "> 
                <div className="container relative z-2">
                     <div className="grid grid-cols-8 gap-3">
                         
@@ -29,9 +29,9 @@ const MissionVision = ({ mission }:{mission:any}) => {
                                              )
                                         })()}
                                         <div className="flex justify-end">
-                                             
-                                           {/* {data?.backgroundImage &&  <Image width="400" height="400" src={data?.backgroundImage} alt="" className="max-w-65 w-full h-auto opacity-4" />} */}
-
+                                             {index === 0 ?
+                                             <Image width="400" height="400" src="/images/ourMission.svg" alt="" className="max-w-65 w-full h-auto opacity-4" />: 
+                                             <Image width="400" height="400" src="/images/ourVision.svg" alt="" className="max-w-65 w-full h-auto opacity-4" />}
                                         </div>
                                    </div>
                               )
@@ -43,6 +43,7 @@ const MissionVision = ({ mission }:{mission:any}) => {
                                         <div className="col-span-6 flex flex-col justify-between">
                                              <h2 className="text-2xl font-normal! commonTitle">  {mission?.vision?.[2]?.description} </h2>
                                              <div className=" -ml-8">
+                                                  <Image width="400" height="400" src="/images/ourValues.svg" alt="" className="max-w-65 w-full h-auto opacity-4" />
                                                   {/* <Image width="400" height="400" src={mission.vision?.[2]?.backgroundImage} alt="" className="max-w-75 w-full h-auto opacity-4" /> */}
                                              </div>
                                         </div>
