@@ -1,0 +1,39 @@
+{
+  "banner": {
+    "backgroundImage": "",
+    "title": "SMGH Academy",
+    "description": "Our in-house Learning & Development department, dedicated to empowering staff through continuous training and growth."
+  },
+  "aboutSmgh": {
+    "tagline": "About SMGH Academy",
+    "title": "What is SMGH Academy?",
+    "image": "/jpg"
+  },
+  "opportunities": {
+    "tagline": "Learning Journeys & Opportunities",
+    "title": "Programs & Initiatives",
+    "programs": [
+      {
+        "title": "Ongoing Training",
+        "description": "Regularly scheduled training sessions ensure staff stay updated with the latest medical standards, safety protocols, and professional practices. These programs encourage continuous learning and adaptation to evolving healthcare needs."
+      },
+      {
+        "title": "Ongoing Training",
+        "description": "Regularly scheduled training sessions ensure staff stay updated with the latest medical standards, safety protocols, and professional practices. These programs encourage continuous learning and adaptation to evolving healthcare needs."
+      },
+      {
+        "title": "Ongoing Training",
+        "description": "Regularly scheduled training sessions ensure staff stay updated with the latest medical standards, safety protocols, and professional practices. These programs encourage continuous learning and adaptation to evolving healthcare needs."
+      },
+      {
+        "title": "Ongoing Training",
+        "description": "Regularly scheduled training sessions ensure staff stay updated with the latest medical standards, safety protocols, and professional practices. These programs encourage continuous learning and adaptation to evolving healthcare needs."
+      }
+    ]
+  },
+  "building": {
+    "tagline": "Learning Journeys & Opportunities",
+    "title": "Programs & Initiatives",
+    "image": "/jpg"
+  }
+}
