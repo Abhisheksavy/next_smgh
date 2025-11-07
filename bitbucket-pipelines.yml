@@ -17,8 +17,8 @@ pipelines:
             - rm -rf .next/cache
             - echo "📦 Preparing build artifacts..."
             - mkdir -p build-artifacts
-            # Copy only runtime-needed files
-            - cp -r .next package.json next.config.* public build-artifacts/
+            # Copy only runtime-needed files + lockfile
+            - cp -r .next package.json package-lock.json next.config.* public build-artifacts/
             - echo "✅ Build artifacts ready."
 
           artifacts:
@@ -29,7 +29,6 @@ pipelines:
           deployment: production
           script:
             - echo "🚀 Uploading optimized build to production server..."
-            # Clean everything except admin folder
             - |
               ssh -o StrictHostKeyChecking=no $SSH_USER@$SERVER "
                 echo '🧹 Cleaning old files except /admin...'
