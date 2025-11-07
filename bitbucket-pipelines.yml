@@ -4,7 +4,7 @@ pipelines:
   branches:
     main:
       - step:
-          name: Build Next.js App
+          name: 🏗️ Build Next.js App (CI)
           caches:
             - node
           script:
@@ -12,24 +12,23 @@ pipelines:
             - npm ci
             - echo "🌍 Setting environment variables..."
             - export NEXT_PUBLIC_APP_BASE_URL="http://134.209.131.20/backend/api/v1"
-            - echo "🏗️ Building Next.js app (ISR enabled)..."
+            - echo "🏗️ Building Next.js app..."
             - npm run build
             - rm -rf .next/cache
-            - echo "📦 Packaging build..."
+            - echo "📦 Packaging deployable build..."
             - mkdir -p deploy
-            - cp -r .next public package.json package-lock.json next.config.* deploy/
+            - cp -r .next public package.json package-lock.json next.config.* node_modules deploy/
             - cd deploy && tar -czf ../build-artifacts.tar.gz . && cd ..
             - ls -lh build-artifacts.tar.gz
-            - echo "✅ Build archive created."
-
+            - echo "✅ Build complete."
           artifacts:
             - build-artifacts.tar.gz
 
       - step:
-          name: Deploy to Production
+          name: 🚀 Deploy to Production
           deployment: production
           script:
-            - echo "🚀 Uploading build archive to server..."
+            - echo "📦 Uploading build archive..."
             - scp -o StrictHostKeyChecking=no build-artifacts.tar.gz $SSH_USER@$SERVER:/var/www/html/build-artifacts.tar.gz
             - echo "🖥️ Deploying on server..."
             - |
@@ -43,14 +42,14 @@ pipelines:
                 rm -rf !(temp_deploy|build-artifacts.tar.gz)
                 mv temp_deploy/admin ./ 2>/dev/null || true
                 rm -rf temp_deploy
+
                 echo "📦 Extracting new build..."
                 tar -xzf build-artifacts.tar.gz
                 rm -f build-artifacts.tar.gz
-                echo "📦 Installing production dependencies..."
-                npm ci --omit=dev || npm install --omit=dev
+
                 echo "🚀 Restarting app via PM2..."
                 pm2 delete next-app || true
                 pm2 start node_modules/next/dist/bin/next --name next-app -- start -p 3000
                 pm2 save
-                echo "✅ Deployment complete — ISR app live, /admin preserved."
+                echo "✅ Deployment complete — running same build as CI."
               '
