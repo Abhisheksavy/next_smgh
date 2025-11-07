@@ -1,11 +1,9 @@
 import JobApplicationForm from "@/components/career/jobapplication-form";
 
-const page = () => {
+export default async function page() {
   return (
     <>
       <JobApplicationForm />
     </>
   );
-};
-
-export default page;
+}
