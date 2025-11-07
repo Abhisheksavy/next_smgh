@@ -15,40 +15,43 @@ pipelines:
             - echo "🏗️ Building Next.js app (ISR enabled)..."
             - npm run build
             - rm -rf .next/cache
-            - echo "📦 Preparing build artifacts..."
-            - mkdir -p build-artifacts
-            # Copy only runtime-needed files + lockfile
-            - cp -r .next public package.json package-lock.json next.config.* build-artifacts/
-            - echo "✅ Build artifacts ready."
+            - echo "📦 Packaging build artifacts..."
+            - mkdir -p build-package
+            # Copy required runtime files
+            - cp -r .next public package.json package-lock.json next.config.* build-package/
+            # Compress to ensure .next isn't lost
+            - cd build-package && tar -czf ../build-artifacts.tar.gz . && cd ..
+            - echo "✅ Build package ready (build-artifacts.tar.gz)."
 
           artifacts:
-            - build-artifacts/**
+            - build-artifacts.tar.gz
 
       - step:
           name: Deploy to Production
           deployment: production
           script:
-            - echo "🚀 Uploading optimized build to production server..."
-            # Clean everything except admin folder
-            - |
-              ssh -o StrictHostKeyChecking=no $SSH_USER@$SERVER "
-                echo '🧹 Cleaning old files except /admin...'
-                shopt -s extglob
-                cd /var/www/html
-                rm -rf !(admin)
-              "
-            - echo "📤 Copying build artifacts to server..."
-            - scp -o StrictHostKeyChecking=no -r build-artifacts/* $SSH_USER@$SERVER:/var/www/html/
-            - echo "🖥️ Running post-deploy steps on server..."
+            - echo "🚀 Uploading compressed build to production server..."
+            - scp -o StrictHostKeyChecking=no build-artifacts.tar.gz $SSH_USER@$SERVER:/var/www/html/
+            - echo "🖥️ Running deploy steps on server..."
             - |
               ssh -o StrictHostKeyChecking=no $SSH_USER@$SERVER "
                 set -e
                 cd /var/www/html
+                echo '🧹 Cleaning old files except /admin...'
+                shopt -s extglob
+                mkdir -p temp_deploy
+                mv admin temp_deploy/ || true
+                rm -rf !(temp_deploy)
+                mv temp_deploy/admin ./ || true
+                rm -rf temp_deploy
+                echo '📦 Extracting new build...'
+                tar -xzf build-artifacts.tar.gz
+                rm -f build-artifacts.tar.gz
                 echo '→ Installing production dependencies...'
                 npm ci --omit=dev || npm install --omit=dev
-                echo '→ Restarting Next.js app with PM2...'
+                echo '→ Restarting Next.js app via PM2...'
                 pm2 delete next-app || true
                 pm2 start node_modules/next/dist/bin/next --name next-app -- start -p 3000
                 pm2 save
-                echo '✅ Deployment complete. Next.js ISR app running under PM2 (admin preserved).'
+                echo '✅ Deployment complete — ISR app running, admin preserved.'
               "
