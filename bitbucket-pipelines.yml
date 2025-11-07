@@ -25,9 +25,9 @@ pipelines:
           deployment: production
           script:
             - echo "Uploading build to server..."
-            - scp -o StrictHostKeyChecking=no -r build-artifacts/* $SERVER_USER@$SERVER_IP:/var/www/html/
+            - scp -o StrictHostKeyChecking=no -r build-artifacts/* $SERVER_USER@$SERVER:/var/www/html/
             - echo "Deploying build on server..."
-            - ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "
+            - ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER "
                 set -e
                 cd /var/www/html
                 echo '→ Installing production dependencies'
