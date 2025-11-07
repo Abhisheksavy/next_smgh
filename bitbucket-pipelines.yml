@@ -20,25 +20,20 @@ pipelines:
             - cp -r .next public next.config.* package.json build-artifacts/
           artifacts:
             - build-artifacts/**
-
       - step:
           name: Deploy to Production
           deployment: production
           script:
-            - echo "Setting up SSH..."
-            - mkdir -p ~/.ssh
-            - echo "Host *" > ~/.ssh/config
-            - echo "    StrictHostKeyChecking no" >> ~/.ssh/config
-
             - echo "Uploading build to server..."
-            - scp -r build-artifacts/* $SERVER_USER@$SERVER:/var/www/html/
-
-            - echo "Running post-deploy commands on server..."
-            - ssh $SERVER_USER@$SERVER "
-                set -e
-                cd /var/www/html
-                npm ci --omit=dev || true
-                pm2 reload ecosystem.config.js || pm2 start ecosystem.config.js
-                pm2 save
-                echo '✅ Deployment completed successfully!'
+            - scp -o StrictHostKeyChecking=no -r build-artifacts/* $SSH_USER@$SERVER:/var/www/html/
+            - echo "Deploying build on server..."
+            - ssh -o StrictHostKeyChecking=no $SSH_USER@$SERVER "
+              set -e
+              cd /var/www/html
+              echo '→ Installing production dependencies'
+              npm ci --omit=dev
+              echo '→ Restarting with PM2'
+              pm2 reload ecosystem.config.js || pm2 start ecosystem.config.js
+              pm2 save
+              echo '✅ Deployment completed successfully!'
               "
