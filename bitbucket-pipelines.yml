@@ -17,7 +17,7 @@ pipelines:
             - rm -rf .next/cache
             - echo "📦 Preparing build artifacts..."
             - mkdir -p build-artifacts
-            # Copy only what's needed for runtime
+            # Copy only runtime-needed files
             - cp -r .next package.json next.config.* public build-artifacts/
             - echo "✅ Build artifacts ready."
 
@@ -29,17 +29,24 @@ pipelines:
           deployment: production
           script:
             - echo "🚀 Uploading optimized build to production server..."
-            # Optional: clean old build (comment if you want to keep previous versions)
-            - ssh -o StrictHostKeyChecking=no $SSH_USER@$SERVER "rm -rf /var/www/html/*"
+            # Remove all files except admin folder
+            - ssh -o StrictHostKeyChecking=no $SSH_USER@$SERVER "
+                echo '🧹 Cleaning old files except /admin...'
+                shopt -s extglob
+                cd /var/www/html
+                rm -rf !(admin)
+              "
             - scp -o StrictHostKeyChecking=no -r build-artifacts/* $SSH_USER@$SERVER:/var/www/html/
-            - echo "🖥️ Running post-deploy tasks on server..."
+            - echo "🖥️ Running post-deploy steps on server..."
             - ssh -o StrictHostKeyChecking=no $SSH_USER@$SERVER "
                 set -e
                 cd /var/www/html
                 echo '→ Installing production dependencies...'
                 npm ci --omit=dev
-                echo '→ Restarting Next.js app via PM2...'
-                pm2 reload all || pm2 start npm --name 'next-app' -- start
+                echo '→ Restarting Next.js app with PM2...'
+                # Kill any existing process named next-app, then start fresh
+                pm2 delete next-app || true
+                pm2 start node_modules/next/dist/bin/next --name next-app -- start -p 3000
                 pm2 save
-                echo '✅ Deployment complete. App is live with ISR support.'
+                echo '✅ Deployment complete. Next.js ISR app running under PM2 (admin preserved).'
               "
