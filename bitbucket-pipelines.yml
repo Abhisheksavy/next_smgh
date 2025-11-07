@@ -15,13 +15,12 @@ pipelines:
             - echo "🏗️ Building Next.js app (ISR enabled)..."
             - npm run build
             - rm -rf .next/cache
-            - echo "📦 Packaging build artifacts..."
-            - mkdir -p build-package
-            # Copy required runtime files
-            - cp -r .next public package.json package-lock.json next.config.* build-package/
-            # Compress to ensure .next isn't lost
-            - cd build-package && tar -czf ../build-artifacts.tar.gz . && cd ..
-            - echo "✅ Build package ready (build-artifacts.tar.gz)."
+            - echo "📦 Packaging build..."
+            - mkdir -p deploy
+            - cp -r .next public package.json package-lock.json next.config.* deploy/
+            - cd deploy && tar -czf ../build-artifacts.tar.gz . && cd ..
+            - ls -lh build-artifacts.tar.gz
+            - echo "✅ Build archive created."
 
           artifacts:
             - build-artifacts.tar.gz
@@ -30,28 +29,28 @@ pipelines:
           name: Deploy to Production
           deployment: production
           script:
-            - echo "🚀 Uploading compressed build to production server..."
-            - scp -o StrictHostKeyChecking=no build-artifacts.tar.gz $SSH_USER@$SERVER:/var/www/html/
-            - echo "🖥️ Running deploy steps on server..."
+            - echo "🚀 Uploading build archive to server..."
+            - scp -o StrictHostKeyChecking=no build-artifacts.tar.gz $SSH_USER@$SERVER:/var/www/html/build-artifacts.tar.gz
+            - echo "🖥️ Deploying on server..."
             - |
-              ssh -o StrictHostKeyChecking=no $SSH_USER@$SERVER "
+              ssh -o StrictHostKeyChecking=no $SSH_USER@$SERVER '
                 set -e
                 cd /var/www/html
-                echo '🧹 Cleaning old files except /admin...'
+                echo "🧹 Cleaning old files except /admin..."
                 shopt -s extglob
                 mkdir -p temp_deploy
-                mv admin temp_deploy/ || true
-                rm -rf !(temp_deploy)
-                mv temp_deploy/admin ./ || true
+                mv admin temp_deploy/ 2>/dev/null || true
+                rm -rf !(temp_deploy|build-artifacts.tar.gz)
+                mv temp_deploy/admin ./ 2>/dev/null || true
                 rm -rf temp_deploy
-                echo '📦 Extracting new build...'
+                echo "📦 Extracting new build..."
                 tar -xzf build-artifacts.tar.gz
                 rm -f build-artifacts.tar.gz
-                echo '→ Installing production dependencies...'
+                echo "📦 Installing production dependencies..."
                 npm ci --omit=dev || npm install --omit=dev
-                echo '→ Restarting Next.js app via PM2...'
+                echo "🚀 Restarting app via PM2..."
                 pm2 delete next-app || true
                 pm2 start node_modules/next/dist/bin/next --name next-app -- start -p 3000
                 pm2 save
-                echo '✅ Deployment complete — ISR app running, admin preserved.'
-              "
+                echo "✅ Deployment complete — ISR app live, /admin preserved."
+              '
