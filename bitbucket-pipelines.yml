@@ -8,41 +8,38 @@ pipelines:
           caches:
             - node
           script:
-            - echo "🚀 Starting build process..."
-            - echo "Installing dependencies..."
+            - echo "🔧 Installing dependencies..."
             - npm ci
-            - echo "Setting environment variables..."
+            - echo "🌍 Setting environment variables..."
             - export NEXT_PUBLIC_APP_BASE_URL="http://134.209.131.20/backend/api/v1"
-            - echo "Building Next.js app..."
+            - echo "🏗️ Building Next.js app (ISR enabled)..."
             - npm run build
             - rm -rf .next/cache
-            - echo "✅ Build complete."
+            - echo "📦 Preparing build artifacts..."
+            - mkdir -p build-artifacts
+            # Copy only what's needed for runtime
+            - cp -r .next package.json next.config.* public build-artifacts/
+            - echo "✅ Build artifacts ready."
 
           artifacts:
-            - .next/**
-            - package.json
-            - next.config.*
-            - public/**
-            - ecosystem.config.js
+            - build-artifacts/**
 
       - step:
           name: Deploy to Production
           deployment: production
           script:
-            - echo "📦 Uploading app to production server..."
-            - scp -o StrictHostKeyChecking=no -r ./* $SSH_USER@$SERVER:/var/www/html/
-            - echo "🖥️ Running deploy commands on remote server..."
+            - echo "🚀 Uploading optimized build to production server..."
+            # Optional: clean old build (comment if you want to keep previous versions)
+            - ssh -o StrictHostKeyChecking=no $SSH_USER@$SERVER "rm -rf /var/www/html/*"
+            - scp -o StrictHostKeyChecking=no -r build-artifacts/* $SSH_USER@$SERVER:/var/www/html/
+            - echo "🖥️ Running post-deploy tasks on server..."
             - ssh -o StrictHostKeyChecking=no $SSH_USER@$SERVER "
                 set -e
                 cd /var/www/html
-                echo '→ Cleaning old cache'
-                rm -rf .next/cache
-                echo '→ Installing production dependencies'
+                echo '→ Installing production dependencies...'
                 npm ci --omit=dev
-                echo '→ Rebuilding app on server for correct OS binaries'
-                npm run build
-                echo '→ Restarting with PM2'
-                pm2 reload ecosystem.config.js || pm2 start ecosystem.config.js
+                echo '→ Restarting Next.js app via PM2...'
+                pm2 reload all || pm2 start npm --name 'next-app' -- start
                 pm2 save
-                echo '✅ Deployment completed successfully!'
+                echo '✅ Deployment complete. App is live with ISR support.'
               "
