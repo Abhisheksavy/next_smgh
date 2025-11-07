@@ -25,24 +25,19 @@ pipelines:
           name: Deploy to Production
           deployment: production
           script:
-            # --- SSH SETUP ---
+            - echo "Setting up SSH..."
             - mkdir -p ~/.ssh
-            - echo "$DEPLOY_KEY" > ~/.ssh/id_rsa
-            - chmod 600 ~/.ssh/id_rsa
             - echo "Host *" > ~/.ssh/config
             - echo "    StrictHostKeyChecking no" >> ~/.ssh/config
 
-            # --- DEPLOY ---
             - echo "Uploading build to server..."
-            - scp -i ~/.ssh/id_rsa -r build-artifacts/* $SERVER_USER@$SERVER:/var/www/html/
+            - scp -r build-artifacts/* $SERVER_USER@$SERVER:/var/www/html/
 
             - echo "Running post-deploy commands on server..."
-            - ssh -i ~/.ssh/id_rsa $SERVER_USER@$SERVER "
+            - ssh $SERVER_USER@$SERVER "
                 set -e
                 cd /var/www/html
-                echo '→ Installing production dependencies'
                 npm ci --omit=dev || true
-                echo '→ Restarting with PM2'
                 pm2 reload ecosystem.config.js || pm2 start ecosystem.config.js
                 pm2 save
                 echo '✅ Deployment completed successfully!'
