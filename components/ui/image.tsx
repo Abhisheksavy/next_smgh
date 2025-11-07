@@ -1,11 +1,12 @@
-"use client"
+"use client";
 
 import React, { use, useEffect, useRef, useState } from "react";
 import { X } from "lucide-react"; // lightweight icon (lucide-react)
+import Image from "next/image";
 
 interface ImageInputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange"> {
-  label: string;
+  label?: string;
   name: string;
   onFileChange?: (file: File | null) => void;
   previewUrl?: File | string;
@@ -33,7 +34,7 @@ const ImageInput: React.FC<ImageInputProps> = ({
     const file = e.target.files?.[0] || null;
     if (file) {
       setPreview(URL.createObjectURL(file));
-     if(onFileChange) onFileChange(file);
+      if (onFileChange) onFileChange(file);
     }
   };
 
@@ -42,7 +43,7 @@ const ImageInput: React.FC<ImageInputProps> = ({
     e.stopPropagation(); // prevent re-triggering file input
     setPreview("");
     if (fileRef.current) fileRef.current.value = ""; // reset the input itself
-     if(onFileChange) onFileChange(null);
+    if (onFileChange) onFileChange(null);
   };
 
   useEffect(() => {
@@ -69,8 +70,10 @@ const ImageInput: React.FC<ImageInputProps> = ({
       >
         {preview ? (
           <div className="relative">
-            <img
+            <Image
               src={preview}
+              width={100}
+              height={100}
               alt={name}
               className="w-40 h-40 object-cover rounded-md border border-secondary-400 shadow-sm"
             />
