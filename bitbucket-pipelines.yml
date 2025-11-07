@@ -18,7 +18,7 @@ pipelines:
             - echo "📦 Preparing build artifacts..."
             - mkdir -p build-artifacts
             # Copy only runtime-needed files + lockfile
-            - cp -r .next package.json package-lock.json next.config.* public build-artifacts/
+            - cp -r .next public package.json package-lock.json next.config.* build-artifacts/
             - echo "✅ Build artifacts ready."
 
           artifacts:
@@ -29,6 +29,7 @@ pipelines:
           deployment: production
           script:
             - echo "🚀 Uploading optimized build to production server..."
+            # Clean everything except admin folder
             - |
               ssh -o StrictHostKeyChecking=no $SSH_USER@$SERVER "
                 echo '🧹 Cleaning old files except /admin...'
@@ -36,6 +37,7 @@ pipelines:
                 cd /var/www/html
                 rm -rf !(admin)
               "
+            - echo "📤 Copying build artifacts to server..."
             - scp -o StrictHostKeyChecking=no -r build-artifacts/* $SSH_USER@$SERVER:/var/www/html/
             - echo "🖥️ Running post-deploy steps on server..."
             - |
@@ -43,7 +45,7 @@ pipelines:
                 set -e
                 cd /var/www/html
                 echo '→ Installing production dependencies...'
-                npm ci --omit=dev
+                npm ci --omit=dev || npm install --omit=dev
                 echo '→ Restarting Next.js app with PM2...'
                 pm2 delete next-app || true
                 pm2 start node_modules/next/dist/bin/next --name next-app -- start -p 3000
