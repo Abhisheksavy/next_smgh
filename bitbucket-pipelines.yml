@@ -29,31 +29,20 @@ pipelines:
           name: Deploy to Production
           deployment: production
           script:
-<<<<<<< Updated upstream
-            - echo "Uploading build to server..."
-            - scp -o StrictHostKeyChecking=no -r build-artifacts/* $SSH_USER@$SERVER:/var/www/html/
-            - echo "Deploying build on server..."
-            - ssh -o StrictHostKeyChecking=no $SSH_USER@$SERVER "
-              set -e
-              cd /var/www/html
-              echo '→ Installing production dependencies'
-              npm ci --omit=dev
-=======
             - echo "📦 Uploading app to production server..."
             - scp -o StrictHostKeyChecking=no -r ./* $SSH_USER@$SERVER:/var/www/html/
             - echo "🖥️ Running deploy commands on remote server..."
-            - ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER "
-              set -e
-              cd /var/www/html
-              echo '→ Cleaning old cache'
-              rm -rf .next/cache
-              echo '→ Installing production dependencies'
-              npm ci --omit=dev
-              echo '→ Rebuilding app on server for correct OS binaries'
-              npm run build
->>>>>>> Stashed changes
-              echo '→ Restarting with PM2'
-              pm2 reload ecosystem.config.js || pm2 start ecosystem.config.js
-              pm2 save
-              echo '✅ Deployment completed successfully!'
+            - ssh -o StrictHostKeyChecking=no $SSH_USER@$SERVER "
+                set -e
+                cd /var/www/html
+                echo '→ Cleaning old cache'
+                rm -rf .next/cache
+                echo '→ Installing production dependencies'
+                npm ci --omit=dev
+                echo '→ Rebuilding app on server for correct OS binaries'
+                npm run build
+                echo '→ Restarting with PM2'
+                pm2 reload ecosystem.config.js || pm2 start ecosystem.config.js
+                pm2 save
+                echo '✅ Deployment completed successfully!'
               "
