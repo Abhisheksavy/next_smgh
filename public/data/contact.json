@@ -1,0 +1,13 @@
+{
+  "banner": {
+    "backgroundImage": "/images/contactBanner.webp",
+    "title": "Contact Us"
+  },
+  "qualityCare": {
+    "backgroundImage": "/images/aboutQualityCare.webp",
+    "title": "Meet the People Behind Our Mission",
+    "description": "SMMC* is an autonomous non-governmental organization. The foundation consists of two bodies, the Board of Directors and the Supervisory Council. The responsibility for the daily management lies upon the Board of Directors while the responsibility of the Supervisory Council spans supervising the organization strategy and general developments of the hospital."
+  },
+
+  "contact": "true"
+}

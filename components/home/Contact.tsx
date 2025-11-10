@@ -17,9 +17,6 @@ const Contact = async () => {
      if (!data) return null;
      const contactData = data?.content;
      console.log("contcat data", contactData)
-
-
-
   
      const icons = [CallIcon, Location, EmailIcon];
      return (
