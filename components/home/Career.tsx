@@ -124,7 +124,8 @@ const Career = ({ data, isLoading, isError, error }: any) => {
                 className="w-full bg-white/28 pl-4.5"
                 placeholder={data.jobApplyForm.positionApplied.placeholder}
               />
-              <ImageInput  label="Upload Resume / CV" name="resume" previewUrl="" />
+              {/*  */}
+              <ImageInput inline={true} acceptedTypes="images/*" text="Upload Resume / CV" label="" name="resume" previewUrl="" className="inline-flex w-auto px-7 py-5.5 [&>span]:text-black border-primary rounded-xl border-dashed" />
             </div>
           </div>
         </div>

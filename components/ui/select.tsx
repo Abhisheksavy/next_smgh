@@ -50,9 +50,9 @@ export const Select: React.FC<SelectProps> = ({
         type="button"
         onClick={() => setOpen((prev) => !prev)}
         className={cn(
-          "flex w-full items-center justify-between rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm transition-all",
-          "hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500",
-          open && "ring-2 ring-blue-500"
+          "flex w-full items-center justify-between   border-0 bg-primary/4 rounded-xl    outline-none   px-3 py-4 text-sm text-gray-900   transition-all",
+          "hover:bg-primary/10 focus:outline-none  ",
+          open && " "
         )}
       >
         <span className={cn(!selectedLabel && "text-gray-400")}>
