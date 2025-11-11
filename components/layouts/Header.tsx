@@ -88,16 +88,7 @@ export default function Header({ header }: { header?: any }) {
                     <ul className="hidden lg:flex items-center gap-6 xl:gap-8">
                          {header?.navigation.map((item: any) => (
                               <li key={item.id} className="relative">
-                                   {item.href ? (
-                                        <Link
-                                             href={item.href || "#"}
-                                             className={cn("text-white text-sm xl:text-base font-regular hover:text-teal-200 transition-colors cursor-pointer",
-                                                  item.href === pathname ? "text-[#1F9F9E]" : ""
-                                             )}
-                                        >
-                                             {item.label}
-                                        </Link>
-                                   ) : item.children ? (
+                                   {item.children ? (
                                         <div className="relative">
                                              <button
                                                   onClick={() =>
@@ -124,8 +115,16 @@ export default function Header({ header }: { header?: any }) {
                                                   </div>
                                              )}
                                         </div>
+
                                    ) : (
-                                        <span className="text-white">{item.label}</span>
+                                        <Link
+                                             href={item.id === "home" ? "/" : item.href || "#"}
+                                             className={cn("text-white text-sm xl:text-base font-regular hover:text-teal-200 transition-colors cursor-pointer",
+                                                  item.href === pathname ? "text-[#1F9F9E]" : ""
+                                             )}
+                                        >
+                                             {item.label}
+                                        </Link>
                                    )}
                               </li>
                          ))}
@@ -199,24 +198,33 @@ export default function Header({ header }: { header?: any }) {
                     <ul className="py-4">
                          {header.navigation.map((item: any) => (
                               <li key={item.id} className="border-b border-teal-600">
-                                   {item.id}
                                    {item.children ? (
-                                        <div className="relative">
+
+                                        <div>
                                              <button
-                                                  onClick={() => setOpenDropdown(openDropdown === item.id ? null : item.id)}
-                                                  className="flex items-center gap-1 text-white text-sm xl:text-base hover:text-teal-200 transition-colors"
+                                                  onClick={() =>
+                                                       setOpenDropdown(openDropdown === item.id ? null : item.id)
+                                                  }
+                                                  className="w-full flex items-center justify-between px-6 py-3 text-white hover:bg-teal-600 transition-colors"
                                              >
                                                   {item.label}
-                                                  <ChevronDown className="w-4 h-4" />
+                                                  <ChevronDown
+                                                       className={`w-4 h-4 transition-transform ${openDropdown === item.id ? "rotate-180" : ""
+                                                            }`}
+                                                  />
                                              </button>
-                                             {openDropdown === item.id && (
-                                                  <div className="absolute top-full left-0 mt-2 bg-white rounded-lg shadow-lg py-2 min-w-48 z-50">
+
+                                             {openDropdown === item.id && item.children && (
+                                                  <div className="bg-primary">
                                                        {item.children.map((child: any) => (
                                                             <Link
                                                                  key={child.id}
                                                                  href={child.href || "#"}
-                                                                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-primary transition-colors"
-                                                                 onClick={() => setOpenDropdown(null)}
+                                                                 className="block px-10 py-2.5 text-white text-sm hover:bg-primary transition-colors capitalize"
+                                                                 onClick={() => {
+                                                                      setOpenDropdown(null);
+                                                                      setMobileMenuOpen(false);
+                                                                 }}
                                                             >
                                                                  {child.label}
                                                             </Link>
@@ -224,20 +232,18 @@ export default function Header({ header }: { header?: any }) {
                                                   </div>
                                              )}
                                         </div>
+
                                    ) : (
+
                                         <Link
                                              href={item.id === "home" ? "/" : item.href || "#"}
-                                             className={cn(
-                                                  "text-white text-sm xl:text-base font-regular hover:text-teal-200 transition-colors cursor-pointer",
-                                                  item.href === pathname ? "text-[#1F9F9E]" : ""
-                                             )}
+                                             className={`block px-6 py-3 text-white hover:bg-teal-600 transition-colors ${item.id === "home" ? "opacity-60" : ""
+                                                  }`}
+                                             onClick={() => setMobileMenuOpen(false)}
                                         >
-                                             {item.id === "home" ? "Home--" : "965"}
                                              {item.label}
                                         </Link>
-
                                    )}
-
                               </li>
                          ))}
                     </ul>
