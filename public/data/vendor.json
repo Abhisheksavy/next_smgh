@@ -1,0 +1,20 @@
+{
+  "banner": {
+    "backgroundImage": "/images/vendor-registration-banner.webp",
+    "title": "Vendor Management"
+  },
+
+  "data": {
+    "title": "SMGH Vendor Management",
+    "description": "HSS strives to maintain the highest standards and understand the importance of communicating and enabling positive accountability for everyone who contributes to our culture and performance.  Vendors are integral to our operations and we aim to conduct business with Vendors who share our Mission, Values and Purpose, and comply with our policies and expectations. This website provides up-to-date announcements, site access guidelines, purchasing guidelines, vendor-related policies and other resources to support our Vendors.",
+    "link": "#",
+    "list": [
+      " Code of Conduct",
+      "Vendor Onsite Visit",
+      "Vendor Resources",
+      "Purchase Order Standard Terms and Conditions",
+      "Purchasing Guidelines",
+      "Information Security"
+    ]
+  }
+}

@@ -14,25 +14,16 @@ const About = async () => {
           next: {
                revalidate: 10
           }
-     });
- 
-
-   
-
-
-     // console.log(data);
- 
-       
+     }); 
+     // console.log(data);        
      const data1 = await res.json();
      if (!data1) return null;
      const aboutPageData = data1?.data?.content; 
 
-
-
      console.log("about page", aboutPageData);
 
      return (
-          <div>
+          <>
                {/* Cookie code */}
                {/* <div className="flex flex-col gap-2.5">
                <div className="text-center text-2xl font-medium leading-[100%] "> 
@@ -67,7 +58,7 @@ const About = async () => {
                     // error={error}
                     />
                )}
-          </div>
+          </>
      );
 };
 export default About;

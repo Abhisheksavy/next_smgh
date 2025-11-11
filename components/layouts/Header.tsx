@@ -73,8 +73,7 @@ export default function Header({ header }: { header?: any }) {
           <header className="bg-primary py-3 md:py-4 px-4 md:px-6 relative">
                <nav className="container flex items-center justify-between">
                     {/* Mobile Menu Button */}
-                    <button
-                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                          className="lg:hidden text-white p-2 hover:bg-teal-600 rounded-md transition-colors"
                          aria-label="Toggle menu"
                     >
@@ -89,16 +88,16 @@ export default function Header({ header }: { header?: any }) {
                     <ul className="hidden lg:flex items-center gap-6 xl:gap-8">
                          {header?.navigation.map((item: any) => (
                               <li key={item.id} className="relative">
-                                   {item.type === "link" ? (
+                                   {item.href ? (
                                         <Link
-                                             href={item.href || ""}
+                                             href={item.href || "#"}
                                              className={cn("text-white text-sm xl:text-base font-regular hover:text-teal-200 transition-colors cursor-pointer",
                                                   item.href === pathname ? "text-[#1F9F9E]" : ""
                                              )}
                                         >
                                              {item.label}
                                         </Link>
-                                   ) : (
+                                   ) : item.children ? (
                                         <div className="relative">
                                              <button
                                                   onClick={() =>
@@ -112,11 +111,11 @@ export default function Header({ header }: { header?: any }) {
 
                                              {openDropdown === item.id && item.children && (
                                                   <div className="absolute top-full left-0 mt-2 bg-white rounded-lg shadow-lg py-2 min-w-48 z-50">
-                                                       {item.children.map((child:any) => (
+                                                       {item.children.map((child: any) => (
                                                             <Link
                                                                  key={child.id}
-                                                                 href={child.href}
-                                                                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-primary transition-colors"
+                                                                 href={child.href || "#"}
+                                                                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-primary transition-colors capitalize"
                                                                  onClick={() => setOpenDropdown(null)}
                                                             >
                                                                  {child.label}
@@ -125,6 +124,8 @@ export default function Header({ header }: { header?: any }) {
                                                   </div>
                                              )}
                                         </div>
+                                   ) : (
+                                        <span className="text-white">{item.label}</span>
                                    )}
                               </li>
                          ))}
@@ -145,7 +146,7 @@ export default function Header({ header }: { header?: any }) {
 
                               {languageOpen && (
                                    <div className="absolute top-full right-0 mt-2 bg-white rounded-lg shadow-lg py-2 min-w-32 z-50">
-                                        {header?.language?.options.map((option:any) => (
+                                        {header?.language?.options.map((option: any) => (
                                              <button
                                                   key={option.code}
                                                   className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-primary transition-colors"
@@ -196,43 +197,26 @@ export default function Header({ header }: { header?: any }) {
                     </div>
 
                     <ul className="py-4">
-                         {header.navigation.map((item:any) => (
+                         {header.navigation.map((item: any) => (
                               <li key={item.id} className="border-b border-teal-600">
-                                   {item.type === "link" ? (
-                                        <Link
-                                             href={item.href || ""}
-                                             className={`block px-6 py-3 text-white hover:bg-teal-600 transition-colors ${item.id === "home" ? "opacity-60" : ""
-                                                  }`}
-                                             onClick={() => setMobileMenuOpen(false)}
-                                        >
-                                             {item.label}
-                                        </Link>
-                                   ) : (
-                                        <div>
+                                   {item.id}
+                                   {item.children ? (
+                                        <div className="relative">
                                              <button
-                                                  onClick={() =>
-                                                       setOpenDropdown(openDropdown === item.id ? null : item.id)
-                                                  }
-                                                  className="w-full flex items-center justify-between px-6 py-3 text-white hover:bg-teal-600 transition-colors"
+                                                  onClick={() => setOpenDropdown(openDropdown === item.id ? null : item.id)}
+                                                  className="flex items-center gap-1 text-white text-sm xl:text-base hover:text-teal-200 transition-colors"
                                              >
                                                   {item.label}
-                                                  <ChevronDown
-                                                       className={`w-4 h-4 transition-transform ${openDropdown === item.id ? "rotate-180" : ""
-                                                            }`}
-                                                  />
+                                                  <ChevronDown className="w-4 h-4" />
                                              </button>
-
-                                             {openDropdown === item.id && item.children && (
-                                                  <div className="bg-primary">
-                                                       {item.children.map((child:any) => (
+                                             {openDropdown === item.id && (
+                                                  <div className="absolute top-full left-0 mt-2 bg-white rounded-lg shadow-lg py-2 min-w-48 z-50">
+                                                       {item.children.map((child: any) => (
                                                             <Link
                                                                  key={child.id}
-                                                                 href={child.href || ""}
-                                                                 className="block px-10 py-2.5 text-white text-sm hover:bg-primary transition-colors"
-                                                                 onClick={() => {
-                                                                      setOpenDropdown(null);
-                                                                      setMobileMenuOpen(false);
-                                                                 }}
+                                                                 href={child.href || "#"}
+                                                                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-primary transition-colors"
+                                                                 onClick={() => setOpenDropdown(null)}
                                                             >
                                                                  {child.label}
                                                             </Link>
@@ -240,7 +224,20 @@ export default function Header({ header }: { header?: any }) {
                                                   </div>
                                              )}
                                         </div>
+                                   ) : (
+                                        <Link
+                                             href={item.id === "home" ? "/" : item.href || "#"}
+                                             className={cn(
+                                                  "text-white text-sm xl:text-base font-regular hover:text-teal-200 transition-colors cursor-pointer",
+                                                  item.href === pathname ? "text-[#1F9F9E]" : ""
+                                             )}
+                                        >
+                                             {item.id === "home" ? "Home--" : "965"}
+                                             {item.label}
+                                        </Link>
+
                                    )}
+
                               </li>
                          ))}
                     </ul>

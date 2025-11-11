@@ -21,10 +21,7 @@ const LatestNews = (
                                    <div className="h-24 bg-gray-200 animate-pulse rounded" />
                                    <div className="grid grid-cols-2 gap-4">
                                         {[1, 2, 3, 4].map((i) => (
-                                             <div
-                                                  key={i}
-                                                  className="h-24 bg-gray-200 animate-pulse rounded"
-                                             />
+                                             <div key={i} className="h-24 bg-gray-200 animate-pulse rounded" />
                                         ))}
                                    </div>
                               </div>
@@ -57,15 +54,14 @@ const LatestNews = (
                          <h2 className="text-3xl md:text-4xl font-bold text-teal-700 leading-[1.4]">
                               {data.title}
                          </h2>
-                    </div>
-
+                    </div> 
                     <div className="grid grid-cols-12 gap-5 mb-7">
                          {data.newsData.map((item: any, index: number) => {
                               return (
-                                   <div key={index} className="col-span-6 flex flex-row bg-white shadow-[0_0_20px_0_rgba(0,0,0,0.05)]">
+                                   <div key={index} className="col-span-12 lg:col-span-6 flex flex-row bg-white shadow-[0_0_20px_0_rgba(0,0,0,0.05)]">
 
                                         {/* <Image /> */}
-                                        <div className="flex-[0_0_auto] w-40">
+                                        <div className="flex-[0_0_auto] w-30 sm:w-40">
                                              <Image width={160} height={160} className="w-full h-full object-cover block" src={item.img || ""} alt="" /> 
                                         </div>
 
@@ -86,15 +82,12 @@ const LatestNews = (
                                                   Read more <BtnArrowIcon className="text-primary w-3"  />
                                              </Link>
                                         </div>
-                                   </div>
-
+                                   </div> 
                               )
-                         })}
-
-                    </div>
-
+                         })} 
+                    </div> 
                     <div className="text-center">
-                         <Button variant="default" >View All Latest News   </Button>
+                         <Button variant="default">View All Latest News</Button>
                     </div>
                </div>
           </section>

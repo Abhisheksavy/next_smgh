@@ -38,46 +38,45 @@ export default function TopBar({ topbar }: { topbar?: any }) {
 
   return (
     <div className="bg-background py-3 px-4 md:px-6 md:py-6.5">
-      <div className="container flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-0">
+      <div className="container flex flex-row items-center justify-between gap-4 lg:gap-0">
         {/* Logo */}
-        <div className="flex items-center justify-center lg:justify-start w-full lg:w-auto">
+        <div className="flex items-center justify-center sm:justify-start w-auto">
           <Image
             src={data.logo}
             alt={"SMGH Logo"}
             width={100}
             height={33}
-            className="object-contain md:w-24 "
+            className="object-contain h-auto w-18 sm:w-20 md:w-24 "
           />
         </div>
 
         {/* Contact Info */}
-        <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 lg:gap-8 w-full lg:w-auto">
+        <div className="flex  flex-row items-center gap-2 sm:gap-6 lg:gap-8 w-auto lg:w-auto">
           {/* Emergency Contact */}
-          <div className="flex items-center gap-2 w-full sm:w-auto justify-center sm:justify-start">
-            <div className="w-10 h-10 md:w-10 md:h-10 flex items-center justify-center shrink-0">
+          <a href={`tel:${data.emergency.phone}`} className="flex items-center gap-2 w-full- sm:w-auto justify-center sm:justify-start">
+            <div className="h-auto aspect-square w-7 sm:w-8 lg:w-10 flex items-center justify-center shrink-0">
               {/* <Phone className="w-4 h-4 md:w-5 md:h-5 text-teal-600" /> */}
-              <CallIcon className="w-10 h-10" color1="#006980"  color2="#26D17D"  />
+              <CallIcon className="w-6 sm:w-7 lg:w-10 h-auto aspect-square" color1="#006980"  color2="#26D17D"  />
             </div>
-            <div className="text-center sm:text-left">
+            <div className="text-center sm:text-left hidden sm:inline-flex flex-col">
               <p className="text-xs text-primary uppercase tracking-wide font-medium">
                 {data.emergency.label}
               </p>
-              <p className="text-sm md:text-base font-semibold text-secondary-green">
+              <p className="text-sm lg:text-base font-semibold text-secondary-green">
                 {data.emergency.phone}
               </p>
             </div>
-          </div>
-
+          </a>
           {/* Location */}
           <div className="flex items-center gap-2 w-full sm:w-auto justify-center sm:justify-start">
-            <div className="w-10 h-10 md:w-10 md:h-10 flex items-center justify-center shrink-0">
-              <Location  className="w-10 h-10" color1="#006980" color2="#03AD92" />
+            <div className="h-auto aspect-square w-7 sm:w-8 lg:w-10 flex items-center justify-center shrink-0">
+              <Location  className="w-6 sm:w-7 lg:w-10 h-auto aspect-square" color1="#006980" color2="#03AD92" />
             </div>
-            <div className="text-center sm:text-left">
+            <div className="text-left">
               <p className="text-xs text-primary uppercase tracking-wide font-medium">
                 {data.location.label}
               </p>
-              <p className="text-sm md:text-base font-semibold text-secondary">
+              <p className="text-xs sm:text-sm lg:text-base font-semibold text-secondary">
                 {data.location.address}
               </p>
             </div>
