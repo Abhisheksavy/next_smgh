@@ -2,12 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
-import Providers from "./providers";
-import Header from "../components/layouts/Header";
-import TopBar from "../components/layouts/TopBar";
-import Footer from "../components/layouts/Footer";
 
-import LayoutContent from "./layout-content";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -60,18 +55,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-     return (
-          <html lang="en" className={bwSeidoRound.variable}>
-               <body
-                    className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
-               >
-                    <Providers>
-                         <LayoutContent >
-                              <main className="flex-1">{children}</main>
-                         </LayoutContent>
-                    </Providers>
-               </body>
-          </html>
-     );
+  return (
+    <html lang="en" className={bwSeidoRound.variable}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
+      >
+        {/* <Providers>
+          <LayoutContent> */}
+        <main className="flex-1">{children}</main>
+        {/* </LayoutContent>
+        </Providers> */}
+      </body>
+    </html>
+  );
 }
