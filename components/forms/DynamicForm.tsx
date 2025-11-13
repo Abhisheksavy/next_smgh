@@ -7,7 +7,7 @@ import Input from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { useFormSubmission } from "@/queries/useFormSubmission";
 import toast from "react-hot-toast";
 
 interface FieldConfig {
@@ -67,7 +67,7 @@ interface DynamicFormProps {
 }
 
 export default function DynamicForm({ config, formSlug, banner }: DynamicFormProps) {
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    const { mutate: submitForm, isPending: isSubmitting } = useFormSubmission();
 
     // Flatten all fields from nested structure
     const getAllFields = (): Record<string, FieldConfig> => {
@@ -249,64 +249,57 @@ export default function DynamicForm({ config, formSlug, banner }: DynamicFormPro
         name: "incidentDetails_staffResponsible",
     });
 
-    const onSubmit = async (data: any) => {
-        setIsSubmitting(true);
-        try {
-            const formData = new FormData();
+    const onSubmit = (data: any) => {
+        const formData = new FormData();
 
-            // Flatten nested keys back to original structure
-            Object.entries(data).forEach(([key, value]) => {
-                if (value && value !== "") {
-                    // Handle arrays (like importance checkboxes)
-                    if (Array.isArray(value)) {
-                        value.forEach((item) => {
-                            formData.append(`${key}[]`, String(item));
-                        });
-                    }
-                    // Handle nested keys (e.g., personalInfo_firstName -> personalInfo[firstName])
-                    else if (key.includes("_")) {
-                        const [section, fieldName] = key.split("_", 2);
-                        formData.append(`${section}[${fieldName}]`, String(value));
-                    } else {
-                        formData.append(key, String(value));
-                    }
+        // Flatten nested keys back to original structure
+        Object.entries(data).forEach(([key, value]) => {
+            if (value && value !== "") {
+                // Handle arrays (like importance checkboxes)
+                if (Array.isArray(value)) {
+                    value.forEach((item) => {
+                        formData.append(`${key}[]`, String(item));
+                    });
                 }
-            });
-
-            // Determine the form type based on slug
-            const formTypeMap: Record<string, string> = {
-                "compliment-form": "compliment",
-                "complaint-form": "complaint_suggestion",
-                "contact": "contact_us",
-                "contact-us": "contact_us",
-                "service-enhancement-questionnaire": "service_enhancement",
-                "material-damage-claim-form": "material_damage_claim",
-            };
-
-            const formType = formTypeMap[formSlug] || formSlug.replace(/-/g, "_");
-
-            const response = await fetch(
-                `${process.env.NEXT_PUBLIC_APP_BASE_URL}/form/${formType}/store`,
-                {
-                    method: "POST",
-                    body: formData,
+                // Handle nested keys (e.g., personalInfo_firstName -> personalInfo[firstName])
+                else if (key.includes("_")) {
+                    const [section, fieldName] = key.split("_", 2);
+                    formData.append(`${section}[${fieldName}]`, String(value));
+                } else {
+                    formData.append(key, String(value));
                 }
-            );
-
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message || "Failed to submit form");
             }
+        });
 
-            const result = await response.json();
-            toast.success("Form submitted successfully!");
-            reset();
-        } catch (error: any) {
-            console.error("Form submission error:", error);
-            toast.error(error.message || "Something went wrong. Please try again.");
-        } finally {
-            setIsSubmitting(false);
-        }
+        // Determine the form type based on slug
+        const formTypeMap: Record<string, string> = {
+            "compliment-form": "compliment",
+            "complaint-form": "complaint_suggestion",
+            "contact": "contact_us",
+            "contact-us": "contact_us",
+            "service-enhancement-questionnaire": "service_enhancement",
+            "material-damage-claim-form": "material_damage_claim",
+        };
+
+        const formType = formTypeMap[formSlug] || formSlug.replace(/-/g, "_");
+
+        submitForm(
+            { formType, formData },
+            {
+                onSuccess: (data) => {
+                    // Show success message from API or use form-specific default
+                    const successMessage =
+                        data?.message ||
+                        data?.data?.message ||
+                        `${config.heading || config.contactForm?.heading || "Form"} submitted successfully!`;
+
+                    toast.success(successMessage);
+
+                    // Reset form after successful submission
+                    reset();
+                },
+            }
+        );
     };
 
     // Render field based on type

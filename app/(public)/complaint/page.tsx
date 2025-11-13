@@ -31,6 +31,7 @@ function ComplaintPageContent() {
      const [activeForm, setActiveForm] = useState<string>("");
      const [loading, setLoading] = useState(true);
      const [error, setError] = useState<string | null>(null);
+     const [currentFormSlug, setCurrentFormSlug] = useState<string>("");
 
      // Normalize title to handle variations (e.g., "Contact Us" and "Contact")
      const normalizeTitle = (title: string): string => {
@@ -138,13 +139,13 @@ function ComplaintPageContent() {
      const handleFormChange = (formTitle: string) => {
           const normalizedTitle = normalizeTitle(formTitle);
           setActiveForm(normalizedTitle);
-          const slug = formSlugMap[normalizedTitle] || formTitle.toLowerCase().replace(/\s+/g, "-");
-          fetchFormConfig(slug);
 
           // Update URL without page reload
+          const slug = formSlugMap[normalizedTitle] || formTitle.toLowerCase().replace(/\s+/g, "-");
           const url = new URL(window.location.href);
           url.searchParams.set("form", slug);
           window.history.pushState({}, "", url.toString());
+          // Note: fetchFormConfig will be called by useEffect when activeForm changes
      };
 
      useEffect(() => {
@@ -157,6 +158,8 @@ function ComplaintPageContent() {
                const title = formTitleMap[formParam] || normalizeTitle(sidebarItems[0]?.title || "");
                if (title && title !== activeForm) {
                     setActiveForm(title);
+                    // Reset currentFormSlug when formParam changes to allow fetching
+                    setCurrentFormSlug("");
                }
           }
      }, [sidebarItems, formParam]);
@@ -165,9 +168,13 @@ function ComplaintPageContent() {
      useEffect(() => {
           if (activeForm && sidebarItems.length > 0) {
                const slug = formSlugMap[activeForm] || formParam;
-               fetchFormConfig(slug);
+               // Only fetch if it's a different form to prevent duplicate calls
+               if (slug !== currentFormSlug) {
+                    setCurrentFormSlug(slug);
+                    fetchFormConfig(slug);
+               }
           }
-     }, [activeForm]);
+     }, [activeForm, sidebarItems]);
 
      if (error && !formConfig) {
           return (
