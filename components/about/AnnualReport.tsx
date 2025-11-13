@@ -3,6 +3,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Download } from "lucide-react";
 import { cn } from "@/utils/twMerge";
+import Image from "next/image";
 const AnnualReport = ({ annualReport }: any) => {
      const [activeIndex, setActiveIndex] = useState<number>(0);
      const [activeTab, setActiveTab] = useState<any | null>(null);
@@ -28,8 +29,8 @@ const AnnualReport = ({ annualReport }: any) => {
                          <p className="tagline mb-1.5">{annualReport?.year}</p>
                          <h2 className="commonTitle ">Annual Report </h2>
                     </div>
-                    <div className="grid grid-cols-12 2xl:gap-24 gap-10">
-                         <div className="col-span-6 ">
+                    <div className="grid grid-cols-12 2xl:gap-24 gap-4 sm:gap-6 md:8 lg:gap-10">
+                         <div className="col-span-12 md:col-span-6 ">
                               {annualReport?.reports.map(
                                    (content: any, index: number) => {
                                         return (
@@ -47,27 +48,29 @@ const AnnualReport = ({ annualReport }: any) => {
                                                        </h3>
                                                        {content.file && <div className={`overflow-hidden transition-all duration-300 mt-2 ${activeIndex === index
                                                             ? "max-h-40 mt-3 opacity-100"
-                                                            : "max-h-0 opacity-0" }`}>
-                                                           <a href={content.file} download className="text-foreground flex gap-2">
+                                                            : "max-h-0 opacity-0"}`}>
+                                                            <a href={content.file} download className="text-foreground flex gap-2">
                                                                  <Download className="text-secondary" />
                                                                  <span className="text-foreground text-base font-normal">
                                                                       Download Annual Report {content?.year}{" "}
                                                                       {/* {carrer.duration} */}
                                                                  </span>
-                                                            </a> 
-                                                       </div> }
+                                                            </a>
+                                                       </div>}
                                                   </div>
                                              </div>
                                         );
                                    }
                               )}
                          </div>
-                         <div className="col-span-6 ">
+                         <div className="col-span-12 md:col-span-6  flex flex-col items-center justify-center">
                               {/* image to change on cick of button? */}
-                              <img
+                              <Image
+                                   width={110}
+                                   height={110}
                                    src={activeTab?.reportImage}
                                    alt=""
-                                   className="-rotate-6"
+                                   className="-rotate-0 sm:-rotate-3 md:-rotate-4 lg:-rotate-6 w-full h-auto object-contain max-w-107"
                               />
                          </div>
                     </div>

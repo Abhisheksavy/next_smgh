@@ -22,12 +22,12 @@
      --font-mono: var(--font-bw-seido-round);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
      :root {
-          --background: #0a0a0a;
+          --background: #ffffff;
           --foreground: #ededed;
      }
-}
+} */
 
 body {
      background: var(--background);
@@ -88,7 +88,7 @@ body {
 } */
 
 .container { 
-     @apply container mx-auto px-4 md:px-6 mx-auto px-4 md:px-6 min-[992px]:max-[1366px]:max-w-[989px] min-[1368px]:max-[1599px]:max-w-[1170px] min-[1600px]:max-w-7xl; 
+     @apply container mx-auto px-4 md:px-6 min-[992px]:max-[1400px]:max-w-[989px] min-[1401px]:max-[1599px]:max-w-[1170px] min-[1600px]:max-w-7xl; 
 }
 
 

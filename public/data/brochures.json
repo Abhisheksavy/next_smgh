@@ -1,0 +1,77 @@
+{
+  "banner": {
+    "backgroundImage": "/images/broucherbanner.webp",
+    "title": "Brochures"
+  },
+  "brouchers": {
+    "data": [
+      {
+        "img": "/images/brochures1.webp",
+        "published": "Monday 27, September 2022",
+        "title": "SMGH Corporate Brochure",
+        "file": "/images/test.odt"
+      },
+      {
+        "img": "/images/brochures2.webp",
+        "published": "Monday 27, September 2022",
+        "title": "Admission Brochure",
+        "file": "/images/test.odt"
+      },
+      {
+        "img": "/images/brochures3.webp",
+        "published": "Monday 27, September 2022",
+        "title": "Medical Specialties Available",
+        "file": "/images/test.odt"
+      },
+      {
+        "img": "/images/brochures4.webp",
+        "published": "Monday 27, September 2022",
+        "title": "Quality Care",
+        "file": "/images/test.odt"
+      },
+      {
+        "img": "/images/brochures2.webp",
+        "published": "Monday 27, September 2022",
+        "title": "General Surgery",
+        "file": "/images/test.odt"
+      },
+      {
+        "img": "/images/brochures3.webp",
+        "published": "Monday 27, September 2022",
+        "title": "Dermatology",
+        "file": "/images/test.odt"
+      },
+      {
+        "img": "/images/brochures4.webp",
+        "published": "Monday 27, September 2022",
+        "title": "Quality Care",
+        "file": "/images/test.odt"
+      }
+    ],
+    "total": 4,
+    "limit": 4,
+    "page": 1
+  },
+
+  "contact": {
+    "tagline": "CARE YOU CAN BELIEVE IN",
+    "title": "Featured Services",
+    "communicationWays": [
+      {
+        "communicationName": "Emergency",
+        "wayToCommunicate": "+1721 543 1111",
+        "href": "#"
+      },
+      {
+        "communicationName": "Location",
+        "wayToCommunicate": "+1721 543 1111",
+        "href": "#"
+      },
+      {
+        "communicationName": "Email",
+        "wayToCommunicate": "info@smmc.sx",
+        "href": "#"
+      }
+    ]
+  }
+}

@@ -8,13 +8,13 @@ const MissionVision = ({ mission }:{mission:any}) => {
      return (
           <section className="section-padding "> 
                <div className="container relative z-2">
-                    <div className="grid grid-cols-8 gap-3">
+                    <div className="grid grid-cols-12 gap-3">
                         
                          
                          {mission?.vision?.slice(0, 2).map((data: any, index: number) => {
                               console.log("mission page data", data)
                               return (
-                                   <div key={index} className="col-span-4 bg-primary/4 px-8 pt-8">
+                                   <div key={index} className="col-span-12 md:col-span-6 bg-primary/4 px-8 pt-8">
                                         {(() => {
                                              const words = data?.description?.split(" ") || []
                                              const title = words.slice(0, 2).join(" ")
@@ -38,16 +38,16 @@ const MissionVision = ({ mission }:{mission:any}) => {
                          })}
 
                          {mission?.vision?.[2] && (
-                              <div className="col-span-8  bg-primary/4 px-8 pt-8">
+                              <div className="col-span-12  bg-primary/4 px-8 pt-8">
                                    <div className="grid grid-cols-12 gap-3">
-                                        <div className="col-span-6 flex flex-col justify-between">
+                                        <div className="col-span-12 md:col-span-6 flex flex-col justify-between">
                                              <h2 className="text-2xl font-normal! commonTitle">  {mission?.vision?.[2]?.description} </h2>
                                              <div className=" -ml-8">
                                                   <Image width="400" height="400" src="/images/ourValues.svg" alt="" className="max-w-65 w-full h-auto opacity-4" />
                                                   {/* <Image width="400" height="400" src={mission.vision?.[2]?.backgroundImage} alt="" className="max-w-75 w-full h-auto opacity-4" /> */}
                                              </div>
                                         </div>
-                                        <div className="col-span-6 flex flex-col gap-y-6 pb-8">
+                                        <div className="col-span-12 md:col-span-6 flex flex-col gap-y-6 pb-8">
                                              {mission.vision?.[2] && (
                                                   mission.vision?.[2].items?.map((list: any, index: number) => {
                                                        return (

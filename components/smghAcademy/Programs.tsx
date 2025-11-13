@@ -17,10 +17,11 @@ const Programs = ({ data }: { data: any }) => {
                 <div
                   className={cn(
                     "p-11 bg-[#00698008] flex col-span-6 flex-col gap-2",
-                    index % 2 !== 0 && "mt-10"
+                    index % 2 !== 0 && "mt-10 -mb-10",  
                   )}
                   key={index}
                 >
+                    {}
                   <h3 className="text-[#03AD92] font-medium text-2xl">
                     {program?.title}
                   </h3>

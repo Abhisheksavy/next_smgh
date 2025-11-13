@@ -39,7 +39,7 @@ const Contact = async () => {
                                         key={index}
                                         href={items.href}
                                         className={cn(
-                                             "py-13 col-span-4 pl-6 pr-14 rounded-sm",
+                                             "py-13 col-span-12 sm:col-span-6 md:col-span-4 pl-6 pr-14 rounded-sm",
                                              index === 1 ? "bg-primary" : "bg-[#1F9F9E]"
                                         )}
                                    >

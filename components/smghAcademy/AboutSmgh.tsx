@@ -5,8 +5,8 @@ const AboutSmgh = ({ data }: { data: any }) => {
   return (
     <section className="section-padding bg-white">
       <div className="container">
-        <div className="grid grid-cols-12">
-          <div className="space-y-6 col-span-6 max-w-165 text-center mx-auto mb-16">
+        <div className="grid grid-cols-12  gap-7 xl:gap-8 2xl:gap-10 items-center">
+          <div className="space-y-6 col-span-6 mx-auto mb-16">
             <p className="tagline mb-1.5">{data.tagline}</p>
             <h2 className="commonTitle ">{data.title}</h2>
             <p className="text-gray-600 text-base  leading-relaxed">
