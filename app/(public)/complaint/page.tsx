@@ -1,198 +1,251 @@
-"use client"
-import React from 'react'
-import { ArrowRight, User } from 'lucide-react';
-import { zodResolver } from "@hookform/resolvers/zod"
-import Input from '@/components/ui/input';
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-import { Button } from '@/components/ui/button';
+"use client";
 
-const userSchema = z.object({
-     firstName: z.string().min(1, "First name is required"),
-     lastName: z.string().min(1, "Family name is required"),
-     dob: z.string().min(1, "D.O.B is required"),
-     gender: z.string().min(1, "Gender is required"),
-     emailAddress: z.string().email("Invalid email format"),
-     contact: z.string().regex(/^[0-9]{10,15}$/, "Contact must be a valid number"),
-     comments: z.string().optional(),
+import { useEffect, useState, Suspense } from "react";
+import FormSidebar from "@/components/forms/FormSidebar";
+import DynamicForm from "@/components/forms/DynamicForm";
+import InnerBanner from "@/components/common/InnerBanner";
+import { useSearchParams } from "next/navigation";
 
-});
+interface SidebarItem {
+     title: string;
+}
 
-type UserFormData = z.infer<typeof userSchema>
+interface FormData {
+     fields?: Record<string, any>;
+     heading?: string;
+     submitLabel?: string;
+     enabled?: string | boolean;
+     banner?: {
+          title?: string;
+          backgroundImage?: string;
+     };
+     [key: string]: any; // Allow other properties from API
+}
 
-export default function SubmitComplaint() {
-     const {
-          register,
-          handleSubmit,
-          formState: { errors, isSubmitting },
-          reset,
-     } = useForm<UserFormData>({
-          resolver: zodResolver(userSchema),
+function ComplaintPageContent() {
+     const searchParams = useSearchParams();
+     const formParam = searchParams.get("form") || "compliment-form";
 
-     })
+     const [sidebarItems, setSidebarItems] = useState<SidebarItem[]>([]);
+     const [formConfig, setFormConfig] = useState<FormData | null>(null);
+     const [activeForm, setActiveForm] = useState<string>("");
+     const [loading, setLoading] = useState(true);
+     const [error, setError] = useState<string | null>(null);
 
+     // Normalize title to handle variations (e.g., "Contact Us" and "Contact")
+     const normalizeTitle = (title: string): string => {
+          const normalized = title.toLowerCase().trim();
 
-     const onSubmit = (data: UserFormData) => {
-          console.log("Form Submitted:", data)
-          reset()
-     }
+          // Handle contact variations
+          if (normalized.includes("contact")) {
+               return "Contact Us";
+          }
+          // Handle compliment variations
+          if (normalized.includes("compliment")) {
+               return "Compliment Form";
+          }
+          // Handle complaint variations
+          if (normalized.includes("complaint")) {
+               return "Complaint Form";
+          }
+          // Handle service enhancement variations
+          if (normalized.includes("service") && normalized.includes("enhancement")) {
+               return "Service Enhancement Questionnaire";
+          }
+          // Handle material damage variations
+          if (normalized.includes("material") && normalized.includes("damage")) {
+               return "Material Damage Claim Form";
+          }
 
+          return title;
+     };
 
-     return (
-          <section className='section-padding'>
-               <div className="container">
-                    <div className="grid grid-cols-12 gap-4">
-                         <div className="md:col-span-5 lg:col-span-4 2xl:col-span-3">
-                              <div className="">
-                                   <div>Contact Us</div>
-                                   <div>Complaint Form</div>
-                                   <div>Complaint Form</div>
-                              </div>
-                         </div>
-                         <div className="md:col-span-7 lg:col-span-8 2xl:col-span-9">
-                              <div className="form-container bg-primary/3 section-padding spacing-x rounded-md px-10 py-15">
-                                   <div className="text-center mb-10">
-                                        <h2 className="text-center commonTitle font-medium!">Submit a Complaint</h2>
-                                   </div>
+     // Map form slugs to normalized titles
+     const formTitleMap: Record<string, string> = {
+          "contact": "Contact Us",
+          "contact-us": "Contact Us",
+          "compliment-form": "Compliment Form",
+          "complaint-form": "Complaint Form",
+          "service-enhancement-questionnaire": "Service Enhancement Questionnaire",
+          "material-damage-claim-form": "Material Damage Claim Form",
+     };
 
-                                   <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-12 gap-6">
-                                        <div className='col-span-4'>
-                                             <label className='mb-2.5 block'>First Name <sup>*</sup></label>
-                                             <Input
-                                                  className="w-full bg-primary/4 px-4 rounded"
-                                                  {...register("firstName")}
-                                                  placeholder=""
-                                             />
+     // Map normalized form titles to slugs
+     const formSlugMap: Record<string, string> = {
+          "Contact Us": "contact",
+          "Compliment Form": "compliment-form",
+          "Complaint Form": "complaint-form",
+          "Service Enhancement Questionnaire": "service-enhancement-questionnaire",
+          "Material Damage Claim Form": "material-damage-claim-form",
+     };
 
-                                             {errors.firstName && (
-                                                  <p className="text-red-500 text-sm mt-1">
-                                                       {errors.firstName.message}
-                                                  </p>
-                                             )}
-                                        </div>
+     // Fetch sidebar items
+     const fetchSidebarItems = async () => {
+          try {
+               const res = await fetch(
+                    `${process.env.NEXT_PUBLIC_APP_BASE_URL}/pages/form-tab`
+               );
 
-                                        <div className='col-span-4'>
-                                             <label className='mb-2.5 block'>last Name <sup>*</sup></label>
-                                             <Input
-                                                  className="w-full bg-primary/4 px-4 rounded"
-                                                  {...register("lastName")}
-                                                  placeholder=""
-                                             />
-                                             {errors.lastName && (
-                                                  <p className="text-red-500 text-sm mt-1">
-                                                       {errors.lastName.message}
-                                                  </p>
-                                             )}
-                                        </div>
-                                        <div className='col-span-4'>
-                                             <label className='mb-2.5 block'>D.O.B <sup>*</sup></label>
-                                             <Input
-                                                  className="w-full bg-primary/4 px-4 rounded"
-                                                  {...register("dob")}
-                                                  placeholder=""
-                                             />
-                                             {errors.dob && (
-                                                  <p className="text-red-500 text-sm mt-1">
-                                                       {errors.dob.message}
-                                                  </p>
-                                             )}
-                                        </div>
+               if (!res.ok) throw new Error("Failed to fetch sidebar items");
 
-                                        <div className=" col-span-12">
-                                             <label className="mb-2.5 block">Gender <sup>*</sup></label>
-                                             <div className="flex items-center gap-6">
-                                                  <label className="flex items-center gap-2">
-                                                       <input
-                                                            type="radio"
-                                                            value="Male"
-                                                            {...register("gender", { required: "Gender is required" })}
-                                                       />
-                                                       Male
-                                                  </label>
-                                                  <label className="flex items-center gap-2">
-                                                       <input
-                                                            type="radio"
-                                                            value="Female"
-                                                            {...register("gender", { required: "Gender is required" })}
-                                                       />
-                                                       Female
-                                                  </label>
-                                                  <label className="flex items-center gap-2">
-                                                       <input
-                                                            type="radio"
-                                                            value="Not Relevant"
-                                                            {...register("gender", { required: "Gender is required" })}
-                                                       />
-                                                       Not Relevant
-                                                  </label>
-                                             </div>
-                                             {errors.gender && (
-                                                  <p className="text-red-500 text-sm mt-1">{errors.gender.message}</p>
-                                             )}
-                                        </div>
+               const { data } = await res.json();
+               const items = data?.content?.items || [];
+               setSidebarItems(items);
 
+               // Set active form based on URL param
+               if (formParam) {
+                    const title = formTitleMap[formParam] || normalizeTitle(items[0]?.title || "");
+                    setActiveForm(title);
+               } else if (items.length > 0) {
+                    setActiveForm(normalizeTitle(items[0].title));
+               }
+          } catch (err: any) {
+               console.error("Error fetching sidebar:", err);
+               setError(err.message);
+          }
+     };
 
-                                        <div className="col-span-12">
-                                             <label className='mb-2.5 block'>Email Address <sup>*</sup></label>
-                                             <Input
-                                                  type="email"
-                                                  className="w-full bg-primary/4 px-4 rounded"
-                                                  {...register("emailAddress")}
-                                                  placeholder=""
-                                             />
-                                             {errors.emailAddress && (
-                                                  <p className="text-red-500 text-sm mt-1">
-                                                       {errors.emailAddress.message}
-                                                  </p>
-                                             )}
-                                        </div>
+     // Fetch form configuration
+     const fetchFormConfig = async (formSlug: string) => {
+          try {
+               setLoading(true);
+               const res = await fetch(
+                    `${process.env.NEXT_PUBLIC_APP_BASE_URL}/pages/${formSlug}`
+               );
 
-                                        <div className="col-span-12">
-                                             <label className='mb-2.5 block'>Contact  <sup>*</sup></label>
-                                             <Input
-                                                  type="text"
-                                                  className="w-full bg-primary/4 px-4 rounded"
-                                                  {...register("contact")}
-                                                  placeholder=""
-                                             />
+               if (!res.ok) throw new Error(`Failed to fetch form: ${formSlug}`);
 
-                                             {errors.contact && (
-                                                  <p className="text-red-500 text-sm mt-1">
-                                                       {errors.contact.message}
-                                                  </p>
-                                             )}
-                                        </div>
+               const { data } = await res.json();
+               const config = data?.content;
+               const banner = data?.content?.banner;
 
-                                        <div className="col-span-12">
-                                             <label className='mb-2.5 block'>Your Comments (optional)</label>
-                                             <textarea
-                                                  rows={5}
-                                                  placeholder=""
-                                                  {...register("comments")}
-                                                  className="w-full bg-primary/4 px-4 rounded min-h-30"
-                                             />
-                                        </div>
+               if (config && (config.enabled !== "false" || config.contact === "true")) {
+                    setFormConfig({ ...config, banner });
+               } else {
+                    setFormConfig(null);
+                    setError("This form is currently unavailable.");
+               }
+          } catch (err: any) {
+               console.error("Error fetching form:", err);
+               setError(err.message);
+               setFormConfig(null);
+          } finally {
+               setLoading(false);
+          }
+     };
 
-                                        <div className="col-span-12 text-center">
-                                             {/* <button
-                                                  type="submit"
-                                                  disabled={isSubmitting}
-                                                  className="bg-primary text-white px-6 py-3 rounded-md hover:bg-primary/80 transition"
-                                             >
-                                                 
-                                             </button> */}
+     // Handle form change
+     const handleFormChange = (formTitle: string) => {
+          const normalizedTitle = normalizeTitle(formTitle);
+          setActiveForm(normalizedTitle);
+          const slug = formSlugMap[normalizedTitle] || formTitle.toLowerCase().replace(/\s+/g, "-");
+          fetchFormConfig(slug);
 
-                                             <Button type='submit' variant='default' disabled={isSubmitting} >
-                                                  {isSubmitting ? "Submitting..." : <>Submit  <ArrowRight /></>}
-                                             </Button>
+          // Update URL without page reload
+          const url = new URL(window.location.href);
+          url.searchParams.set("form", slug);
+          window.history.pushState({}, "", url.toString());
+     };
 
-                                        </div>
-                                   </form>
+     useEffect(() => {
+          fetchSidebarItems();
+     }, []);
 
-                              </div>
+     // Set active form from URL param when sidebar items are loaded
+     useEffect(() => {
+          if (sidebarItems.length > 0) {
+               const title = formTitleMap[formParam] || normalizeTitle(sidebarItems[0]?.title || "");
+               if (title && title !== activeForm) {
+                    setActiveForm(title);
+               }
+          }
+     }, [sidebarItems, formParam]);
+
+     // Fetch form config when active form changes
+     useEffect(() => {
+          if (activeForm && sidebarItems.length > 0) {
+               const slug = formSlugMap[activeForm] || formParam;
+               fetchFormConfig(slug);
+          }
+     }, [activeForm]);
+
+     if (error && !formConfig) {
+          return (
+               <div className="section-padding">
+                    <div className="container">
+                         <div className="text-center py-10">
+                              <p className="text-red-500">{error}</p>
                          </div>
                     </div>
                </div>
-          </section>
-     )
+          );
+     }
+
+     return (
+          <>
+               <InnerBanner
+                    data={{
+                         title: formConfig?.banner?.title || activeForm || "Forms",
+                         backgroundImage: formConfig?.banner?.backgroundImage || "/images/banner.png",
+                    }}
+               />
+               <section className="section-padding">
+                    <div className="container">
+                         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+                              {/* Sidebar */}
+                              <div className="md:col-span-4 lg:col-span-3">
+                                   <FormSidebar
+                                        items={sidebarItems}
+                                        activeForm={activeForm}
+                                        onFormChange={handleFormChange}
+                                   />
+                              </div>
+
+                              {/* Form Content */}
+                              <div className="md:col-span-8 lg:col-span-9">
+                                   {loading ? (
+                                        <div className="form-container bg-primary/3 section-padding spacing-x rounded-md">
+                                             <div className="text-center py-10">
+                                                  <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+                                                  <p className="mt-4 text-gray-600">Loading form...</p>
+                                             </div>
+                                        </div>
+                                   ) : formConfig ? (
+                                        <DynamicForm
+                                             config={formConfig as any}
+                                             formSlug={formSlugMap[activeForm] || formParam}
+                                             banner={formConfig.banner}
+                                        />
+                                   ) : (
+                                        <div className="form-container bg-primary/3 section-padding spacing-x rounded-md">
+                                             <div className="text-center py-10">
+                                                  <p className="text-gray-500">Form not available.</p>
+                                             </div>
+                                        </div>
+                                   )}
+                              </div>
+                         </div>
+                    </div>
+               </section>
+          </>
+     );
+}
+
+export default function ComplaintPage() {
+     return (
+          <Suspense
+               fallback={
+                    <div className="section-padding">
+                         <div className="container">
+                              <div className="text-center py-10">
+                                   <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+                                   <p className="mt-4 text-gray-600">Loading...</p>
+                              </div>
+                         </div>
+                    </div>
+               }
+          >
+               <ComplaintPageContent />
+          </Suspense>
+     );
 }
