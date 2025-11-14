@@ -60,7 +60,7 @@ const Career = ({ data, isLoading, isError, error }: any) => {
         </div>
 
         <div className="grid grid-cols-12 2xl:gap-24 gap-4 sm:gap-6 md:8 lg:gap-10">
-          <div className="col-span-6 ">
+          <div className="col-span-12 md:col-span-6 ">
             {data.careerOptions.map((carrer: any, index: number) => {
               return (
                 <div className="border-t py-8 border-[#EAECF0]" key={index}>
@@ -99,8 +99,8 @@ const Career = ({ data, isLoading, isError, error }: any) => {
             </div>
           </div>
 
-          <div className="col-span-6 rounded-sm bg-[#1F9F9E] py-16 px-8.5">
-            <h6 className="text-3xl font-medium text-center text-white  mb-7">
+          <div className="col-span-12 md:col-span-6 rounded-sm bg-[#1F9F9E] py-7 sm:py-8 md:py-10 lg:py-12 xl:py-14 2xl:py-16 px-4 lg:px-5 xl:px-7 2xl:px-8.5">
+            <h6 className="text-3xl font-medium text-center text-white mb-7">
               {data?.jobApplyFormHeading}
             </h6>
             <div className="flex flex-col gap-6">

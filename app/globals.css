@@ -137,3 +137,27 @@ body {
 
 
 }
+
+.react-datepicker {
+  @apply border border-gray-200 rounded-xl shadow-lg;
+}
+
+.react-datepicker__header {
+  @apply bg-blue-50 border-b border-gray-200;
+}
+
+.react-datepicker__current-month {
+  @apply text-sm font-semibold text-gray-700;
+}
+
+.react-datepicker__day-name {
+  @apply text-gray-500 text-xs font-medium;
+}
+
+.react-datepicker__day--keyboard-selected {
+  @apply bg-blue-500 text-white;
+}
+
+.react-datepicker__navigation-icon::before {
+  @apply border-gray-600;
+}

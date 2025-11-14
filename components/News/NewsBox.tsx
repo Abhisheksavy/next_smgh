@@ -57,6 +57,7 @@ export default async function NewsBox({ type, currentPage }: NewsBoxProps) {
                 <p className="text-[#000000] font-normal text-base leading-normal mt-2.5 line-clamp-4">
                   {data?.content}
                 </p>
+                <div className="[&>p]:text-[#000000] [&>p]:font-normal [&>p]:text-base [&>p]:leading-normal mt-2.5 [&>p]:line-clamp-4" dangerouslySetInnerHTML={{ __html:data?.content}}></div>
               </div>
               <Button href={data?.link} variant="default">
                 Read More <ArrowRight />

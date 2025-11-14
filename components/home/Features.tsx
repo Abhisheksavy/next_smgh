@@ -1,5 +1,4 @@
 "use client";
-
 import DialysisIcon from "@/icons/home-icons/dialysis";
 import InternationalMedicalIcon from "@/icons/home-icons/international";
 import OphthalmologyIcon from "@/icons/home-icons/ophthalmology";
@@ -7,7 +6,6 @@ import UrologyIcon from "@/icons/home-icons/urology";
 import { Droplet, Globe, Eye, Activity } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
 // Icon mapping
 const iconMap: { [key: string]: any } = {
   dialysis: DialysisIcon,
@@ -103,11 +101,10 @@ export default function FeaturedServices({
             <div className="grid grid-cols-4 gap-4 py-6">
               {data.services.map((service: any, index: number) => {
                 const IconComponent = iconMap[service.title.split(" ")[0].toLowerCase()] || Activity;
-
                 return (
                   <div
                     key={index}
-                    className="flex flex-col items-center justify-center px-4 py-2.5 border  bg-white border-[#C6DFE3] rounded-lg hover:border-teal-600 hover:shadow-md transition-all duration-300 cursor-pointer"
+                    className="flex flex-col col-span-4 min-[420px]:col-span-2 lg:col-span-1 items-center justify-center px-4 py-2.5 border  bg-white border-[#C6DFE3] rounded-lg hover:border-teal-600 hover:shadow-md transition-all duration-300 cursor-pointer"
                   >
                     <IconComponent className="w-8 h-8 text-primary mb-2" />
                     <span className="text-base font-regular text-dark text-center">

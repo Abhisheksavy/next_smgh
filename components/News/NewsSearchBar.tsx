@@ -44,7 +44,7 @@ export default function NewsSearchBar({
         placeholder={placeholder}
         className="w-full h-12.5 px-5 py-3.5 rounded-md border-0 bg-primary text-white"
       />
-      <button type="submit" className="absolute right-0 top-0 bottom-0 pr-5">
+      <button type="submit" className="absolute right-0 top-0 bottom-0 pr-5 outline-0 focus:outline-0">
         <Search className="text-secondary w-4 h-4" />
       </button>
     </form>

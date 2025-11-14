@@ -23,13 +23,10 @@ const VendorRegistration = () => {
                               <li><strong>ALL VENDORS</strong> must be registered and credentialed with Green Security and in receipt of their Green Security ID Badge for access to any HSS facility (please consult the Vendor Onsite Visit tab for site-specific access information). Register here. Already have a Green Security account? Log in and add HSS to your list of participating accounts. </li>
                               <li><strong>ALL VENDORS</strong> accessing the HSS Main Campus and contiguous buildings (Belaire and Pavilion) must enter through the dedicated Vendor Entrance, located on 70th Street (please consult the Vendor Onsite Visit tab for additional information).</li>
                          </ul>
- 
- 
-
                          <div className="grid grid-cols-12 gap-7.5 mt-12.5">
                               {data?.data?.list?.map((item: any, index: any) => {
                                    return (
-                                        <div key={index} className='col-span-4 bg-primary/3 rounded-md px-8.5 py-7 text-center'> 
+                                        <div key={index} className='col-span-4 bg-primary/3 rounded-md  px-4 lg:px-5 xl:px-7 2xl:px-8.5 py-7 text-center'> 
                                              <p className='font-semibold'>{item}</p> 
                                         </div>
                                    )

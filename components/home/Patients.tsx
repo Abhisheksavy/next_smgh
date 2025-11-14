@@ -67,7 +67,7 @@ const Patients = ({ data, isLoading, isError, error }: any) => {
               return (
                 <div
                   key={index}
-                  className="col-span-3 border border-[#00000030] flex justify-center group hover:bg-primary hover:rounded-sm hover:text-white! items-center py-14  transition-all duration-400 ease-in-out  "
+                  className="col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-3 border border-[#00000030] flex justify-center group hover:bg-primary hover:rounded-sm hover:text-white! items-center py-14  transition-all duration-400 ease-in-out"
                 >
                   <div className="flex flex-col items-center  gap-2">
                     <HeartBeat

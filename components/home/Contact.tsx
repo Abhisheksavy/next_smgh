@@ -31,7 +31,7 @@ const Contact = async () => {
                          </h2>
                     </div>
 
-                    <div className="grid grid-cols-12 gap-7">
+                    <div className="grid grid-cols-12 lg:gap-7">
                          {contactData?.communicationWays.map((items: any, index: any) => {
                               const IconComponent = icons[index % icons.length];
                               return (
@@ -39,10 +39,9 @@ const Contact = async () => {
                                         key={index}
                                         href={items.href}
                                         className={cn(
-                                             "py-13 col-span-12 sm:col-span-6 md:col-span-4 pl-6 pr-14 rounded-sm",
+                                             " py-7 sm:py-8 md:py-10 lg:py-12 xl:py-14 2xl:py-13 col-span-12 sm:col-span-6 md:col-span-4 pl-6 pr-14 rounded-sm",
                                              index === 1 ? "bg-primary" : "bg-[#1F9F9E]"
-                                        )}
-                                   >
+                                        )} >
                                         <IconComponent className="mb-4  text-white" />
                                         <div className="flex flex-col gap-1">
                                              <span className="font-bold text-lg text-white uppercase">
