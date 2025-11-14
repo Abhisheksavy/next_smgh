@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useState, Suspense } from "react";
+import { useEffect, useState, Suspense, useRef } from "react";
 import FormSidebar from "@/components/forms/FormSidebar";
 import DynamicForm from "@/components/forms/DynamicForm";
 import InnerBanner from "@/components/common/InnerBanner";
 import { useSearchParams } from "next/navigation";
+import LatestNews from "@/components/home/LatestNews";
+import ContactClient from "@/components/home/ContactClient";
 
 interface SidebarItem {
   title: string;
@@ -32,6 +34,7 @@ function ComplaintPageContent() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [currentFormSlug, setCurrentFormSlug] = useState<string>("");
+  const previousFormParam = useRef<string>("");
 
   // Normalize title to handle variations (e.g., "Contact Us" and "Contact")
   const normalizeTitle = (title: string): string => {
@@ -92,15 +95,7 @@ function ComplaintPageContent() {
       const { data } = await res.json();
       const items = data?.content?.items || [];
       setSidebarItems(items);
-
-      // Set active form based on URL param
-      if (formParam) {
-        const title =
-          formTitleMap[formParam] || normalizeTitle(items[0]?.title || "");
-        setActiveForm(title);
-      } else if (items.length > 0) {
-        setActiveForm(normalizeTitle(items[0].title));
-      }
+      // Don't set activeForm here - let the useEffect handle it
     } catch (err: any) {
       console.error("Error fetching sidebar:", err);
       setError(err.message);
@@ -127,6 +122,7 @@ function ComplaintPageContent() {
         setFormConfig(null);
         setError("This form is currently unavailable.");
       }
+      setLoading(false);
     } catch (err: any) {
       console.error("Error fetching form:", err);
       setError(err.message);
@@ -148,25 +144,43 @@ function ComplaintPageContent() {
     const url = new URL(window.location.href);
     url.searchParams.set("form", slug);
     window.history.pushState({}, "", url.toString());
+    // Update previousFormParam to prevent unnecessary re-fetching
+    previousFormParam.current = slug;
+    // Reset currentFormSlug to allow fetching new form
+    setCurrentFormSlug("");
     // Note: fetchFormConfig will be called by useEffect when activeForm changes
   };
 
   useEffect(() => {
     fetchSidebarItems();
-  }, []);
+  }, []); // Only fetch sidebar items once on mount
 
   // Set active form from URL param when sidebar items are loaded
   useEffect(() => {
     if (sidebarItems.length > 0) {
-      const title =
-        formTitleMap[formParam] || normalizeTitle(sidebarItems[0]?.title || "");
-      if (title && title !== activeForm) {
-        setActiveForm(title);
-        // Reset currentFormSlug when formParam changes to allow fetching
-        setCurrentFormSlug("");
+      // Only update if formParam actually changed
+      if (formParam !== previousFormParam.current) {
+        const title =
+          formTitleMap[formParam] || normalizeTitle(sidebarItems[0]?.title || "");
+        if (title && title !== activeForm) {
+          setActiveForm(title);
+          // Reset currentFormSlug when formParam changes to allow fetching
+          setCurrentFormSlug("");
+          previousFormParam.current = formParam;
+        }
+      } else if (!activeForm) {
+        // Initial setup when activeForm is empty
+        const title =
+          formTitleMap[formParam] || normalizeTitle(sidebarItems[0]?.title || "");
+        if (title) {
+          setActiveForm(title);
+          setCurrentFormSlug("");
+          previousFormParam.current = formParam;
+        }
       }
     }
-  }, [sidebarItems, formParam]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sidebarItems, formParam]); // activeForm intentionally excluded to prevent loops
 
   // Fetch form config when active form changes
   useEffect(() => {
@@ -178,7 +192,8 @@ function ComplaintPageContent() {
         fetchFormConfig(slug);
       }
     }
-  }, [activeForm, sidebarItems]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeForm, sidebarItems]); // formParam and currentFormSlug intentionally excluded
 
   if (error && !formConfig) {
     return (
@@ -223,11 +238,14 @@ function ComplaintPageContent() {
                   </div>
                 </div>
               ) : formConfig ? (
-                <DynamicForm
-                  config={formConfig as any}
-                  formSlug={formSlugMap[activeForm] || formParam}
-                  banner={formConfig.banner}
-                />
+                <>
+                  <DynamicForm
+                    config={formConfig as any}
+                    formSlug={formSlugMap[activeForm] || formParam}
+                    banner={formConfig.banner}
+                  />
+                  {formConfig?.contact === "true" && <ContactClient />}
+                </>
               ) : (
                 <div className="form-container bg-primary/3 section-padding spacing-x rounded-md">
                   <div className="text-center py-10">
@@ -239,6 +257,9 @@ function ComplaintPageContent() {
           </div>
         </div>
       </section>
+
+      {/* {formConfig?.latestNews && <LatestNews data={data?.latestNews} />} */}
+
     </>
   );
 }
