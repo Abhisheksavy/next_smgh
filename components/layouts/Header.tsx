@@ -1,6 +1,6 @@
 "use client";
 
-import { useGetHeaderData } from "@/queries/useLayout";
+import { useGetHeaderData, useGetPatientCareTabData } from "@/queries/useLayout";
 import { ChevronDown, Globe, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -10,9 +10,11 @@ import { cn } from "@/utils/twMerge";
 export default function Header({ header }: { header?: any }) {
      const pathname = usePathname();
      // const { data, isLoading, isError, error } = useGetHeaderData();
+     const { data: patientCareData } = useGetPatientCareTabData();
      const [openDropdown, setOpenDropdown] = useState<string | null>(null);
      const [languageOpen, setLanguageOpen] = useState(false);
      const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+     const [navigationWithDropdown, setNavigationWithDropdown] = useState<any[]>([]);
 
      // Close mobile menu on resize to desktop
      useEffect(() => {
@@ -34,6 +36,41 @@ export default function Header({ header }: { header?: any }) {
                document.body.style.overflow = "unset";
           }
      }, [mobileMenuOpen]);
+
+     // Update navigation with dropdown for third item (index 2)
+     useEffect(() => {
+          const patientCareItems = patientCareData?.content?.items || [];
+
+          if (header?.navigation && patientCareItems.length > 0) {
+               const updatedNavigation = header.navigation.map((item: any, index: number) => {
+                    // Third item (index 2) should have dropdown
+                    if (index === 2) {
+                         return {
+                              ...item,
+                              children: patientCareItems.map((careItem: any, idx: number) => {
+                                   // Generate URL-friendly slug from title
+                                   const slug = careItem.title
+                                        .toLowerCase()
+                                        .replace(/\s+/g, "-")
+                                        .replace(/&/g, "and")
+                                        .replace(/[^a-z0-9-]/g, "");
+                                   return {
+                                        id: `patient-care-${idx}`,
+                                        label: careItem.title,
+                                        href: `/patient-care/${slug}`,
+                                   };
+                              }),
+                         };
+                    }
+                    return item;
+               });
+               setNavigationWithDropdown(updatedNavigation);
+          } else if (header?.navigation) {
+               // If patient care items not loaded yet, use original navigation
+               setNavigationWithDropdown(header.navigation);
+          }
+     }, [header?.navigation, patientCareData]);
+
      console.log("data.navigation", header?.navigation);
      if (!header) {
           return (
@@ -86,7 +123,7 @@ export default function Header({ header }: { header?: any }) {
 
                     {/* Desktop Navigation Links */}
                     <ul className="hidden lg:flex items-center gap-6 xl:gap-8">
-                         {header?.navigation.map((item: any) => (
+                         {(navigationWithDropdown.length > 0 ? navigationWithDropdown : header?.navigation || []).map((item: any) => (
                               <li key={item.id} className="relative">
                                    {item.children ? (
                                         <div className="relative">
@@ -196,7 +233,7 @@ export default function Header({ header }: { header?: any }) {
                     </div>
 
                     <ul className="py-4">
-                         {header.navigation.map((item: any) => (
+                         {(navigationWithDropdown.length > 0 ? navigationWithDropdown : header?.navigation || []).map((item: any) => (
                               <li key={item.id} className="border-b border-teal-600">
                                    {item.children ? (
 

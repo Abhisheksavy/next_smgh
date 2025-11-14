@@ -47,3 +47,13 @@ export const useGetFooterData = () => {
         error,
     };
 };
+
+export const useGetPatientCareTabData = () => {
+    return useQuery({
+        queryKey: ["patient-care-tab"],
+        queryFn: () => layoutServices.getPatientCareTabData(),
+        staleTime: 1000 * 60 * 60, // 1 hour
+        refetchOnWindowFocus: false,
+        retry: 2,
+    });
+};
