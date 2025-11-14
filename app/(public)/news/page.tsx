@@ -8,13 +8,22 @@ import SubscriptionForm from "@/components/common/subscription";
 import NewsTags from "@/components/News/NewsTags";
 import RecentNews from "@/components/News/RecentNews";
 import Categories from "@/components/News/Categories";
+import NewsSearchBar from "@/components/News/NewsSearchBar";
 
 interface NewsPageProps {
-  searchParams: { page?: string };
+  searchParams: {
+    page?: string;
+    search?: string;
+    tag?: string;
+    category?: string;
+  };
 }
 
 export default async function News({ searchParams }: NewsPageProps) {
   const currentPage = Number(searchParams.page) || 1;
+  const searchQuery = searchParams.search || "";
+  const tagSlug = searchParams.tag || "";
+  const categorySlug = searchParams.category || "";
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_APP_BASE_URL}/pages/news`,
     {
@@ -37,16 +46,10 @@ export default async function News({ searchParams }: NewsPageProps) {
             </div>
 
             <div className="col-span-4 flex flex-col gap-6">
-              <div className="relative">
-                <Input
-                  type="text"
-                  placeholder={data?.content?.sidebar?.searchHeading}
-                  className="w-full h-12.5 px-5 py-3.5 rounded-md border-0 bg-primary text-white"
-                />
-                <button className="absolute right-0 top-0 bottom-0 pr-5">
-                  <Search className="text-secondary w-4 h-4" />
-                </button>
-              </div>
+              <NewsSearchBar
+                placeholder={data?.content?.sidebar?.searchHeading}
+                initialSearch={searchQuery}
+              />
 
               <NewsTags
                 type="news"

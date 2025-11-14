@@ -17,6 +17,7 @@ export default async function RecentNews({
   if (!res.ok) throw new Error("Failed to fetch recents");
 
   const { data } = await res.json();
+  console.log(data);
 
   return (
     <div className="p-5 border rounded-md border-primary/20">
@@ -38,7 +39,7 @@ export default async function RecentNews({
               </div>
               <div className="flex-1">
                 <h3 className="text-secondary text-xs"> {item?.title}</h3>
-                <p className="text-sm"> {item?.content}</p>
+                <p className="text-sm"> {item?.description}</p>
               </div>
             </a>
           );
