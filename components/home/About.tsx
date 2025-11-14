@@ -38,7 +38,7 @@ export default function About({ data, isLoading, isError, error }: any) {
                <div className="container">
                     <div className="flex flex-col items-center">
                          {/* Left Content */}
-                         <div className="space-y-6 max-w-165 text-center mx-auto mb-16">
+                         <div className="space-y-6 max-w-165 text-center mx-auto mb-7 md:mb-9 lg:mb-11 xl:mb-13 2xl:mb-16">
                               <p className="tagline mb-1.5">
                                    {data.tagline}
                               </p>
@@ -61,7 +61,7 @@ export default function About({ data, isLoading, isError, error }: any) {
                          <div className="relative overflow-hidden shadow-xl  ">
                               <Image src={data.image} alt={data.title} width={1200}
                                    height={600} className="w-full  h-auto" />
-                                   <div className="imageBorderBottom"></div>
+                              <div className="imageBorderBottom"></div>
                          </div>
                     </div>
                </div>

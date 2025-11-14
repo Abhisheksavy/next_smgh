@@ -63,7 +63,7 @@ const ContactClient = () => {
     return (
         <section className="section-padding bg-white">
             <div className="container">
-                <div className="text-center mb-12">
+                <div className="text-center mb-6 md:mb-8 lg:mb-10 2xl:mb-12">
                     <p className="tagline mb-2 ">{contactData?.tagline}</p>
                     <h2 className="commonTitle font-bold!  ">{contactData?.title}</h2>
                 </div>

@@ -29,13 +29,13 @@ const AnnualReport = ({ annualReport }: any) => {
                          <p className="tagline mb-1.5">{annualReport?.year}</p>
                          <h2 className="commonTitle ">Annual Report </h2>
                     </div>
-                    <div className="grid grid-cols-12 2xl:gap-24 gap-4 sm:gap-6 md:8 lg:gap-10">
+                    <div className="grid grid-cols-12 gap-4 sm:gap-6 md:gap-8 lg:gap-10 2xl:gap-24">
                          <div className="col-span-12 md:col-span-6 ">
                               {annualReport?.reports.map(
                                    (content: any, index: number) => {
                                         return (
                                              <div
-                                                  className={cn("border-t py-8 border-[#EAECF0] ", activeIndex === index ? "" : "cursor-pointer")}
+                                                  className={cn("border-t  py-3 md:py-4 lg:py-5 2xl:py-8 border-[#EAECF0] ", activeIndex === index ? "" : "cursor-pointer")}
                                                   key={index}
                                                   onClick={() => handleToggle(content, index)}
                                              >

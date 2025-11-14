@@ -7,7 +7,7 @@ const VirtualTour = ({ data, isLoading, isError, error }: any) => {
           return (
                <div className="section-padding">
                     <div className="container">
-                         <div className="text-center mb-12">
+                         <div className="text-center mb-6 md:mb-8 lg:mb-10 2xl:mb-12">
                               <div className="h-6 w-48 bg-gray-200 animate-pulse rounded mx-auto mb-2" />
                               <div className="h-10 w-64 bg-gray-200 animate-pulse rounded mx-auto" />
                          </div>
@@ -46,15 +46,15 @@ const VirtualTour = ({ data, isLoading, isError, error }: any) => {
      return (
           <section className="section-padding  bg-center bg-cover bg-no-repeat" style={{ backgroundImage: `url(https://placehold.co/1920x768)` }}>
                <div className="container">
-                    <div className="rounded-sm bg-primary text-center py-11">
-                         <div className="mx-auto max-w-180.5 flex flex-col gap-8">
+                    <div className="rounded-sm bg-primary text-center py-6 md:py-8 lg:py-10 2xl:py-11 px-4">
+                         <div className="mx-auto max-w-180.5 flex flex-col gap-5 sm:gap-6 lg:gap-7 2xl:gap-8">
                               <div className="flex flex-col gap-2">
-                                   <h2 className="commonTitle font-medium! text-white!">
+                                   <h2 className="commonTitle font-medium! text-white! mb-0!">
                                         {data.title}
                                    </h2>
                                    <p className=" leading-relaxed text-[#FCFEFE]/80">{data.description}</p>
                               </div>
-                              <div className="flex items-center justify-center gap-4">
+                              <div className="flex items-center justify-center">
                                    <Button href={data.cta.href} variant="default">  {data.cta.label}</Button>
                               </div>
                          </div>

@@ -22,7 +22,7 @@ const Contact = async () => {
      return (
           <section className="section-padding bg-white">
                <div className="container">
-                    <div className="text-center mb-12">
+                    <div className="text-center mb-6 md:mb-8 lg:mb-10 2xl:mb-12">
                          <p className="tagline mb-2 ">
                               {contactData?.tagline}
                          </p>
@@ -31,7 +31,7 @@ const Contact = async () => {
                          </h2>
                     </div>
 
-                    <div className="grid grid-cols-12 lg:gap-7">
+                    <div className="grid grid-cols-12 gap-y-7 sm:gap-7">
                          {contactData?.communicationWays.map((items: any, index: any) => {
                               const IconComponent = icons[index % icons.length];
                               return (

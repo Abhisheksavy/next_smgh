@@ -1,5 +1,3 @@
-
-
 import RightArrowIcon from "@/icons/home-icons/arrowRight";
 import { cn } from "@/utils/twMerge";
 import { ArrowRight } from "lucide-react";
@@ -8,7 +6,7 @@ import Link from "next/link";
 
 export default function Banner({ data, isLoading, isError, error }: any) {
 
-     
+
      const bgColors = ["bg-secondary", "bg-primary", "bg-tealgreen", "bg-primaryGreen"];
      if (isLoading) {
           return (
@@ -39,12 +37,12 @@ export default function Banner({ data, isLoading, isError, error }: any) {
                     </p>
                </div>
           );
-     } 
+     }
 
      return (
           <div>
                {/* Hero Banner */}
-               <section className="relative  bg-gradient-to-r from-teal-50 to-teal-100 overflow-hidden">
+               <section className="relative bg-gradient-to-r from-teal-50 to-teal-100 overflow-hidden">
                     <div className="absolute inset-0">
                          <Image
                               src={data?.backgroundImage}
@@ -57,8 +55,7 @@ export default function Banner({ data, isLoading, isError, error }: any) {
                          {/* <div className="absolute top-0 left-0 w-64 h-64 bg-teal-400 rounded-full opacity-20 -translate-x-1/2 -translate-y-1/2" /> */}
                          {/* <div className="absolute bottom-0 right-0 w-96 h-96 bg-teal-500 rounded-full opacity-20 translate-x-1/3 translate-y-1/3" /> */}
                     </div>
-
-                    <div className="relative container h-full flex items-center py-42">
+                    <div className="relative container h-full flex items-center py-28 sm:py-30 md:py-32 lg:py-35 xl:py-38 2xl:py-42">
                          <div className="max-w-xl">
                               <p className="tagline">
                                    {data.tagline}
@@ -75,22 +72,19 @@ export default function Banner({ data, isLoading, isError, error }: any) {
                          </div>
                     </div>
                </section>
-
                {/* Quick Links */}
-               <section className="relative -mt-10 z-10">
+               <section className="relative -mt-8 xl:-mt-10 z-10">
                     <div className="container">
-                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                         <div className="grid grid-cols-1 min-[375px]:grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                               {data.quickLinks.map((link: any, index: number) => (
-                                   <Link
-                                        key={index}
-                                        // href={link?.href}
-                                        href={"/"}
-                                        className={cn("group bg-teal-600 hover:bg-teal-700 text-white px-5 py-7 rounded-lg transition-all transform  duration-300 ease-in-out shadow-lg flex items-center justify-between",
-                                            bgColors[index % bgColors.length]
-                                        )}
-                                   >
-                                        <span className="text-lg font-regular">{link.title}</span>
-                                        <RightArrowIcon className="w-6  group-hover:translate-x-2 group-hover:rotate-405  transition-transform duration-300 ease-in-out" />
+                                   <Link key={index}
+                                        href={link?.href || "/"}
+                                        // href={"/"}
+                                        className={cn("group bg-teal-600 hover:bg-teal-700 text-white px-5 py-5 xl:py-7 rounded-lg transition-all transform  duration-300 ease-in-out shadow-lg flex gap-1 items-center justify-between",
+                                             bgColors[index % bgColors.length]
+                                        )}>
+                                        <span className="text-sm lg:text-base xl:text-lg font-regular">{link.title}</span>
+                                        <RightArrowIcon className="w-3 sm:w-3.5 lg:w-4 2xl:w-4.5 aspect-square h-auto group-hover:translate-x-2 group-hover:rotate-405  transition-transform duration-300 ease-in-out" />
                                    </Link>
                               ))}
                          </div>

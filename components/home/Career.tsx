@@ -4,13 +4,14 @@ import Link from "next/link";
 import React from "react";
 import Input from "../ui/input";
 import ImageInput from "../ui/image";
+import { Button } from "../ui/button";
 
 const Career = ({ data, isLoading, isError, error }: any) => { 
   // if (isLoading) {
   //   return (
   //     <div className="section-padding">
   //       <div className="container">
-  //         <div className="text-center mb-12">
+  //         <div className="text-center mb-6 md:mb-8 lg:mb-10 2xl:mb-12">
   //           <div className="h-6 w-48 bg-gray-200 animate-pulse rounded mx-auto mb-2" />
   //           <div className="h-10 w-64 bg-gray-200 animate-pulse rounded mx-auto" />
   //         </div>
@@ -50,7 +51,7 @@ const Career = ({ data, isLoading, isError, error }: any) => {
   return (
     <section className="section-padding bg-white">
       <div className="container">
-        <div className="text-left mb-12">
+        <div className="text-left mb-6 md:mb-8 lg:mb-10 2xl:mb-12">
           <p className="tagline">
             {data.tagLine}
           </p>
@@ -59,20 +60,20 @@ const Career = ({ data, isLoading, isError, error }: any) => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-12 2xl:gap-24 gap-4 sm:gap-6 md:8 lg:gap-10">
+        <div className="grid grid-cols-12 gap-4 sm:gap-6 md:gap-8 lg:gap-10 2xl:gap-24 items-center">
           <div className="col-span-12 md:col-span-6 ">
             {data.careerOptions.map((carrer: any, index: number) => {
               return (
-                <div className="border-t py-8 border-[#EAECF0]" key={index}>
+                <div className="border-t py-3 md:py-4 lg:py-5 2xl:py-8 border-[#EAECF0]" key={index}>
                   <div className="flex flex-col gap-2">
-                    <h4 className="text-secondary text-lg font-medium mb-2">
+                    <h4 className="text-secondary text-lg font-medium mb-0 md:mb-2">
                       {carrer.careerName}
                     </h4>
                     <p className="text-foreground text-base font-normal ">
                       {carrer.careerDescription}
                     </p>
                   </div>
-                  <div className="flex flex-row mt-6 gap-2 items-center">
+                  <div className="flex flex-row mt-4 md:mt-6 gap-2 items-center">
                     <ClockIcon />
                     <span className="text-foreground text-base font-normal">
                       {carrer.duration}
@@ -81,21 +82,23 @@ const Career = ({ data, isLoading, isError, error }: any) => {
                 </div>
               );
             })}
-            <div className="flex flex-row gap-2.5">
-              <Link
+            <div className="flex flex-wrap gap-2.5 mt-4">
+              {/* <Link
                 // href={data.jobsCta.href ?? "/"}
-                href={data?.cta2.href ?? "/"}
+                href={data?.cta1.href ?? "/"}
                 className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg"
               >
                 {data?.cta1.label}
-              </Link>
-              <Link
+              </Link> */}
+              <Button  href={data?.cta1.href ?? "/"}>{data?.cta1.label}</Button>
+              <Button variant="outline" href={data?.cta2.href ?? "/"}>{data?.cta2.label}</Button>
+              {/* <Link
                 className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg"
                 // href={data.exploreCta.href ?? "/"}
                 href={data?.cta2.href ?? "/"}
               >
                 {data?.cta2.label}
-              </Link>
+              </Link> */}
             </div>
           </div>
 

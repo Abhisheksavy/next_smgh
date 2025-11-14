@@ -9,7 +9,7 @@ const Patients = ({ data, isLoading, isError, error }: any) => {
     return (
       <div className="section-padding">
         <div className="container">
-          <div className="text-center mb-12">
+          <div className="text-center mb-6 md:mb-8 lg:mb-10 2xl:mb-12">
             <div className="h-6 w-48 bg-gray-200 animate-pulse rounded mx-auto mb-2" />
             <div className="h-10 w-64 bg-gray-200 animate-pulse rounded mx-auto" />
           </div>
@@ -61,19 +61,17 @@ const Patients = ({ data, isLoading, isError, error }: any) => {
           <p className="text-center">{data.description}</p>
         </div>
 
-        <div className="pt-16 grid grid-cols-12 ">
+        <div className="pt-7.5 md:pt-12 lg:pt-14 xl:pt-16 2xl:pt-16 grid grid-cols-12 ">
           {data &&
             data?.visitorsInfo.map((info: any, index: number) => {
               return (
                 <div
                   key={index}
-                  className="col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-3 border border-[#00000030] flex justify-center group hover:bg-primary hover:rounded-sm hover:text-white! items-center py-14  transition-all duration-400 ease-in-out"
+                  className="col-span-12 min-[375px]:col-span-6  sm:col-span-6 lg:col-span-4 xl:col-span-3 border border-[#00000030] flex justify-center group hover:bg-primary hover:rounded-sm hover:text-white! items-center px-4 py-5 sm:py-6 md:lg:py-8 lg:py-10 xl:py-12 2xl:py-14 transition-all duration-400 ease-in-out"
                 >
                   <div className="flex flex-col items-center  gap-2">
-                    <HeartBeat
-                      className={cn("text-secondary group-hover:text-white! transition-all duration-400 ease-in-out")}
-                    />
-                    <a href={info?.cta?.href} className="text-base text-[#2112124] group-hover:text-white font-normal transition-all duration-400 ease-in-out">
+                    <HeartBeat className={cn("text-secondary group-hover:text-white! transition-all duration-400 ease-in-out w-8 md:w-9 lg:w-10 xl:w-11 2xl:w-12.5")} />
+                    <a href={info?.cta?.href} className="text-center text-sm sm:text-base text-[#2112124] group-hover:text-white font-normal transition-all duration-400 ease-in-out">
                       {info?.cta?.label}
                     </a>
                   </div>

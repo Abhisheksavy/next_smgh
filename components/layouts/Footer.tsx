@@ -25,8 +25,8 @@ export default function Footer({ footer }: { footer: any }) {
      const [chatOpen, setChatOpen] = useState(false);
      if (!footer) {
           return (
-               <footer className="bg-primary text-[#FCFEFE] py-16 px-8 md:px-12">
-                    <div className="max-w-[1400px] mx-auto">
+               <footer className="bg-primary text-[#FCFEFE] py-16  ">
+                    <div className="container">
                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                               {[1, 2, 3, 4].map((i) => (
                                    <div key={i} className="space-y-4">
@@ -46,8 +46,8 @@ export default function Footer({ footer }: { footer: any }) {
 
      if (!footer) {
           return (
-               <footer className="bg-primary text-[#FCFEFE] py-16 px-8 md:px-12">
-                    <div className="max-w-[1400px] mx-auto">
+               <footer className="bg-primary text-[#FCFEFE] py-16  ">
+                    <div className="container">
                          <p className="text-red-300 text-sm text-center">
                               Failed to load footer
                               {/* : {error?.message || "Unknown error"} */}
@@ -59,8 +59,8 @@ export default function Footer({ footer }: { footer: any }) {
 
      return (
           <>
-               <footer className="bg-primary text-[#FCFEFE] py-16 px-8 md:px-12">
-                    <div className="max-w-[1400px] mx-auto">
+               <footer className="bg-primary text-[#FCFEFE] py-16  ">
+                    <div className="container">
                          {/* Main Footer Content */}
                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 mb-16">
                               {/* Logo & Tagline */}
@@ -79,7 +79,6 @@ export default function Footer({ footer }: { footer: any }) {
                                    />
                                    <p className="text-base leading-relaxed">{footer?.logo.tagline}</p>
                               </div>
-
                               {/* Dynamic Columns */}
                               {footer?.columns.map((column: any) => (
                                    <div key={column.id} className="space-y-5">
@@ -101,10 +100,8 @@ export default function Footer({ footer }: { footer: any }) {
                                    </div>
                               ))}
                          </div>
-
                          {/* Divider */}
-                         <div className="border-t border-[#2A8FA3] mb-12"></div>
-
+                         <div className="border-t border-[#2A8FA3] mb-6 md:mb-8 lg:mb-10 2xl:mb-12"></div>
                          {/* Bottom Section */}
                          <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-sm">
                               {/* Copyright and Social Icons */}
@@ -112,8 +109,6 @@ export default function Footer({ footer }: { footer: any }) {
                                    <p className="text-[#FCFEFE] text-center md:text-left">
                                         {footer?.copyright}
                                    </p>
-
-
                               </div>
                               {/* Social Media Icons */}
                               <div className="flex items-center gap-3">
@@ -133,7 +128,6 @@ export default function Footer({ footer }: { footer: any }) {
                                         );
                                    })}
                               </div>
-
                               {/* Bottom Links and Accessibility */}
                               <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
                                    {footer?.bottomLinks?.map((link: any, index: number) => (
@@ -150,7 +144,6 @@ export default function Footer({ footer }: { footer: any }) {
                                    ))}
                               </div>
                          </div>
-
                          {/* WCAG Accessibility - Centered */}
                          <div className="text-center mt-8">
                               <Link
@@ -163,14 +156,12 @@ export default function Footer({ footer }: { footer: any }) {
                          </div>
                     </div>
                </footer>
-
                {/* Floating Chat Button */}
                {footer?.chatBot.enabled && (
                     <button
                          onClick={() => setChatOpen(!chatOpen)}
                          className="fixed bottom-8 right-8 w-16 h-16 md:w-20 md:h-20 bg-[#42B8CC] rounded-full shadow-2xl hover:shadow-3xl transition-all flex items-center justify-center z-50 hover:scale-105"
-                         aria-label="Open chat"
-                    >
+                         aria-label="Open chat">
                          <ChatIcon className="w-8 h-8 md:w-10 md:h-10 text-white" />
                     </button>
                )}
