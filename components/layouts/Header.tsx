@@ -46,9 +46,11 @@ export default function Header({ header }: { header?: any }) {
 
                // If href is like 'patient-care-services' (without /patient?tab=), convert it
                if (href && !href.includes("?tab=") && !href.startsWith("/")) {
-                    href = `/patient?tab=${href}`;
+                    // href = `/patient?tab=${href}`;
+                    href = `/patient-care?tab=${href}`;
                } else if (href && !href.startsWith("/") && !href.includes("?")) {
-                    href = `/patient?tab=${href}`;
+                    // href = `/patient?tab=${href}`;
+                    href = `/patient-care?tab=${href}`;
                }
 
                // Generate label from href if missing
