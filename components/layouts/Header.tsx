@@ -47,10 +47,8 @@ export default function Header({ header }: { header?: any }) {
                // If href is like 'patient-care-services' (without /patient?tab=), convert it
                if (href && !href.includes("?tab=") && !href.startsWith("/")) {
                     // href = `/patient?tab=${href}`;
-                    href = `/patient-care?tab=${href}`;
                } else if (href && !href.startsWith("/") && !href.includes("?")) {
                     // href = `/patient?tab=${href}`;
-                    href = `/patient-care?tab=${href}`;
                }
 
                // Generate label from href if missing
@@ -118,47 +116,47 @@ export default function Header({ header }: { header?: any }) {
           if (header?.navigation) {
                const updatedNavigation = header.navigation.map((item: any, index: number) => {
                     // Index 1 (Services) - convert to single link with patient?tab= format
-                    if (index === 1) {
-                         let href = item.href || "";
+                    // if (index === 1) {
+                    //      let href = item.href || "";
 
-                         // If href already has ?tab= format, ensure it starts with /
-                         if (href.includes("?tab=")) {
-                              if (!href.startsWith("/")) {
-                                   href = `/${href}`;
-                              }
-                         } else {
-                              // Convert href to patient?tab=patient-care-services format
-                              // If href is like 'patient-care-services', use it directly
-                              // Otherwise convert it
-                              if (href && !href.startsWith("/") && !href.startsWith("http")) {
-                                   // If it's already in the right format (starts with patient-care-), use it
-                                   if (href.startsWith("patient-care-")) {
-                                        href = `/patient?tab=${href}`;
-                                   } else {
-                                        // Otherwise, convert and add patient-care- prefix
-                                        const slug = href.toLowerCase().replace(/\s+/g, "-").replace(/&/g, "and");
-                                        href = `/patient?tab=patient-care-${slug}`;
-                                   }
-                              } else if (href && href.startsWith("/")) {
-                                   // If it's already a path like /patient-care-services, extract and convert
-                                   const pathParts = href.split("/").filter(Boolean);
-                                   if (pathParts.length > 0) {
-                                        const lastPart = pathParts[pathParts.length - 1];
-                                        if (lastPart.startsWith("patient-care-")) {
-                                             href = `/patient?tab=${lastPart}`;
-                                        } else {
-                                             href = `/patient?tab=patient-care-${lastPart}`;
-                                        }
-                                   }
-                              }
-                         }
+                    //      // If href already has ?tab= format, ensure it starts with /
+                    //      if (href.includes("?tab=")) {
+                    //           if (!href.startsWith("/")) {
+                    //                href = `/${href}`;
+                    //           }
+                    //      } else {
+                    //           // Convert href to patient?tab=patient-care-services format
+                    //           // If href is like 'patient-care-services', use it directly
+                    //           // Otherwise convert it
+                    //           if (href && !href.startsWith("/") && !href.startsWith("http")) {
+                    //                // If it's already in the right format (starts with patient-care-), use it
+                    //                if (href.startsWith("patient-care-")) {
+                    //                     href = `/patient?tab=${href}`;
+                    //                } else {
+                    //                     // Otherwise, convert and add patient-care- prefix
+                    //                     const slug = href.toLowerCase().replace(/\s+/g, "-").replace(/&/g, "and");
+                    //                     href = `/patient?tab=patient-care-${slug}`;
+                    //                }
+                    //           } else if (href && href.startsWith("/")) {
+                    //                // If it's already a path like /patient-care-services, extract and convert
+                    //                const pathParts = href.split("/").filter(Boolean);
+                    //                if (pathParts.length > 0) {
+                    //                     const lastPart = pathParts[pathParts.length - 1];
+                    //                     if (lastPart.startsWith("patient-care-")) {
+                    //                          href = `/patient?tab=${lastPart}`;
+                    //                     } else {
+                    //                          href = `/patient?tab=patient-care-${lastPart}`;
+                    //                     }
+                    //                }
+                    //           }
+                    //      }
 
-                         return {
-                              ...item,
-                              href: href,
-                              children: undefined, // Remove children to make it a link, not dropdown
-                         };
-                    }
+                    //      return {
+                    //           ...item,
+                    //           href: href,
+                    //           children: undefined, // Remove children to make it a link, not dropdown
+                    //      };
+                    // }
 
                     // Index 2 (Patient Care) - keep dropdown with patient?tab= format
                     if (index === 2) {
