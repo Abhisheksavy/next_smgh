@@ -53,7 +53,7 @@ export default function ServiceEnhancementForm({ config, errors, renderField }: 
 
                       return (
                         <div key={fieldKey}>
-                          <label className="text-primary text-sm font-medium mb-2 block">
+                          <label className="text-foreground text-base font-regular mb-2 block">
                             {field.label}
                             {isRequired && (
                               <span className="text-red-500 ml-1">*</span>
@@ -85,7 +85,7 @@ export default function ServiceEnhancementForm({ config, errors, renderField }: 
 
                       return (
                         <div key={fieldKey}>
-                          <label className="text-primary text-sm font-medium mb-2 block">
+                          <label className="text-foreground text-base font-regular mb-2 block">
                             {field.label}
                             {isRequired && (
                               <span className="text-red-500 ml-1">*</span>
@@ -155,7 +155,7 @@ export default function ServiceEnhancementForm({ config, errors, renderField }: 
 
                   return (
                     <div key={fieldKey}>
-                      <label className="text-primary text-sm font-medium mb-2 block">
+                      <label className="text-foreground text-base font-regular mb-2 block">
                         {field.label}
                         {isRequired && (
                           <span className="text-red-500 ml-1">*</span>
@@ -213,7 +213,7 @@ export default function ServiceEnhancementForm({ config, errors, renderField }: 
 
                   return (
                     <div key={fieldKey}>
-                      <label className="text-primary text-sm font-medium mb-2 block">
+                      <label className="text-foreground text-base font-regular mb-2 block">
                         {field.label}
                         {isRequired && (
                           <span className="text-red-500 ml-1">*</span>
@@ -237,7 +237,7 @@ export default function ServiceEnhancementForm({ config, errors, renderField }: 
       {/* Email Updates */}
       {config.emailUpdates && (
         <div>
-          <label className="text-primary text-sm font-medium mb-2 block">
+          <label className="text-foreground text-base font-regular mb-2 block">
             {config.emailUpdates.label}
             <span className="text-red-500 ml-1">*</span>
           </label>

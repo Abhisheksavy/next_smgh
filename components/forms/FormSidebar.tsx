@@ -71,8 +71,8 @@ export default function FormSidebar({
     };
 
     return (
-        <div className="bg-white border border-gray-200 rounded-lg p-4">
-            <nav className="space-y-2">
+        <div className="bg-white border border-primary/20 rounded ">
+            <nav className=" ">
                 {items.map((item, index) => {
                     const normalizedItemTitle = normalizeTitle(item.title);
                     const isActive =
@@ -85,10 +85,10 @@ export default function FormSidebar({
                             key={index}
                             onClick={() => handleItemClick(item)}
                             className={cn(
-                                "w-full text-left px-4 py-3 rounded-lg transition-all duration-200 text-sm font-medium",
+                                "w-full text-left px-4 py-3 transition-all duration-200 text-sm font-medium cursor-pointer",
                                 isActive
                                     ? "bg-primary text-white shadow-md"
-                                    : "bg-gray-50 text-gray-700 hover:bg-primary/10 hover:text-primary"
+                                    : "bg-white text-[#313131] hover:bg-primary/10 hover:text-primary"
                             )}
                         >
                             {item.title}

@@ -57,7 +57,7 @@ export default function MaterialDamageClaimForm({
 
               return (
                 <div key={fieldKey}>
-                  <label className="text-primary text-sm font-medium mb-2 block">
+                  <label className="text-foreground text-base font-regular mb-2 block">
                     {field.label}
                     {isRequired && (
                       <span className="text-red-500 ml-1">*</span>
@@ -99,7 +99,7 @@ export default function MaterialDamageClaimForm({
 
                       return (
                         <div key={fieldKey}>
-                          <label className="text-primary text-sm font-medium mb-2 block">
+                          <label className="text-foreground text-base font-regular mb-2 block">
                             {field.label}
                             {isRequired && (
                               <span className="text-red-500 ml-1">*</span>
@@ -128,7 +128,7 @@ export default function MaterialDamageClaimForm({
 
                       return (
                         <div key={fieldKey}>
-                          <label className="text-primary text-sm font-medium mb-2 block">
+                          <label className="text-foreground text-base font-regular mb-2 block">
                             {field.label}
                             {isRequired && (
                               <span className="text-red-500 ml-1">*</span>
@@ -159,7 +159,7 @@ export default function MaterialDamageClaimForm({
 
                     return (
                       <div key={fieldKey}>
-                        <label className="text-primary text-sm font-medium mb-2 block">
+                        <label className="text-foreground text-base font-regular mb-2 block">
                           {field.label}
                           {isRequired && (
                             <span className="text-red-500 ml-1">*</span>
@@ -190,7 +190,7 @@ export default function MaterialDamageClaimForm({
 
                       return (
                         <div key={fieldKey}>
-                          <label className="text-primary text-sm font-medium mb-2 block">
+                          <label className="text-foreground text-base font-regular mb-2 block">
                             {field.label}
                             {isRequired && (
                               <span className="text-red-500 ml-1">*</span>
@@ -218,7 +218,7 @@ export default function MaterialDamageClaimForm({
 
                       return (
                         <div key={fieldKey}>
-                          <label className="text-primary text-sm font-medium mb-2 block">
+                          <label className="text-foreground text-base font-regular mb-2 block">
                             {field.label}
                             {isRequired && (
                               <span className="text-red-500 ml-1">*</span>
@@ -301,7 +301,7 @@ export default function MaterialDamageClaimForm({
                     return (
                       <div key={fieldKey} className="grid md:grid-cols-2 gap-6">
                         <div>
-                          <label className="text-primary text-sm font-medium mb-2 block">
+                          <label className="text-foreground text-base font-regular mb-2 block">
                             {field.label}
                             {isRequired && (
                               <span className="text-red-500 ml-1">*</span>
@@ -316,7 +316,7 @@ export default function MaterialDamageClaimForm({
                         </div>
                         {moneyTransferField && (
                           <div>
-                            <label className="text-primary text-sm font-medium mb-2 block">
+                            <label className="text-foreground text-base font-regular mb-2 block">
                               {moneyTransferField[1].label}
                               {moneyTransferField[1].required === "true" && (
                                 <span className="text-red-500 ml-1">*</span>
@@ -336,7 +336,7 @@ export default function MaterialDamageClaimForm({
 
                   return (
                     <div key={fieldKey}>
-                      <label className="text-primary text-sm font-medium mb-2 block">
+                      <label className="text-foreground text-base font-regular mb-2 block">
                         {field.label}
                         {isRequired && (
                           <span className="text-red-500 ml-1">*</span>
@@ -430,7 +430,7 @@ export default function MaterialDamageClaimForm({
                     if (!admittedField) {
                       return (
                         <div key={fieldKey}>
-                          <label className="text-primary text-sm font-medium mb-2 block">
+                          <label className="text-foreground text-base font-regular mb-2 block">
                             {field.label}
                             {isRequired && (
                               <span className="text-red-500 ml-1">*</span>
@@ -450,7 +450,7 @@ export default function MaterialDamageClaimForm({
                     return (
                       <div key={fieldKey} className="grid md:grid-cols-2 gap-6">
                         <div>
-                          <label className="text-primary text-sm font-medium mb-2 block">
+                          <label className="text-foreground text-base font-regular mb-2 block">
                             {admittedField[1].label}
                             {(admittedField[1].required === "true" || admittedField[1].required === true) && (
                               <span className="text-red-500 ml-1">*</span>
@@ -464,7 +464,7 @@ export default function MaterialDamageClaimForm({
                           )}
                         </div>
                         <div>
-                          <label className="text-primary text-sm font-medium mb-2 block">
+                          <label className="text-foreground text-base font-regular mb-2 block">
                             {field.label}
                             {isRequired && (
                               <span className="text-red-500 ml-1">*</span>
@@ -486,7 +486,7 @@ export default function MaterialDamageClaimForm({
 
                   return (
                     <div key={fieldKey}>
-                      <label className="text-primary text-sm font-medium mb-2 block">
+                      <label className="text-foreground text-base font-regular mb-2 block">
                         {field.label}
                         {isRequired && (
                           <span className="text-red-500 ml-1">*</span>
@@ -544,7 +544,7 @@ export default function MaterialDamageClaimForm({
 
                   return (
                     <div key={fieldKey}>
-                      <label className="text-primary text-sm font-medium mb-2 block">
+                      <label className="text-foreground text-base font-regular mb-2 block">
                         {field.label}
                         {isRequired && (
                           <span className="text-red-500 ml-1">*</span>

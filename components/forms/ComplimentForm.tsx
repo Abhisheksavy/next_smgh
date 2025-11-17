@@ -70,7 +70,7 @@ export default function ComplimentForm({ config, errors, renderField }: Complime
 
               return (
                 <div key={fieldKey} className={colSpan}>
-                  <label className="text-primary text-sm font-medium mb-2 block">
+                  <label className="text-foreground text-base font-regular mb-2 block">
                     {field.label}
                     {isRequired && (
                       <span className="text-red-500 ml-1">*</span>

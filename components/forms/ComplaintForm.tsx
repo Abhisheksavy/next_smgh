@@ -67,7 +67,7 @@ export default function ComplaintForm({
 
                       return (
                         <div key={fieldKey} className="md:col-span-2">
-                          <label className="text-primary text-sm font-medium mb-2 block">
+                          <label className="text-foreground text-base font-regular mb-2 block">
                             {labelPrefix}{field.label}
                             {isRequired && (
                               <span className="text-red-500 ml-1">*</span>
@@ -96,7 +96,7 @@ export default function ComplaintForm({
 
                     return (
                       <div key={fieldKey}>
-                        <label className="text-primary text-sm font-medium mb-2 block">
+                        <label className="text-foreground text-base font-regular mb-2 block">
                           {field.label}
                           {isRequired && (
                             <span className="text-red-500 ml-1">*</span>
@@ -124,7 +124,7 @@ export default function ComplaintForm({
 
                     return (
                       <div key={fieldKey}>
-                        <label className="text-primary text-sm font-medium mb-2 block">
+                        <label className="text-foreground text-base font-regular mb-2 block">
                           {field.label}
                           {isRequired && (
                             <span className="text-red-500 ml-1">*</span>
@@ -155,7 +155,7 @@ export default function ComplaintForm({
 
                       return (
                         <div key={fieldKey}>
-                          <label className="text-primary text-sm font-medium mb-2 block">
+                          <label className="text-foreground text-base font-regular mb-2 block">
                             {field.label}
                             {isRequired && (
                               <span className="text-red-500 ml-1">*</span>
@@ -222,7 +222,7 @@ export default function ComplaintForm({
 
                     return (
                       <div key={fieldKey}>
-                        <label className="text-primary text-sm font-medium mb-2 block">
+                        <label className="text-foreground text-base font-regular mb-2 block">
                           2. {field.label}
                           {isRequired && (
                             <span className="text-red-500 ml-1">*</span>
@@ -255,7 +255,7 @@ export default function ComplaintForm({
 
                         return (
                           <div key={fieldKey}>
-                            <label className="text-primary text-sm font-medium mb-2 block">
+                            <label className="text-foreground text-base font-regular mb-2 block">
                               {field.label}
                               {isRequired && (
                                 <span className="text-red-500 ml-1">*</span>
@@ -290,7 +290,7 @@ export default function ComplaintForm({
 
                         return (
                           <div key={fieldKey}>
-                            <label className="text-primary text-sm font-medium mb-2 block">
+                            <label className="text-foreground text-base font-regular mb-2 block">
                               {field.label}
                               {isRequired && (
                                 <span className="text-red-500 ml-1">*</span>
@@ -321,7 +321,7 @@ export default function ComplaintForm({
 
                       return (
                         <div key={fieldKey}>
-                          <label className="text-primary text-sm font-medium mb-2 block">
+                          <label className="text-foreground text-base font-regular mb-2 block">
                             {field.label}
                             {isRequired && (
                               <span className="text-red-500 ml-1">*</span>
@@ -346,7 +346,7 @@ export default function ComplaintForm({
       {config.complaintText && (
         <div className="space-y-4">
           <div>
-            <label className="text-primary text-sm font-medium mb-2 block">
+            <label className="text-foreground text-base font-regular mb-2 block">
               3. {config.complaintText.heading}
               <span className="text-red-500 ml-1">*</span>
             </label>
@@ -369,7 +369,7 @@ export default function ComplaintForm({
         <div className="space-y-6">
           <div className="space-y-4">
             <div>
-              <label className="text-primary text-sm font-medium mb-2 block">
+              <label className="text-foreground text-base font-regular mb-2 block">
                 4. {config.discussedWithStaff.question.label}
                 <span className="text-red-500 ml-1">*</span>
               </label>
@@ -387,7 +387,7 @@ export default function ComplaintForm({
             {discussedWithStaff === "yes" &&
               config.discussedWithStaff.staffName && (
                 <div>
-                  <label className="text-primary text-sm font-medium mb-2 block">
+                  <label className="text-foreground text-base font-regular mb-2 block">
                     {config.discussedWithStaff.staffName.label}
                   </label>
                   {renderField(
@@ -400,7 +400,7 @@ export default function ComplaintForm({
             {discussedWithStaff === "yes" &&
               config.discussedWithStaff.outcome && (
                 <div>
-                  <label className="text-primary text-sm font-medium mb-2 block">
+                  <label className="text-foreground text-base font-regular mb-2 block">
                     {config.discussedWithStaff.outcome.label}
                   </label>
                   {renderField(
@@ -416,7 +416,7 @@ export default function ComplaintForm({
       {/* Importance Section */}
       {config.importance && (
         <div className="space-y-4">
-          <label className="text-primary text-sm font-medium mb-2 block">
+          <label className="text-foreground text-base font-regular mb-2 block">
             5. {config.importance.heading}
             <span className="text-red-500 ml-1">*</span>
           </label>
@@ -456,7 +456,7 @@ export default function ComplaintForm({
       {/* Access Medical File */}
       {config.accessMedicalFile && (
         <div>
-          <label className="text-primary text-sm font-medium mb-2 block">
+          <label className="text-foreground text-base font-regular mb-2 block">
             6. {config.accessMedicalFile.label}
             <span className="text-red-500 ml-1">*</span>
           </label>
@@ -472,7 +472,7 @@ export default function ComplaintForm({
       {/* Contact Preference */}
       {config.contactPreference && (
         <div>
-          <label className="text-primary text-sm font-medium mb-2 block">
+          <label className="text-foreground text-base font-regular mb-2 block">
             7. {config.contactPreference.label}
             <span className="text-red-500 ml-1">*</span>
           </label>

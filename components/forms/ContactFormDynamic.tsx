@@ -25,7 +25,7 @@ export default function ContactFormDynamic({ config, errors, renderField }: Cont
                                     key={fieldKey}
                                     className={isTextArea ? "md:col-span-2" : ""}
                                 >
-                                    <label className="text-primary text-sm font-medium mb-2 block">
+                                    <label className="text-foreground text-base font-regular mb-2 block">
                                         {field.label}
                                     </label>
                                     {renderField(fieldKey, field)}
