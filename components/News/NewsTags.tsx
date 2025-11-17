@@ -68,10 +68,15 @@ export default function NewsTags({
   if (loading) {
     return (
       <div className="p-5 border rounded-md border-primary/20">
-        <h2 className="text-primary font-medium text-2xl leading-none mb-4.5">
-          {heading}
-        </h2>
-        <p className="text-sm text-gray-500">Loading tags...</p>
+        <div className="h-6 w-28 bg-gray-200 animate-pulse rounded mb-4.5" />
+        <div className="flex flex-wrap gap-2">
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((tag) => (
+            <div
+              key={tag}
+              className="h-9 w-20 bg-gray-200 animate-pulse rounded-md"
+            />
+          ))}
+        </div>
       </div>
     );
   }
