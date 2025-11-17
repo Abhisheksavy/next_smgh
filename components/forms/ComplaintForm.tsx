@@ -28,7 +28,7 @@ export default function ComplaintForm({
         <div className="space-y-6">
           {(() => {
             const personalInfoOrder = ["firstName", "lastName", "dob", "gender", "homeAddress", "phoneNumber", "email"];
-            
+
             const sortedFields = Object.entries(config.personalInfo).sort(
               ([keyA], [keyB]) => {
                 const indexA = personalInfoOrder.findIndex((orderKey) =>
