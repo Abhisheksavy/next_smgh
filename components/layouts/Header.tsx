@@ -131,14 +131,14 @@ export default function Header({ header }: { header?: any }) {
                                                   onClick={() =>
                                                        setOpenDropdown(openDropdown === item.id ? null : item.id)
                                                   }
-                                                  className="flex items-center gap-1 text-white text-sm xl:text-base hover:text-teal-200 transition-colors"
+                                                  className="flex items-center gap-1 text-white text-sm xl:text-base hover:text-teal-200 transition-colors cursor-pointer"
                                              >
                                                   {item.label}
                                                   <ChevronDown className="w-4 h-4" />
                                              </button>
 
                                              {openDropdown === item.id && item.children && (
-                                                  <div className="absolute top-full left-0 mt-2 bg-white rounded-lg shadow-lg py-2 min-w-48 z-50">
+                                                  <div className="absolute top-full left-0 mt-2 bg-white rounded-lg shadow-lg py-2 min-w-68 z-50">
                                                        {item.children.map((child: any) => (
                                                             <Link
                                                                  key={child.id}

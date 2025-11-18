@@ -85,7 +85,7 @@ export default function FormSidebar({
                             key={index}
                             onClick={() => handleItemClick(item)}
                             className={cn(
-                                "w-full text-left px-4 py-3 transition-all duration-200 text-sm font-medium cursor-pointer",
+                                "w-full text-left px-4 py-3 transition-all duration-200 text-sm font-regular cursor-pointer",
                                 isActive
                                     ? "bg-primary text-white shadow-md"
                                     : "bg-white text-[#313131] hover:bg-primary/10 hover:text-primary"

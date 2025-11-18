@@ -14,6 +14,7 @@ interface ImageInputProps
      className?: string;
      acceptedTypes: string;
      inline?: boolean;
+     disableImagePreview?: boolean;
 }
 
 const ImageInput: React.FC<ImageInputProps> = ({
@@ -25,6 +26,7 @@ const ImageInput: React.FC<ImageInputProps> = ({
      text,
      className,
      inline,
+     disableImagePreview = false,
      ...rest
 
 }) => {
@@ -42,7 +44,9 @@ const ImageInput: React.FC<ImageInputProps> = ({
           if (file) {
                const isImage = file.type.startsWith("image/");
                setFileName(file.name);
-               if (mounted && isImage) setPreview(URL.createObjectURL(file));
+               if (mounted && isImage && !disableImagePreview) {
+                    setPreview(URL.createObjectURL(file));
+               }
                if (onFileChange) onFileChange(file);
           }
      };
@@ -73,14 +77,14 @@ const ImageInput: React.FC<ImageInputProps> = ({
                <div
                     className={cn(
                          "relative border border-gray-300 rounded-lg p-3 flex items-center justify-center cursor-pointer transition",
-                         preview || fileName ? "cursor-default" : "hover:bg-gray-50", 
+                         preview || fileName ? "cursor-default" : "hover:bg-gray-50",
                          className
                     )}
                     onClick={() => {
                          if (!preview && !fileName) fileRef.current?.click();
                     }}
                >
-                    {preview ? (
+                    {preview && !disableImagePreview ? (
                          <div className="relative">
                               <img
                                    src={preview}
@@ -98,7 +102,7 @@ const ImageInput: React.FC<ImageInputProps> = ({
                     ) : fileName ? (
                          <div className="flex items-center justify-center gap-2 bg-gray-50 px-3 py-2 rounded-md border border-gray-200">
                               <FileText className="text-gray-500" size={18} />
-                              <span className="text-sm text-gray-700 truncate max-w-[150px]">{fileName}</span>
+                              <span className="text-sm text-gray-700 truncate max-w-full">{fileName}</span>
                               <button
                                    type="button"
                                    onClick={handleDelete}

@@ -1,4 +1,6 @@
+import { Calendar } from "lucide-react"
 import { useState, useEffect } from "react"
+
 interface DatePickerInputProps {
   value?: Date | null
   onChange?: (date: Date) => void
@@ -66,7 +68,7 @@ export default function DatePickerInput({
     const firstDay = firstDayOfMonth(currentMonth)
 
     for (let i = 0; i < firstDay; i++) {
-      days.push(<div key={`empty-${i}`} className="h-9 w-9" />)
+      days.push(<div key={`empty-${i}`} className="aspect-square w-9" />)
     }
 
     for (let day = 1; day <= totalDays; day++) {
@@ -84,12 +86,12 @@ export default function DatePickerInput({
           key={day}
           onClick={() => handleDateClick(day)}
           type="button"
-          className={`h-9 w-9 rounded-lg text-sm transition-all
+          className={`aspect-square w-9 rounded-lg text-sm transition-all
             ${isSelected 
               ? 'bg-black text-white font-medium' 
               : isToday
               ? 'border border-gray-300 text-gray-900 hover:bg-gray-100'
-              : 'text-gray-700 hover:bg-gray-100'
+              : 'text-gray-700 hover:bg-gray-100 cursor-pointer'
             }`}
         >
           {day}
@@ -107,9 +109,9 @@ export default function DatePickerInput({
         value={formatDate(internalDate)}
         onClick={() => setShowCalendar(!showCalendar)}
         readOnly
-        className="py-4 outline-none text-sm w-full bg-primary/4 px-4 rounded cursor-pointer"
-        placeholder={placeholder}
+        className="py-4 outline-none text-sm w-full bg-primary/4 px-4 cursor-pointer rounded-xl"
       />
+      <Calendar className="w-4.5 absolute right-3 top-3.5 z-1 pointer-events-none "/>
       
       {showCalendar && (
         <>
@@ -117,7 +119,7 @@ export default function DatePickerInput({
             className="fixed inset-0 z-40" 
             onClick={() => setShowCalendar(false)}
           />
-          <div className="absolute top-full mt-2 w-72 bg-white border border-gray-200 rounded-xl shadow-lg p-4 z-50">
+          <div className="absolute top-full mt-2 w-80 bg-white border border-gray-200 rounded-xl shadow-lg p-4 z-50">
             <div className="flex items-center justify-between mb-4">
               <button
                 onClick={handlePrevMonth}
@@ -129,8 +131,26 @@ export default function DatePickerInput({
                 </svg>
               </button>
               
-              <div className="text-sm font-medium text-gray-900">
-                {monthNames[currentMonth.getMonth()]} {currentMonth.getFullYear()}
+              <div className="flex items-center gap-2">
+                <select
+                  value={currentMonth.getMonth()}
+                  onChange={(e) => setCurrentMonth(new Date(currentMonth.getFullYear(), parseInt(e.target.value)))}
+                  className="text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg px-2 py-1 cursor-pointer hover:bg-gray-50"
+                >
+                  {monthNames.map((month, index) => (
+                    <option key={month} value={index}>{month}</option>
+                  ))}
+                </select>
+                
+                <select
+                  value={currentMonth.getFullYear()}
+                  onChange={(e) => setCurrentMonth(new Date(parseInt(e.target.value), currentMonth.getMonth()))}
+                  className="text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg px-2 py-1 cursor-pointer hover:bg-gray-50"
+                >
+                  {Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i).map(year => (
+                    <option key={year} value={year}>{year}</option>
+                  ))}
+                </select>
               </div>
               
               <button
@@ -146,7 +166,7 @@ export default function DatePickerInput({
 
             <div className="grid grid-cols-7 gap-1 mb-2">
               {['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'].map(day => (
-                <div key={day} className="h-9 w-9 flex items-center justify-center text-xs font-medium text-gray-500">
+                <div key={day} className="aspect-square w-9 flex items-center justify-center text-xs font-medium text-gray-500">
                   {day}
                 </div>
               ))}

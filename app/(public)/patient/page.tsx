@@ -229,7 +229,7 @@ function PatientCarePageContent() {
                   </div>
                 </div>
               ) : pageContent ? (
-                <div className="bg-white rounded-lg p-6 md:p-10">
+                <div className="bg-primary/3- rounded-lg- px-7- py-10-">
                   <DynamicPatientContent
                     content={pageContent}
                     slug={tabSlugMap[activeTab] || tabParam}

@@ -1,5 +1,5 @@
 import InnerBanner from "@/components/common/InnerBanner";
-import React from "react";
+import React, { Suspense } from "react";
 import NewsBox from "@/components/News/NewsBox";
 import Contact from "@/components/home/Contact";
 import { Search } from "lucide-react";
@@ -9,6 +9,9 @@ import NewsTags from "@/components/News/NewsTags";
 import RecentNews from "@/components/News/RecentNews";
 import Categories from "@/components/News/Categories";
 import NewsSearchBar from "@/components/News/NewsSearchBar";
+import NewsBoxSkeleton from "@/components/News/NewsBoxSkeleton";
+import RecentNewsSkeleton from "@/components/News/RecentNewsSkeleton";
+import CategoriesSkeleton from "@/components/News/CategoriesSkeleton";
 
 interface NewsPageProps {
   searchParams: {
@@ -41,11 +44,13 @@ export default async function News({ searchParams }: NewsPageProps) {
       <section className="section-padding">
         <div className="container">
           <div className="grid grid-cols-12 gap-5">
-            <div className="col-span-8 flex flex-col gap-15">
-              <NewsBox type={"news"} currentPage={currentPage} />
+            <div className="col-span-12 lg:col-span-8 flex flex-col gap-5">
+              <Suspense fallback={<NewsBoxSkeleton />}>
+                <NewsBox type={"news"} currentPage={currentPage} />
+              </Suspense>
             </div>
 
-            <div className="col-span-4 flex flex-col gap-6">
+            <div className="col-span-12 lg:col-span-4 flex flex-col gap-6">
               <NewsSearchBar
                 placeholder={data?.content?.sidebar?.searchHeading}
                 initialSearch={searchQuery}
@@ -56,15 +61,19 @@ export default async function News({ searchParams }: NewsPageProps) {
                 heading={data?.content?.sidebar?.tagsHeading}
               />
 
-              <RecentNews
-                type="news"
-                heading={data?.content?.sidebar?.recentHeading}
-              />
+              <Suspense fallback={<RecentNewsSkeleton heading={data?.content?.sidebar?.recentHeading} />}>
+                <RecentNews
+                  type="news"
+                  heading={data?.content?.sidebar?.recentHeading}
+                />
+              </Suspense>
 
-              <Categories
-                type="news"
-                heading={data?.content?.sidebar?.categoriesHeading}
-              />
+              <Suspense fallback={<CategoriesSkeleton heading={data?.content?.sidebar?.categoriesHeading} />}>
+                <Categories
+                  type="news"
+                  heading={data?.content?.sidebar?.categoriesHeading}
+                />
+              </Suspense>
 
               <div className="p-5 border rounded-md border-primary/20">
                 <h2 className="text-primary font-medium text-2xl leading-none mb-4.5">
