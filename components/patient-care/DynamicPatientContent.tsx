@@ -600,10 +600,7 @@ export default function DynamicPatientContent({
                                    <div className="space-y-4">
                                         {content.tabs.patientRights.items?.map(
                                              (item: any, index: number) => (
-                                                  <div
-                                                       key={index}
-                                                       className=""
-                                                  >
+                                                  <div key={index} className="">
                                                        <h4 className="font-semibold text-primary mb-2">
                                                             {index + 1}. {item.title}
                                                        </h4>
@@ -711,7 +708,6 @@ export default function DynamicPatientContent({
                               )}
                          </div>
                     )}
-
                     {/* Not Satisfied Section */}
                     {content.notSatisfiedSection && (
                          <div className="space-y-6">
@@ -723,14 +719,13 @@ export default function DynamicPatientContent({
                                         {content.notSatisfiedSection.description}
                                    </p>
                               )}
-
                               {/* Complaint Methods */}
                               {content.notSatisfiedSection.complaintMethods && (
                                    <div className="space-y-3">
                                         <ol className="pl-5 list-decimal flex flex-col gap-1">
                                              {content.notSatisfiedSection.complaintMethods.map(
                                                   (method: any, index: number) => (
-                                                       <li key={index} className="flex- items-start gap-3  text-gray-600">
+                                                       <li key={index} className="flex- items-start gap-3 text-gray-600">
                                                             {method.method || method}
                                                        </li>
                                                   )
@@ -738,21 +733,17 @@ export default function DynamicPatientContent({
                                         </ol>
                                    </div>
                               )}
-
                               {/* Email */}
                               {content.notSatisfiedSection.email && (
                                    <div className="bg-primary/5 p-6 rounded-lg">
                                         <p className="text-gray-700 mb-2">Contact the Complaint Officer:</p>
-                                        <a
-                                             href={`mailto:${content.notSatisfiedSection.email}`}
-                                             className="text-primary font-medium inline-flex items-center gap-2 hover:text-secondary transition-colors"
-                                        >
+                                        <a href={`mailto:${content.notSatisfiedSection.email}`}
+                                             className="text-primary font-medium inline-flex items-center gap-2 hover:text-secondary transition-colors">
                                              <Mail className="w-4 h-4" />
                                              {content.notSatisfiedSection.email}
                                         </a>
                                    </div>
                               )}
-
                               {/* Mailing Address */}
                               {content.notSatisfiedSection.mailingAddress && (
                                    <div className="bg-primary/5 p-6 rounded-lg">

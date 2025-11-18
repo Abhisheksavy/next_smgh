@@ -15,6 +15,7 @@ export default function Header({ header }: { header?: any }) {
      const [languageOpen, setLanguageOpen] = useState(false);
      const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
      const [navigationWithDropdown, setNavigationWithDropdown] = useState<any[]>([]);
+     console.log("header", header);
 
      // Close mobile menu on resize to desktop
      useEffect(() => {
@@ -37,37 +38,160 @@ export default function Header({ header }: { header?: any }) {
           }
      }, [mobileMenuOpen]);
 
-     // Update navigation with dropdown for third item (index 2)
+     // Helper function to process children with patient?tab= format
+     const processChildrenWithTabFormat = (children: any[]) => {
+          return children.map((child: any, idx: number) => {
+               let href = child.href || "";
+               let label = child.label || "";
+
+               // If href is like 'patient-care-services' (without /patient?tab=), convert it
+               if (href && !href.includes("?tab=") && !href.startsWith("/")) {
+                    // href = `/patient?tab=${href}`;
+               } else if (href && !href.startsWith("/") && !href.includes("?")) {
+                    // href = `/patient?tab=${href}`;
+               }
+
+               // Generate label from href if missing
+               if (!label && href) {
+                    // Extract tab name from href
+                    let tabName = "";
+                    if (href.includes("?tab=")) {
+                         const tabMatch = href.match(/tab=([^&]+)/);
+                         if (tabMatch) {
+                              tabName = tabMatch[1];
+                         }
+                    } else {
+                         // Get last part of path
+                         const pathParts = href.split("/").filter(Boolean);
+                         if (pathParts.length > 0) {
+                              tabName = pathParts[pathParts.length - 1];
+                         }
+                    }
+
+                    // Map slugs to proper titles (matching patient page)
+                    const slugToTitleMap: Record<string, string> = {
+                         "patient-care-services": "Services",
+                         "patient-care-international": "International Patient Services",
+                         "patient-care-medical-specialties": "Medical Specialties",
+                         "patient-care-family-visitors": "Family & Visitors",
+                         "patient-care-admission-discharge": "Admission And Discharge",
+                         "patient-care-payment-billing": "Payments And Billing",
+                         "patient-care-rights-responsibilities": "Patient Rights And Responsibilities",
+                         "patient-care-compliments-complaints": "Compliments And Complaints",
+                         "patient-care-patient-information": "Patient Information",
+                    };
+
+                    // Use mapped title if available
+                    if (slugToTitleMap[tabName]) {
+                         label = slugToTitleMap[tabName];
+                    } else {
+                         // Fallback: generate label from tab name
+                         const cleanTabName = tabName.replace(/^patient-care-/, "");
+                         label = cleanTabName
+                              .split("-")
+                              .map((word: string, wordIdx: number) => {
+                                   const capitalized = word.charAt(0).toUpperCase() + word.slice(1);
+                                   // Handle common words
+                                   if (wordIdx > 0 && (word === "and" || word === "or" || word === "of")) {
+                                        return word.toLowerCase();
+                                   }
+                                   return capitalized;
+                              })
+                              .join(" ");
+                    }
+               }
+
+               return {
+                    id: child.id || `patient-care-${idx}`,
+                    label: label || `Item ${idx + 1}`,
+                    href: href || "#",
+               };
+          });
+     };
+
+     // Update navigation for index 1 (Services) as link and index 2 (Patient Care) with dropdown
      useEffect(() => {
           const patientCareItems = patientCareData?.content?.items || [];
 
-          if (header?.navigation && patientCareItems.length > 0) {
+          if (header?.navigation) {
                const updatedNavigation = header.navigation.map((item: any, index: number) => {
-                    // Third item (index 2) should have dropdown
+                    // Index 1 (Services) - convert to single link with patient?tab= format
+                    // if (index === 1) {
+                    //      let href = item.href || "";
+
+                    //      // If href already has ?tab= format, ensure it starts with /
+                    //      if (href.includes("?tab=")) {
+                    //           if (!href.startsWith("/")) {
+                    //                href = `/${href}`;
+                    //           }
+                    //      } else {
+                    //           // Convert href to patient?tab=patient-care-services format
+                    //           // If href is like 'patient-care-services', use it directly
+                    //           // Otherwise convert it
+                    //           if (href && !href.startsWith("/") && !href.startsWith("http")) {
+                    //                // If it's already in the right format (starts with patient-care-), use it
+                    //                if (href.startsWith("patient-care-")) {
+                    //                     href = `/patient?tab=${href}`;
+                    //                } else {
+                    //                     // Otherwise, convert and add patient-care- prefix
+                    //                     const slug = href.toLowerCase().replace(/\s+/g, "-").replace(/&/g, "and");
+                    //                     href = `/patient?tab=patient-care-${slug}`;
+                    //                }
+                    //           } else if (href && href.startsWith("/")) {
+                    //                // If it's already a path like /patient-care-services, extract and convert
+                    //                const pathParts = href.split("/").filter(Boolean);
+                    //                if (pathParts.length > 0) {
+                    //                     const lastPart = pathParts[pathParts.length - 1];
+                    //                     if (lastPart.startsWith("patient-care-")) {
+                    //                          href = `/patient?tab=${lastPart}`;
+                    //                     } else {
+                    //                          href = `/patient?tab=patient-care-${lastPart}`;
+                    //                     }
+                    //                }
+                    //           }
+                    //      }
+
+                    //      return {
+                    //           ...item,
+                    //           href: href,
+                    //           children: undefined, // Remove children to make it a link, not dropdown
+                    //      };
+                    // }
+
+                    // Index 2 (Patient Care) - keep dropdown with patient?tab= format
                     if (index === 2) {
-                         return {
-                              ...item,
-                              children: patientCareItems.map((careItem: any, idx: number) => {
-                                   // Generate URL-friendly slug from title
-                                   const slug = careItem.title
-                                        .toLowerCase()
-                                        .replace(/\s+/g, "-")
-                                        .replace(/&/g, "and")
-                                        .replace(/[^a-z0-9-]/g, "");
-                                   return {
-                                        id: `patient-care-${idx}`,
-                                        label: careItem.title,
-                                        href: `/patient-care/${slug}`,
-                                   };
-                              }),
-                         };
+                         // Check if item already has children with href format like 'patient-care-services'
+                         if (item.children && Array.isArray(item.children) && item.children.length > 0) {
+                              // Process existing children
+                              return {
+                                   ...item,
+                                   children: processChildrenWithTabFormat(item.children),
+                              };
+                         }
+
+                         // If we have patient care items from API, use them
+                         if (patientCareItems.length > 0) {
+                              return {
+                                   ...item,
+                                   children: patientCareItems.map((careItem: any, idx: number) => {
+                                        // Generate URL-friendly slug from title
+                                        const slug = careItem.title
+                                             .toLowerCase()
+                                             .replace(/\s+/g, "-")
+                                             .replace(/&/g, "and")
+                                             .replace(/[^a-z0-9-]/g, "");
+                                        return {
+                                             id: `patient-care-${idx}`,
+                                             label: careItem.title,
+                                             href: `/patient?tab=patient-care-${slug}`,
+                                        };
+                                   }),
+                              };
+                         }
                     }
                     return item;
                });
                setNavigationWithDropdown(updatedNavigation);
-          } else if (header?.navigation) {
-               // If patient care items not loaded yet, use original navigation
-               setNavigationWithDropdown(header.navigation);
           }
      }, [header?.navigation, patientCareData]);
 
@@ -107,7 +231,7 @@ export default function Header({ header }: { header?: any }) {
      }
 
      return (
-          <header className="bg-primary py-3 md:py-4 px-4 md:px-6 relative">
+          <header className="bg-primary py-3 md:py-4 sm:px-4 md:px-6 relative">
                <nav className="container flex items-center justify-between">
                     {/* Mobile Menu Button */}
                     <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

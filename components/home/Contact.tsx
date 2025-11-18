@@ -31,23 +31,22 @@ const Contact = async () => {
                          </h2>
                     </div>
 
-                    <div className="grid grid-cols-12 gap-y-7 sm:gap-7">
+                    <div className="grid grid-cols-12 gap-y-4 md:gap-y-7 sm:gap-x-4 md:gap-x-7">
                          {contactData?.communicationWays.map((items: any, index: any) => {
                               const IconComponent = icons[index % icons.length];
                               return (
-                                   <a
-                                        key={index}
+                                   <a key={index}
                                         href={items.href}
                                         className={cn(
-                                             " py-7 sm:py-8 md:py-10 lg:py-12 xl:py-14 2xl:py-13 col-span-12 sm:col-span-6 md:col-span-4 pl-6 pr-14 rounded-sm",
+                                             "pl-4 md:pl-6 pr-4 md:pr-10 lg:pr-14  py-4 sm:py-5 md:py-6 lg:py-8 xl:py-10 2xl:py-13 col-span-12 sm:col-span-6 md:col-span-4 rounded-sm",
                                              index === 1 ? "bg-primary" : "bg-[#1F9F9E]"
                                         )} >
-                                        <IconComponent className="mb-4  text-white" />
+                                        <IconComponent className="mb-1 md:mb-3 lg:mb-4 text-white w-7 xl:w-8 2xl:w-9" />
                                         <div className="flex flex-col gap-1">
-                                             <span className="font-bold text-lg text-white uppercase">
+                                             <span className="font-bold text-base md:text-lg text-white uppercase">
                                                   {items.communicationName}
                                              </span>
-                                             <span className="text-base text-white font-normal leading-[1.4]">
+                                             <span className="text-sm md:text-base text-white font-normal leading-[1.4]">
                                                   {items.wayToCommunicate}
                                              </span>
                                         </div>

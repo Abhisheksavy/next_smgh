@@ -1,6 +1,5 @@
 // components/TopBar.tsx
 "use client";
-
 import CallIcon from "@/icons/home-icons/call-icon";
 import Location from "@/icons/home-icons/location-icon";
 import { useGetTopBarData } from "@/queries/useLayout";
@@ -23,7 +22,6 @@ export default function TopBar({ topbar }: { topbar?: any }) {
       </div>
     );
   }
-
   if (isError || !data) {
     return (
       <div className="bg-background border-b border-gray-200 py-3 md:py-4 px-4 md:px-6">
@@ -35,9 +33,8 @@ export default function TopBar({ topbar }: { topbar?: any }) {
       </div>
     );
   }
-
   return (
-    <div className="bg-background py-3 px-4 md:px-6 md:py-6.5">
+    <div className="bg-background py-3 sm:px-4 md:px-6 md:py-6.5">
       <div className="container flex flex-row items-center justify-between gap-4 lg:gap-0">
         {/* Logo */}
         <div className="flex items-center justify-center sm:justify-start w-auto">
@@ -49,7 +46,6 @@ export default function TopBar({ topbar }: { topbar?: any }) {
             className="object-contain h-auto w-18 sm:w-20 md:w-24 "
           />
         </div>
-
         {/* Contact Info */}
         <div className="flex  flex-row items-center gap-2 sm:gap-6 lg:gap-8 w-auto lg:w-auto">
           {/* Emergency Contact */}

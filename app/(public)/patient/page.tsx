@@ -211,7 +211,7 @@ function PatientCarePageContent() {
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
             {/* Sidebar */}
-            <div className="md:col-span-4 lg:col-span-3">
+            <div className="md:col-span-4 lg:col-span-3 relative">
               <PatientCareSidebar
                 items={sidebarItems}
                 activeTab={activeTab}

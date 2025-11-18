@@ -6,6 +6,7 @@ import UrologyIcon from "@/icons/home-icons/urology";
 import { Droplet, Globe, Eye, Activity } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "../ui/button";
 // Icon mapping
 const iconMap: { [key: string]: any } = {
   dialysis: DialysisIcon,
@@ -117,12 +118,13 @@ export default function FeaturedServices({
 
             {/* CTA Button with Avatars */}
             <div className="flex items-center gap-4">
-              <Link
+              {/* <Link
                 href={data?.cta?.href || "/"}
                 className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg"
               >
                 {data?.cta?.label}
-              </Link>
+              </Link> */}
+              <Button href={data?.cta?.href || "/"}>{data?.cta?.label}</Button>
             </div>
           </div>
 

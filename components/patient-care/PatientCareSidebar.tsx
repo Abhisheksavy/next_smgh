@@ -65,7 +65,7 @@ export default function PatientCareSidebar({
     };
 
     return (
-        <div className="bg-white border border-primary/20 rounded ">
+        <div className="bg-white border border-primary/20 rounded  sticky top-2 z-1">
             <nav className="">
                 {items.map((item, index) => {
                     const normalizedItemTitle = normalizeTitle(item.title);

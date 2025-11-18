@@ -24,13 +24,12 @@ type ButtonProps = CommonProps &
 export const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
   ({ className, variant = "default", size = "default", href, ...props }, ref) => {
     const baseClasses =
-      "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full cursor-pointer text-base font-medium transition-all duration-300 ease-out focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 user-select-none"
+      "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full cursor-pointer text-sm md:text-base font-medium transition-all duration-300 ease-out focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 user-select-none"
 
     const variants: Record<string, string> = {
       default: "bg-tealgreen text-white hover:bg-secondary",
       destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-      outline:
-        "border-2 border-tealgreen text-tealgreen bg-transparent hover:bg-secondary hover:text-white",
+      outline: "border-2 border-tealgreen text-tealgreen bg-transparent hover:bg-secondary hover:text-white",
       secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
       ghost: "hover:bg-primary/10 hover:text-primary",
       link: "text-foreground",
@@ -39,7 +38,7 @@ export const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, Bu
     }
 
     const sizes: Record<string, string> = {
-      default: "h-11 px-8.5 py-2",
+      default: "h-9 md:h-11 px-6 md:px-8.5 py-1 md:py-2",
       sm: "h-9 rounded-md px-4 text-xs",
       lg: "h-12 rounded-lg px-8 text-base",
       xl: "h-14 rounded-xl px-10 text-lg",
